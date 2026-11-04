@@ -51,6 +51,8 @@ public class AdsPixelCAPIIntegrationQuality extends APINode {
   private List<Object> mEventAdSets = null;
   @SerializedName("event_coverage")
   private Object mEventCoverage = null;
+  @SerializedName("event_delay")
+  private Object mEventDelay = null;
   @SerializedName("event_match_quality")
   private Object mEventMatchQuality = null;
   @SerializedName("event_name")
@@ -59,6 +61,8 @@ public class AdsPixelCAPIIntegrationQuality extends APINode {
   private Object mEventPotentialAlyAcrIncrease = null;
   @SerializedName("event_spend")
   private Object mEventSpend = null;
+  @SerializedName("value_diagnostics")
+  private List<Object> mValueDiagnostics = null;
   protected static Gson gson = null;
 
   public AdsPixelCAPIIntegrationQuality() {
@@ -255,6 +259,15 @@ public class AdsPixelCAPIIntegrationQuality extends APINode {
     return this;
   }
 
+  public Object getFieldEventDelay() {
+    return mEventDelay;
+  }
+
+  public AdsPixelCAPIIntegrationQuality setFieldEventDelay(Object value) {
+    this.mEventDelay = value;
+    return this;
+  }
+
   public Object getFieldEventMatchQuality() {
     return mEventMatchQuality;
   }
@@ -291,6 +304,15 @@ public class AdsPixelCAPIIntegrationQuality extends APINode {
     return this;
   }
 
+  public List<Object> getFieldValueDiagnostics() {
+    return mValueDiagnostics;
+  }
+
+  public AdsPixelCAPIIntegrationQuality setFieldValueDiagnostics(List<Object> value) {
+    this.mValueDiagnostics = value;
+    return this;
+  }
+
 
 
 
@@ -313,10 +335,12 @@ public class AdsPixelCAPIIntegrationQuality extends APINode {
     this.mDedupeKeyFeedback = instance.mDedupeKeyFeedback;
     this.mEventAdSets = instance.mEventAdSets;
     this.mEventCoverage = instance.mEventCoverage;
+    this.mEventDelay = instance.mEventDelay;
     this.mEventMatchQuality = instance.mEventMatchQuality;
     this.mEventName = instance.mEventName;
     this.mEventPotentialAlyAcrIncrease = instance.mEventPotentialAlyAcrIncrease;
     this.mEventSpend = instance.mEventSpend;
+    this.mValueDiagnostics = instance.mValueDiagnostics;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;

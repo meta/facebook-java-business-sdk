@@ -5270,6 +5270,7 @@ public class AdSet extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -5381,6 +5382,11 @@ public class AdSet extends APINode {
     }
     public APIRequestGetInsights setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsights setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 
@@ -5593,6 +5599,7 @@ public class AdSet extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -5704,6 +5711,11 @@ public class AdSet extends APINode {
     }
     public APIRequestGetInsightsAsync setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsightsAsync setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 
@@ -7265,7 +7277,6 @@ public class AdSet extends APINode {
       "bid_constraints",
       "bid_strategy",
       "billing_event",
-      "brand_safety_config",
       "budget_schedule_specs",
       "campaign_attribution",
       "campaign_spec",
@@ -7473,15 +7484,6 @@ public class AdSet extends APINode {
     }
     public APIRequestUpdate setBillingEvent (String billingEvent) {
       this.setParam("billing_event", billingEvent);
-      return this;
-    }
-
-    public APIRequestUpdate setBrandSafetyConfig (Map<String, String> brandSafetyConfig) {
-      this.setParam("brand_safety_config", brandSafetyConfig);
-      return this;
-    }
-    public APIRequestUpdate setBrandSafetyConfig (String brandSafetyConfig) {
-      this.setParam("brand_safety_config", brandSafetyConfig);
       return this;
     }
 
@@ -8525,6 +8527,10 @@ public class AdSet extends APINode {
       VALUE_24("24"),
       @SerializedName("25")
       VALUE_25("25"),
+      @SerializedName("26")
+      VALUE_26("26"),
+      @SerializedName("27")
+      VALUE_27("27"),
       ;
 
       private String value;

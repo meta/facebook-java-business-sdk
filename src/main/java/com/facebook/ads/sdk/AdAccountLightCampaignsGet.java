@@ -230,10 +230,14 @@ public class AdAccountLightCampaignsGet extends APINode {
   public static enum EnumDatePreset {
       @SerializedName("DATA_MAXIMUM")
       VALUE_DATA_MAXIMUM("DATA_MAXIMUM"),
+      @SerializedName("LAST_12M")
+      VALUE_LAST_12M("LAST_12M"),
       @SerializedName("LAST_14D")
       VALUE_LAST_14D("LAST_14D"),
       @SerializedName("LAST_14_DAYS")
       VALUE_LAST_14_DAYS("LAST_14_DAYS"),
+      @SerializedName("LAST_180D")
+      VALUE_LAST_180D("LAST_180D"),
       @SerializedName("LAST_180_DAYS")
       VALUE_LAST_180_DAYS("LAST_180_DAYS"),
       @SerializedName("LAST_24M")
@@ -258,6 +262,8 @@ public class AdAccountLightCampaignsGet extends APINode {
       VALUE_LAST_3_MONTHS("LAST_3_MONTHS"),
       @SerializedName("LAST_40D")
       VALUE_LAST_40D("LAST_40D"),
+      @SerializedName("LAST_60D")
+      VALUE_LAST_60D("LAST_60D"),
       @SerializedName("LAST_7D")
       VALUE_LAST_7D("LAST_7D"),
       @SerializedName("LAST_7_DAYS")

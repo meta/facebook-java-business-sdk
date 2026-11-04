@@ -40,27 +40,23 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class AdsInsightsCampaignGet extends APINode {
+public class ProductFeedRulePreviewSamplesGet extends APINode {
   @SerializedName("data")
   private List<Object> mData = null;
-  @SerializedName("paging")
-  private Object mPaging = null;
-  @SerializedName("summary")
-  private Object mSummary = null;
   protected static Gson gson = null;
 
-  public AdsInsightsCampaignGet() {
+  public ProductFeedRulePreviewSamplesGet() {
   }
 
   public String getId() {
     return null;
   }
-  public static AdsInsightsCampaignGet loadJSON(String json, APIContext context, String header) {
-    AdsInsightsCampaignGet adsInsightsCampaignGet = getGson().fromJson(json, AdsInsightsCampaignGet.class);
+  public static ProductFeedRulePreviewSamplesGet loadJSON(String json, APIContext context, String header) {
+    ProductFeedRulePreviewSamplesGet productFeedRulePreviewSamplesGet = getGson().fromJson(json, ProductFeedRulePreviewSamplesGet.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(adsInsightsCampaignGet.toString());
+      JsonElement o2 = parser.parse(productFeedRulePreviewSamplesGet.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -70,14 +66,14 @@ public class AdsInsightsCampaignGet extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    adsInsightsCampaignGet.context = context;
-    adsInsightsCampaignGet.rawValue = json;
-    adsInsightsCampaignGet.header = header;
-    return adsInsightsCampaignGet;
+    productFeedRulePreviewSamplesGet.context = context;
+    productFeedRulePreviewSamplesGet.rawValue = json;
+    productFeedRulePreviewSamplesGet.header = header;
+    return productFeedRulePreviewSamplesGet;
   }
 
-  public static APINodeList<AdsInsightsCampaignGet> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<AdsInsightsCampaignGet> adsInsightsCampaignGets = new APINodeList<AdsInsightsCampaignGet>(request, json, header);
+  public static APINodeList<ProductFeedRulePreviewSamplesGet> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<ProductFeedRulePreviewSamplesGet> productFeedRulePreviewSamplesGets = new APINodeList<ProductFeedRulePreviewSamplesGet>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -88,9 +84,9 @@ public class AdsInsightsCampaignGet extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          adsInsightsCampaignGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          productFeedRulePreviewSamplesGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return adsInsightsCampaignGets;
+        return productFeedRulePreviewSamplesGets;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -100,20 +96,20 @@ public class AdsInsightsCampaignGet extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                adsInsightsCampaignGets.setCursors(before, after);
+                productFeedRulePreviewSamplesGets.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            adsInsightsCampaignGets.setPaging(previous, next);
+            productFeedRulePreviewSamplesGets.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              adsInsightsCampaignGets.setAppSecret(context.getAppSecretProof());
+              productFeedRulePreviewSamplesGets.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              adsInsightsCampaignGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              productFeedRulePreviewSamplesGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -124,23 +120,23 @@ public class AdsInsightsCampaignGet extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  adsInsightsCampaignGets.add(loadJSON(entry.getValue().toString(), context, header));
+                  productFeedRulePreviewSamplesGets.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              adsInsightsCampaignGets.add(loadJSON(obj.toString(), context, header));
+              productFeedRulePreviewSamplesGets.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return adsInsightsCampaignGets;
+          return productFeedRulePreviewSamplesGets;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              adsInsightsCampaignGets.add(loadJSON(entry.getValue().toString(), context, header));
+              productFeedRulePreviewSamplesGets.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return adsInsightsCampaignGets;
+          return productFeedRulePreviewSamplesGets;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -157,20 +153,20 @@ public class AdsInsightsCampaignGet extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              adsInsightsCampaignGets.add(loadJSON(value.toString(), context, header));
+              productFeedRulePreviewSamplesGets.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return adsInsightsCampaignGets;
+            return productFeedRulePreviewSamplesGets;
           }
 
           // Sixth, check if it's pure JsonObject
-          adsInsightsCampaignGets.clear();
-          adsInsightsCampaignGets.add(loadJSON(json, context, header));
-          return adsInsightsCampaignGets;
+          productFeedRulePreviewSamplesGets.clear();
+          productFeedRulePreviewSamplesGets.add(loadJSON(json, context, header));
+          return productFeedRulePreviewSamplesGets;
         }
       }
     } catch (Exception e) {
@@ -202,26 +198,8 @@ public class AdsInsightsCampaignGet extends APINode {
     return mData;
   }
 
-  public AdsInsightsCampaignGet setFieldData(List<Object> value) {
+  public ProductFeedRulePreviewSamplesGet setFieldData(List<Object> value) {
     this.mData = value;
-    return this;
-  }
-
-  public Object getFieldPaging() {
-    return mPaging;
-  }
-
-  public AdsInsightsCampaignGet setFieldPaging(Object value) {
-    this.mPaging = value;
-    return this;
-  }
-
-  public Object getFieldSummary() {
-    return mSummary;
-  }
-
-  public AdsInsightsCampaignGet setFieldSummary(Object value) {
-    this.mSummary = value;
     return this;
   }
 
@@ -241,19 +219,17 @@ public class AdsInsightsCampaignGet extends APINode {
     return gson;
   }
 
-  public AdsInsightsCampaignGet copyFrom(AdsInsightsCampaignGet instance) {
+  public ProductFeedRulePreviewSamplesGet copyFrom(ProductFeedRulePreviewSamplesGet instance) {
     this.mData = instance.mData;
-    this.mPaging = instance.mPaging;
-    this.mSummary = instance.mSummary;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<AdsInsightsCampaignGet> getParser() {
-    return new APIRequest.ResponseParser<AdsInsightsCampaignGet>() {
-      public APINodeList<AdsInsightsCampaignGet> parseResponse(String response, APIContext context, APIRequest<AdsInsightsCampaignGet> request, String header) throws MalformedResponseException {
-        return AdsInsightsCampaignGet.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<ProductFeedRulePreviewSamplesGet> getParser() {
+    return new APIRequest.ResponseParser<ProductFeedRulePreviewSamplesGet>() {
+      public APINodeList<ProductFeedRulePreviewSamplesGet> parseResponse(String response, APIContext context, APIRequest<ProductFeedRulePreviewSamplesGet> request, String header) throws MalformedResponseException {
+        return ProductFeedRulePreviewSamplesGet.parseResponse(response, context, request, header);
       }
     };
   }

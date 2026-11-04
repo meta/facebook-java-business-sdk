@@ -2260,6 +2260,7 @@ public class Ad extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -2371,6 +2372,11 @@ public class Ad extends APINode {
     }
     public APIRequestGetInsights setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsights setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 
@@ -2583,6 +2589,7 @@ public class Ad extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -2694,6 +2701,11 @@ public class Ad extends APINode {
     }
     public APIRequestGetInsightsAsync setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsightsAsync setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 

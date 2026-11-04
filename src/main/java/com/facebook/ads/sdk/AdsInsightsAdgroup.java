@@ -193,8 +193,8 @@ public class AdsInsightsAdgroup extends APINode {
     return getGson().toJson(this);
   }
 
-  public APIRequestGenget genget() {
-    return new APIRequestGenget(this.getId(), context);
+  public APIRequestGenpost genpost() {
+    return new APIRequestGenpost(this.getId(), context);
   }
 
 
@@ -209,28 +209,25 @@ public class AdsInsightsAdgroup extends APINode {
 
 
 
-  public static class APIRequestGenget extends APIRequest<AdsInsightsAdgroupGet> {
+  public static class APIRequestGenpost extends APIRequest<AdsInsightsAdgroupPost> {
 
-    APINodeList<AdsInsightsAdgroupGet> lastResponse = null;
+    AdsInsightsAdgroupPost lastResponse = null;
     @Override
-    public APINodeList<AdsInsightsAdgroupGet> getLastResponse() {
+    public AdsInsightsAdgroupPost getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
       "action_attribution_windows",
       "action_breakdowns",
       "action_report_time",
-      "after",
       "am_call_tags",
-      "before",
       "breakdowns",
       "comparison_fields",
       "comparison_time_ranges",
       "date_preset",
-      "debug_enable_trace",
       "default_attribution_windows",
       "default_summary",
-      "e2e_scenario_run_id",
+      "enable_trace",
       "export_columns",
       "export_format",
       "export_name",
@@ -246,6 +243,7 @@ public class AdsInsightsAdgroup extends APINode {
       "round_up_level",
       "run_id",
       "saber_setsuna_perf_request_id",
+      "scenario_run_id",
       "sort",
       "summary",
       "summary_action_breakdowns",
@@ -260,33 +258,33 @@ public class AdsInsightsAdgroup extends APINode {
     };
 
     @Override
-    public APINodeList<AdsInsightsAdgroupGet> parseResponse(String response, String header) throws APIException {
-      return AdsInsightsAdgroupGet.parseResponse(response, getContext(), this, header);
+    public AdsInsightsAdgroupPost parseResponse(String response, String header) throws APIException {
+      return AdsInsightsAdgroupPost.parseResponse(response, getContext(), this, header).head();
     }
 
     @Override
-    public APINodeList<AdsInsightsAdgroupGet> execute() throws APIException {
+    public AdsInsightsAdgroupPost execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public APINodeList<AdsInsightsAdgroupGet> execute(Map<String, Object> extraParams) throws APIException {
+    public AdsInsightsAdgroupPost execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<APINodeList<AdsInsightsAdgroupGet>> executeAsync() throws APIException {
+    public ListenableFuture<AdsInsightsAdgroupPost> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<APINodeList<AdsInsightsAdgroupGet>> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<AdsInsightsAdgroupPost> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<AdsInsightsAdgroupGet>>() {
-           public APINodeList<AdsInsightsAdgroupGet> apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, AdsInsightsAdgroupPost>() {
+           public AdsInsightsAdgroupPost apply(ResponseWrapper result) {
              try {
-               return APIRequestGenget.this.parseResponse(result.getBody(), result.getHeader());
+               return APIRequestGenpost.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
                throw new RuntimeException(e);
              }
@@ -296,245 +294,203 @@ public class AdsInsightsAdgroup extends APINode {
       );
     };
 
-    public APIRequestGenget(String nodeId, APIContext context) {
-      super(context, nodeId, "/insights", "GET", Arrays.asList(PARAMS));
+    public APIRequestGenpost(String nodeId, APIContext context) {
+      super(context, nodeId, "/insights", "POST", Arrays.asList(PARAMS));
     }
 
     @Override
-    public APIRequestGenget setParam(String param, Object value) {
+    public APIRequestGenpost setParam(String param, Object value) {
       setParamInternal(param, value);
       return this;
     }
 
     @Override
-    public APIRequestGenget setParams(Map<String, Object> params) {
+    public APIRequestGenpost setParams(Map<String, Object> params) {
       setParamsInternal(params);
       return this;
     }
 
 
-    public APIRequestGenget setActionAttributionWindows (String actionAttributionWindows) {
+    public APIRequestGenpost setActionAttributionWindows (String actionAttributionWindows) {
       this.setParam("action_attribution_windows", actionAttributionWindows);
       return this;
     }
 
-    public APIRequestGenget setActionBreakdowns (String actionBreakdowns) {
+    public APIRequestGenpost setActionBreakdowns (String actionBreakdowns) {
       this.setParam("action_breakdowns", actionBreakdowns);
       return this;
     }
 
-    public APIRequestGenget setActionReportTime (String actionReportTime) {
+    public APIRequestGenpost setActionReportTime (String actionReportTime) {
       this.setParam("action_report_time", actionReportTime);
       return this;
     }
 
-    public APIRequestGenget setAfter (String after) {
-      this.setParam("after", after);
-      return this;
-    }
-
-    public APIRequestGenget setAmCallTags (String amCallTags) {
+    public APIRequestGenpost setAmCallTags (String amCallTags) {
       this.setParam("am_call_tags", amCallTags);
       return this;
     }
 
-    public APIRequestGenget setBefore (String before) {
-      this.setParam("before", before);
-      return this;
-    }
-
-    public APIRequestGenget setBreakdowns (String breakdowns) {
+    public APIRequestGenpost setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
       return this;
     }
 
-    public APIRequestGenget setComparisonFields (String comparisonFields) {
+    public APIRequestGenpost setComparisonFields (String comparisonFields) {
       this.setParam("comparison_fields", comparisonFields);
       return this;
     }
 
-    public APIRequestGenget setComparisonTimeRanges (String comparisonTimeRanges) {
+    public APIRequestGenpost setComparisonTimeRanges (String comparisonTimeRanges) {
       this.setParam("comparison_time_ranges", comparisonTimeRanges);
       return this;
     }
 
-    public APIRequestGenget setDatePreset (String datePreset) {
+    public APIRequestGenpost setDatePreset (String datePreset) {
       this.setParam("date_preset", datePreset);
       return this;
     }
 
-    public APIRequestGenget setDebugEnableTrace (Boolean debugEnableTrace) {
-      this.setParam("debug_enable_trace", debugEnableTrace);
-      return this;
-    }
-    public APIRequestGenget setDebugEnableTrace (String debugEnableTrace) {
-      this.setParam("debug_enable_trace", debugEnableTrace);
-      return this;
-    }
-
-    public APIRequestGenget setDefaultAttributionWindows (String defaultAttributionWindows) {
+    public APIRequestGenpost setDefaultAttributionWindows (String defaultAttributionWindows) {
       this.setParam("default_attribution_windows", defaultAttributionWindows);
       return this;
     }
 
-    public APIRequestGenget setDefaultSummary (Boolean defaultSummary) {
-      this.setParam("default_summary", defaultSummary);
-      return this;
-    }
-    public APIRequestGenget setDefaultSummary (String defaultSummary) {
+    public APIRequestGenpost setDefaultSummary (String defaultSummary) {
       this.setParam("default_summary", defaultSummary);
       return this;
     }
 
-    public APIRequestGenget setE2eScenarioRunId (String e2eScenarioRunId) {
-      this.setParam("e2e_scenario_run_id", e2eScenarioRunId);
+    public APIRequestGenpost setEnableTrace (String enableTrace) {
+      this.setParam("enable_trace", enableTrace);
       return this;
     }
 
-    public APIRequestGenget setExportColumns (String exportColumns) {
+    public APIRequestGenpost setExportColumns (String exportColumns) {
       this.setParam("export_columns", exportColumns);
       return this;
     }
 
-    public APIRequestGenget setExportFormat (String exportFormat) {
+    public APIRequestGenpost setExportFormat (String exportFormat) {
       this.setParam("export_format", exportFormat);
       return this;
     }
 
-    public APIRequestGenget setExportName (String exportName) {
+    public APIRequestGenpost setExportName (String exportName) {
       this.setParam("export_name", exportName);
       return this;
     }
 
-    public APIRequestGenget setFields (String fields) {
+    public APIRequestGenpost setFields (String fields) {
       this.setParam("fields", fields);
       return this;
     }
 
-    public APIRequestGenget setFiltering (String filtering) {
+    public APIRequestGenpost setFiltering (String filtering) {
       this.setParam("filtering", filtering);
       return this;
     }
 
-    public APIRequestGenget setFlog (String flog) {
+    public APIRequestGenpost setFlog (String flog) {
       this.setParam("flog", flog);
       return this;
     }
 
-    public APIRequestGenget setGraphCache (Boolean graphCache) {
-      this.setParam("graph_cache", graphCache);
-      return this;
-    }
-    public APIRequestGenget setGraphCache (String graphCache) {
+    public APIRequestGenpost setGraphCache (String graphCache) {
       this.setParam("graph_cache", graphCache);
       return this;
     }
 
-    public APIRequestGenget setIncludeZeros (Boolean includeZeros) {
-      this.setParam("include_zeros", includeZeros);
-      return this;
-    }
-    public APIRequestGenget setIncludeZeros (String includeZeros) {
+    public APIRequestGenpost setIncludeZeros (String includeZeros) {
       this.setParam("include_zeros", includeZeros);
       return this;
     }
 
-    public APIRequestGenget setLevel (String level) {
+    public APIRequestGenpost setLevel (String level) {
       this.setParam("level", level);
       return this;
     }
 
-    public APIRequestGenget setLimit (Long limit) {
-      this.setParam("limit", limit);
-      return this;
-    }
-    public APIRequestGenget setLimit (String limit) {
+    public APIRequestGenpost setLimit (String limit) {
       this.setParam("limit", limit);
       return this;
     }
 
-    public APIRequestGenget setMetaBreakdowns (String metaBreakdowns) {
+    public APIRequestGenpost setMetaBreakdowns (String metaBreakdowns) {
       this.setParam("meta_breakdowns", metaBreakdowns);
       return this;
     }
 
-    public APIRequestGenget setProductIdLimit (Long productIdLimit) {
-      this.setParam("product_id_limit", productIdLimit);
-      return this;
-    }
-    public APIRequestGenget setProductIdLimit (String productIdLimit) {
+    public APIRequestGenpost setProductIdLimit (String productIdLimit) {
       this.setParam("product_id_limit", productIdLimit);
       return this;
     }
 
-    public APIRequestGenget setRoundUpLevel (String roundUpLevel) {
+    public APIRequestGenpost setRoundUpLevel (String roundUpLevel) {
       this.setParam("round_up_level", roundUpLevel);
       return this;
     }
 
-    public APIRequestGenget setRunId (String runId) {
+    public APIRequestGenpost setRunId (String runId) {
       this.setParam("run_id", runId);
       return this;
     }
 
-    public APIRequestGenget setSaberSetsunaPerfRequestId (String saberSetsunaPerfRequestId) {
+    public APIRequestGenpost setSaberSetsunaPerfRequestId (String saberSetsunaPerfRequestId) {
       this.setParam("saber_setsuna_perf_request_id", saberSetsunaPerfRequestId);
       return this;
     }
 
-    public APIRequestGenget setSort (String sort) {
+    public APIRequestGenpost setScenarioRunId (String scenarioRunId) {
+      this.setParam("scenario_run_id", scenarioRunId);
+      return this;
+    }
+
+    public APIRequestGenpost setSort (String sort) {
       this.setParam("sort", sort);
       return this;
     }
 
-    public APIRequestGenget setSummary (String summary) {
+    public APIRequestGenpost setSummary (String summary) {
       this.setParam("summary", summary);
       return this;
     }
 
-    public APIRequestGenget setSummaryActionBreakdowns (String summaryActionBreakdowns) {
+    public APIRequestGenpost setSummaryActionBreakdowns (String summaryActionBreakdowns) {
       this.setParam("summary_action_breakdowns", summaryActionBreakdowns);
       return this;
     }
 
-    public APIRequestGenget setTimeIncrement (String timeIncrement) {
+    public APIRequestGenpost setTimeIncrement (String timeIncrement) {
       this.setParam("time_increment", timeIncrement);
       return this;
     }
 
-    public APIRequestGenget setTimeRange (String timeRange) {
+    public APIRequestGenpost setTimeRange (String timeRange) {
       this.setParam("time_range", timeRange);
       return this;
     }
 
-    public APIRequestGenget setTimeRanges (String timeRanges) {
+    public APIRequestGenpost setTimeRanges (String timeRanges) {
       this.setParam("time_ranges", timeRanges);
       return this;
     }
 
-    public APIRequestGenget setUseAccountAttributionSetting (Boolean useAccountAttributionSetting) {
-      this.setParam("use_account_attribution_setting", useAccountAttributionSetting);
-      return this;
-    }
-    public APIRequestGenget setUseAccountAttributionSetting (String useAccountAttributionSetting) {
+    public APIRequestGenpost setUseAccountAttributionSetting (String useAccountAttributionSetting) {
       this.setParam("use_account_attribution_setting", useAccountAttributionSetting);
       return this;
     }
 
-    public APIRequestGenget setUseUnifiedAttributionSetting (Boolean useUnifiedAttributionSetting) {
-      this.setParam("use_unified_attribution_setting", useUnifiedAttributionSetting);
-      return this;
-    }
-    public APIRequestGenget setUseUnifiedAttributionSetting (String useUnifiedAttributionSetting) {
+    public APIRequestGenpost setUseUnifiedAttributionSetting (String useUnifiedAttributionSetting) {
       this.setParam("use_unified_attribution_setting", useUnifiedAttributionSetting);
       return this;
     }
 
-    public APIRequestGenget requestAllFields () {
+    public APIRequestGenpost requestAllFields () {
       return this.requestAllFields(true);
     }
 
-    public APIRequestGenget requestAllFields (boolean value) {
+    public APIRequestGenpost requestAllFields (boolean value) {
       for (String field : FIELDS) {
         this.requestField(field, value);
       }
@@ -542,12 +498,12 @@ public class AdsInsightsAdgroup extends APINode {
     }
 
     @Override
-    public APIRequestGenget requestFields (List<String> fields) {
+    public APIRequestGenpost requestFields (List<String> fields) {
       return this.requestFields(fields, true);
     }
 
     @Override
-    public APIRequestGenget requestFields (List<String> fields, boolean value) {
+    public APIRequestGenpost requestFields (List<String> fields, boolean value) {
       for (String field : fields) {
         this.requestField(field, value);
       }
@@ -555,13 +511,13 @@ public class AdsInsightsAdgroup extends APINode {
     }
 
     @Override
-    public APIRequestGenget requestField (String field) {
+    public APIRequestGenpost requestField (String field) {
       this.requestField(field, true);
       return this;
     }
 
     @Override
-    public APIRequestGenget requestField (String field, boolean value) {
+    public APIRequestGenpost requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }

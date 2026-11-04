@@ -193,8 +193,8 @@ public class AdAccountAds extends APINode {
     return getGson().toJson(this);
   }
 
-  public APIRequestGenget genget() {
-    return new APIRequestGenget(this.getId(), context);
+  public APIRequestGencreatead gencreatead() {
+    return new APIRequestGencreatead(this.getId(), context);
   }
 
 
@@ -209,59 +209,48 @@ public class AdAccountAds extends APINode {
 
 
 
-  public static class APIRequestGenget extends APIRequest<AdAccountAdsGet> {
+  public static class APIRequestGencreatead extends APIRequest<AdAccountAdsCreateAd> {
 
-    APINodeList<AdAccountAdsGet> lastResponse = null;
+    AdAccountAdsCreateAd lastResponse = null;
     @Override
-    public APINodeList<AdAccountAdsGet> getLastResponse() {
+    public AdAccountAdsCreateAd getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
-      "after",
-      "before",
-      "date_format",
-      "effective_status",
       "fields",
-      "filtering",
-      "limit",
-      "remove_pinned_sort",
-      "sort",
-      "summary",
-      "timezone",
-      "updated_since",
     };
 
     public static final String[] FIELDS = {
     };
 
     @Override
-    public APINodeList<AdAccountAdsGet> parseResponse(String response, String header) throws APIException {
-      return AdAccountAdsGet.parseResponse(response, getContext(), this, header);
+    public AdAccountAdsCreateAd parseResponse(String response, String header) throws APIException {
+      return AdAccountAdsCreateAd.parseResponse(response, getContext(), this, header).head();
     }
 
     @Override
-    public APINodeList<AdAccountAdsGet> execute() throws APIException {
+    public AdAccountAdsCreateAd execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public APINodeList<AdAccountAdsGet> execute(Map<String, Object> extraParams) throws APIException {
+    public AdAccountAdsCreateAd execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<APINodeList<AdAccountAdsGet>> executeAsync() throws APIException {
+    public ListenableFuture<AdAccountAdsCreateAd> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<APINodeList<AdAccountAdsGet>> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<AdAccountAdsCreateAd> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<AdAccountAdsGet>>() {
-           public APINodeList<AdAccountAdsGet> apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, AdAccountAdsCreateAd>() {
+           public AdAccountAdsCreateAd apply(ResponseWrapper result) {
              try {
-               return APIRequestGenget.this.parseResponse(result.getBody(), result.getHeader());
+               return APIRequestGencreatead.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
                throw new RuntimeException(e);
              }
@@ -271,92 +260,33 @@ public class AdAccountAds extends APINode {
       );
     };
 
-    public APIRequestGenget(String nodeId, APIContext context) {
-      super(context, nodeId, "/ads", "GET", Arrays.asList(PARAMS));
+    public APIRequestGencreatead(String nodeId, APIContext context) {
+      super(context, nodeId, "/ads", "POST", Arrays.asList(PARAMS));
     }
 
     @Override
-    public APIRequestGenget setParam(String param, Object value) {
+    public APIRequestGencreatead setParam(String param, Object value) {
       setParamInternal(param, value);
       return this;
     }
 
     @Override
-    public APIRequestGenget setParams(Map<String, Object> params) {
+    public APIRequestGencreatead setParams(Map<String, Object> params) {
       setParamsInternal(params);
       return this;
     }
 
 
-    public APIRequestGenget setAfter (String after) {
-      this.setParam("after", after);
-      return this;
-    }
-
-    public APIRequestGenget setBefore (String before) {
-      this.setParam("before", before);
-      return this;
-    }
-
-    public APIRequestGenget setDateFormat (String dateFormat) {
-      this.setParam("date_format", dateFormat);
-      return this;
-    }
-
-    public APIRequestGenget setEffectiveStatus (String effectiveStatus) {
-      this.setParam("effective_status", effectiveStatus);
-      return this;
-    }
-
-    public APIRequestGenget setFields (String fields) {
+    public APIRequestGencreatead setFields (String fields) {
       this.setParam("fields", fields);
       return this;
     }
 
-    public APIRequestGenget setFiltering (String filtering) {
-      this.setParam("filtering", filtering);
-      return this;
-    }
-
-    public APIRequestGenget setLimit (Long limit) {
-      this.setParam("limit", limit);
-      return this;
-    }
-    public APIRequestGenget setLimit (String limit) {
-      this.setParam("limit", limit);
-      return this;
-    }
-
-    public APIRequestGenget setRemovePinnedSort (String removePinnedSort) {
-      this.setParam("remove_pinned_sort", removePinnedSort);
-      return this;
-    }
-
-    public APIRequestGenget setSort (String sort) {
-      this.setParam("sort", sort);
-      return this;
-    }
-
-    public APIRequestGenget setSummary (String summary) {
-      this.setParam("summary", summary);
-      return this;
-    }
-
-    public APIRequestGenget setTimezone (String timezone) {
-      this.setParam("timezone", timezone);
-      return this;
-    }
-
-    public APIRequestGenget setUpdatedSince (String updatedSince) {
-      this.setParam("updated_since", updatedSince);
-      return this;
-    }
-
-    public APIRequestGenget requestAllFields () {
+    public APIRequestGencreatead requestAllFields () {
       return this.requestAllFields(true);
     }
 
-    public APIRequestGenget requestAllFields (boolean value) {
+    public APIRequestGencreatead requestAllFields (boolean value) {
       for (String field : FIELDS) {
         this.requestField(field, value);
       }
@@ -364,12 +294,12 @@ public class AdAccountAds extends APINode {
     }
 
     @Override
-    public APIRequestGenget requestFields (List<String> fields) {
+    public APIRequestGencreatead requestFields (List<String> fields) {
       return this.requestFields(fields, true);
     }
 
     @Override
-    public APIRequestGenget requestFields (List<String> fields, boolean value) {
+    public APIRequestGencreatead requestFields (List<String> fields, boolean value) {
       for (String field : fields) {
         this.requestField(field, value);
       }
@@ -377,13 +307,13 @@ public class AdAccountAds extends APINode {
     }
 
     @Override
-    public APIRequestGenget requestField (String field) {
+    public APIRequestGencreatead requestField (String field) {
       this.requestField(field, true);
       return this;
     }
 
     @Override
-    public APIRequestGenget requestField (String field, boolean value) {
+    public APIRequestGencreatead requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }

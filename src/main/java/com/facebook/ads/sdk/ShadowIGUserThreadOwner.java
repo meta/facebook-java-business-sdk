@@ -41,6 +41,8 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  *
  */
 public class ShadowIGUserThreadOwner extends APINode {
+  @SerializedName("thread_owner")
+  private Object mThreadOwner = null;
   protected static Gson gson = null;
 
   public ShadowIGUserThreadOwner() {
@@ -192,6 +194,15 @@ public class ShadowIGUserThreadOwner extends APINode {
   }
 
 
+  public Object getFieldThreadOwner() {
+    return mThreadOwner;
+  }
+
+  public ShadowIGUserThreadOwner setFieldThreadOwner(Object value) {
+    this.mThreadOwner = value;
+    return this;
+  }
+
 
 
 
@@ -209,6 +220,7 @@ public class ShadowIGUserThreadOwner extends APINode {
   }
 
   public ShadowIGUserThreadOwner copyFrom(ShadowIGUserThreadOwner instance) {
+    this.mThreadOwner = instance.mThreadOwner;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;

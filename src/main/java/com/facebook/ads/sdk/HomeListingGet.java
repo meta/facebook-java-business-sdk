@@ -1106,6 +1106,8 @@ public class HomeListingGet extends APINode {
       VALUE_NEIGHBORHOODS("NEIGHBORHOODS"),
       @SerializedName("OFFLINE_CONVERSIONS")
       VALUE_OFFLINE_CONVERSIONS("OFFLINE_CONVERSIONS"),
+      @SerializedName("ORGANIC_DISCOVERY")
+      VALUE_ORGANIC_DISCOVERY("ORGANIC_DISCOVERY"),
       @SerializedName("PROFILE")
       VALUE_PROFILE("PROFILE"),
       @SerializedName("SERVICE")
@@ -1185,6 +1187,8 @@ public class HomeListingGet extends APINode {
       VALUE_NEIGHBORHOODS("NEIGHBORHOODS"),
       @SerializedName("OFFLINE_CONVERSIONS")
       VALUE_OFFLINE_CONVERSIONS("OFFLINE_CONVERSIONS"),
+      @SerializedName("ORGANIC_DISCOVERY")
+      VALUE_ORGANIC_DISCOVERY("ORGANIC_DISCOVERY"),
       @SerializedName("PROFILE")
       VALUE_PROFILE("PROFILE"),
       @SerializedName("SERVICE")

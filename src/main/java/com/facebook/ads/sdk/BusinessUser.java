@@ -2877,6 +2877,7 @@ public class BusinessUser extends APINode {
       "primary_business_location",
       "primary_funding_id",
       "purchase_order_number",
+      "service_pricing_policy",
       "status",
       "template_auto_archival_enabled",
       "timezone_id",
@@ -3147,6 +3148,13 @@ public class BusinessUser extends APINode {
     }
     public APIRequestGetAssignedWhatsAppBusinessAccounts requestPurchaseOrderNumberField (boolean value) {
       this.requestField("purchase_order_number", value);
+      return this;
+    }
+    public APIRequestGetAssignedWhatsAppBusinessAccounts requestServicePricingPolicyField () {
+      return this.requestServicePricingPolicyField(true);
+    }
+    public APIRequestGetAssignedWhatsAppBusinessAccounts requestServicePricingPolicyField (boolean value) {
+      this.requestField("service_pricing_policy", value);
       return this;
     }
     public APIRequestGetAssignedWhatsAppBusinessAccounts requestStatusField () {

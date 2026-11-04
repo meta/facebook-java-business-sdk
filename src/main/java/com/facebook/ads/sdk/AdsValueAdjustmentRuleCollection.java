@@ -357,7 +357,7 @@ public class AdsValueAdjustmentRuleCollection extends APINode {
     };
 
     public APIRequestCreateDeleteRuleSet(String nodeId, APIContext context) {
-      super(context, nodeId, "/delete_rule_set", "POST", Arrays.asList(PARAMS));
+      super(context, nodeId, "/deleteruleset", "POST", Arrays.asList(PARAMS));
     }
 
     @Override
@@ -837,6 +837,31 @@ public class AdsValueAdjustmentRuleCollection extends APINode {
       private String value;
 
       private EnumEntryPoint(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumOrigin {
+      @SerializedName("ADVANTAGE_AUDIENCE_GUIDANCE_SUGGESTED")
+      VALUE_ADVANTAGE_AUDIENCE_GUIDANCE_SUGGESTED("ADVANTAGE_AUDIENCE_GUIDANCE_SUGGESTED"),
+      @SerializedName("ADVERTISER_CREATED")
+      VALUE_ADVERTISER_CREATED("ADVERTISER_CREATED"),
+      @SerializedName("PLACEMENT_GUIDANCE_SUGGESTED")
+      VALUE_PLACEMENT_GUIDANCE_SUGGESTED("PLACEMENT_GUIDANCE_SUGGESTED"),
+      @SerializedName("PLACEMENT_PERSONALIZED_SUGGESTED")
+      VALUE_PLACEMENT_PERSONALIZED_SUGGESTED("PLACEMENT_PERSONALIZED_SUGGESTED"),
+      @SerializedName("TRANSLATED_FROM_BID_MULTIPLIERS")
+      VALUE_TRANSLATED_FROM_BID_MULTIPLIERS("TRANSLATED_FROM_BID_MULTIPLIERS"),
+      ;
+
+      private String value;
+
+      private EnumOrigin(String value) {
         this.value = value;
       }
 

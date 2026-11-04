@@ -354,10 +354,6 @@ public class ProductCatalog extends APINode {
     return new APIRequestGetCollaborativeAdsShareSettings(this.getPrefixedId().toString(), context);
   }
 
-  public APIRequestCreateCpasLsbImageBank createCpasLsbImageBank() {
-    return new APIRequestCreateCpasLsbImageBank(this.getPrefixedId().toString(), context);
-  }
-
   public APIRequestGetCreatorAssetCreatives getCreatorAssetCreatives() {
     return new APIRequestGetCreatorAssetCreatives(this.getPrefixedId().toString(), context);
   }
@@ -440,10 +436,6 @@ public class ProductCatalog extends APINode {
 
   public APIRequestCreateMarketPlacePartnerSignal createMarketPlacePartnerSignal() {
     return new APIRequestCreateMarketPlacePartnerSignal(this.getPrefixedId().toString(), context);
-  }
-
-  public APIRequestCreateMediaTitle createMediaTitle() {
-    return new APIRequestCreateMediaTitle(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetPricingVariablesBatch getPricingVariablesBatch() {
@@ -2006,11 +1998,11 @@ public class ProductCatalog extends APINode {
     }
   }
 
-  public static class APIRequestCreateBatch extends APIRequest<ProductCatalog> {
+  public static class APIRequestCreateBatch extends APIRequest<ProductItem> {
 
-    ProductCatalog lastResponse = null;
+    ProductItem lastResponse = null;
     @Override
-    public ProductCatalog getLastResponse() {
+    public ProductItem getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
@@ -2024,31 +2016,31 @@ public class ProductCatalog extends APINode {
     };
 
     @Override
-    public ProductCatalog parseResponse(String response, String header) throws APIException {
-      return ProductCatalog.parseResponse(response, getContext(), this, header).head();
+    public ProductItem parseResponse(String response, String header) throws APIException {
+      return ProductItem.parseResponse(response, getContext(), this, header).head();
     }
 
     @Override
-    public ProductCatalog execute() throws APIException {
+    public ProductItem execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public ProductCatalog execute(Map<String, Object> extraParams) throws APIException {
+    public ProductItem execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
       lastResponse = parseResponse(rw.getBody(), rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<ProductCatalog> executeAsync() throws APIException {
+    public ListenableFuture<ProductItem> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<ProductCatalog> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<ProductItem> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, ProductCatalog>() {
-           public ProductCatalog apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, ProductItem>() {
+           public ProductItem apply(ResponseWrapper result) {
              try {
                return APIRequestCreateBatch.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
@@ -3291,141 +3283,6 @@ public class ProductCatalog extends APINode {
       this.requestField("utm_source", value);
       return this;
     }
-  }
-
-  public static class APIRequestCreateCpasLsbImageBank extends APIRequest<CPASLsbImageBank> {
-
-    CPASLsbImageBank lastResponse = null;
-    @Override
-    public CPASLsbImageBank getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-      "ad_group_id",
-      "agency_business_id",
-      "backup_image_urls",
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public CPASLsbImageBank parseResponse(String response, String header) throws APIException {
-      return CPASLsbImageBank.parseResponse(response, getContext(), this, header).head();
-    }
-
-    @Override
-    public CPASLsbImageBank execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public CPASLsbImageBank execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<CPASLsbImageBank> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<CPASLsbImageBank> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, CPASLsbImageBank>() {
-           public CPASLsbImageBank apply(ResponseWrapper result) {
-             try {
-               return APIRequestCreateCpasLsbImageBank.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         },
-         MoreExecutors.directExecutor()
-      );
-    };
-
-    public APIRequestCreateCpasLsbImageBank(String nodeId, APIContext context) {
-      super(context, nodeId, "/cpas_lsb_image_bank", "POST", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestCreateCpasLsbImageBank setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateCpasLsbImageBank setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestCreateCpasLsbImageBank setAdGroupId (Long adGroupId) {
-      this.setParam("ad_group_id", adGroupId);
-      return this;
-    }
-    public APIRequestCreateCpasLsbImageBank setAdGroupId (String adGroupId) {
-      this.setParam("ad_group_id", adGroupId);
-      return this;
-    }
-
-    public APIRequestCreateCpasLsbImageBank setAgencyBusinessId (Long agencyBusinessId) {
-      this.setParam("agency_business_id", agencyBusinessId);
-      return this;
-    }
-    public APIRequestCreateCpasLsbImageBank setAgencyBusinessId (String agencyBusinessId) {
-      this.setParam("agency_business_id", agencyBusinessId);
-      return this;
-    }
-
-    public APIRequestCreateCpasLsbImageBank setBackupImageUrls (List<String> backupImageUrls) {
-      this.setParam("backup_image_urls", backupImageUrls);
-      return this;
-    }
-    public APIRequestCreateCpasLsbImageBank setBackupImageUrls (String backupImageUrls) {
-      this.setParam("backup_image_urls", backupImageUrls);
-      return this;
-    }
-
-    public APIRequestCreateCpasLsbImageBank requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestCreateCpasLsbImageBank requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateCpasLsbImageBank requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestCreateCpasLsbImageBank requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateCpasLsbImageBank requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateCpasLsbImageBank requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
   }
 
   public static class APIRequestGetCreatorAssetCreatives extends APIRequest<CreatorAssetCreative> {
@@ -7867,345 +7724,6 @@ public class ProductCatalog extends APINode {
 
   }
 
-  public static class APIRequestCreateMediaTitle extends APIRequest<APINode> {
-
-    APINode lastResponse = null;
-    @Override
-    public APINode getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-      "additional_image_urls",
-      "android_app_name",
-      "android_class",
-      "android_package",
-      "android_url",
-      "awards",
-      "cast",
-      "category",
-      "currency",
-      "description",
-      "director",
-      "fb_product_category",
-      "genre",
-      "image_url",
-      "ios_app_name",
-      "ios_app_store_id",
-      "ios_url",
-      "ipad_app_name",
-      "ipad_app_store_id",
-      "ipad_url",
-      "iphone_app_name",
-      "iphone_app_store_id",
-      "iphone_url",
-      "media_category",
-      "name",
-      "price",
-      "rating",
-      "release_date",
-      "retailer_id",
-      "url",
-      "windows_phone_app_id",
-      "windows_phone_app_name",
-      "windows_phone_url",
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public APINode parseResponse(String response, String header) throws APIException {
-      return APINode.parseResponse(response, getContext(), this, header).head();
-    }
-
-    @Override
-    public APINode execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINode execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINode> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINode>() {
-           public APINode apply(ResponseWrapper result) {
-             try {
-               return APIRequestCreateMediaTitle.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         },
-         MoreExecutors.directExecutor()
-      );
-    };
-
-    public APIRequestCreateMediaTitle(String nodeId, APIContext context) {
-      super(context, nodeId, "/media_titles", "POST", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestCreateMediaTitle setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateMediaTitle setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestCreateMediaTitle setAdditionalImageUrls (List<String> additionalImageUrls) {
-      this.setParam("additional_image_urls", additionalImageUrls);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setAdditionalImageUrls (String additionalImageUrls) {
-      this.setParam("additional_image_urls", additionalImageUrls);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setAndroidAppName (String androidAppName) {
-      this.setParam("android_app_name", androidAppName);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setAndroidClass (String androidClass) {
-      this.setParam("android_class", androidClass);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setAndroidPackage (String androidPackage) {
-      this.setParam("android_package", androidPackage);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setAndroidUrl (String androidUrl) {
-      this.setParam("android_url", androidUrl);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setAwards (List<String> awards) {
-      this.setParam("awards", awards);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setAwards (String awards) {
-      this.setParam("awards", awards);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setCast (List<String> cast) {
-      this.setParam("cast", cast);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setCast (String cast) {
-      this.setParam("cast", cast);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setCategory (String category) {
-      this.setParam("category", category);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setCurrency (String currency) {
-      this.setParam("currency", currency);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setDescription (String description) {
-      this.setParam("description", description);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setDirector (List<String> director) {
-      this.setParam("director", director);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setDirector (String director) {
-      this.setParam("director", director);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setFbProductCategory (String fbProductCategory) {
-      this.setParam("fb_product_category", fbProductCategory);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setGenre (List<String> genre) {
-      this.setParam("genre", genre);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setGenre (String genre) {
-      this.setParam("genre", genre);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setImageUrl (String imageUrl) {
-      this.setParam("image_url", imageUrl);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIosAppName (String iosAppName) {
-      this.setParam("ios_app_name", iosAppName);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIosAppStoreId (Long iosAppStoreId) {
-      this.setParam("ios_app_store_id", iosAppStoreId);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setIosAppStoreId (String iosAppStoreId) {
-      this.setParam("ios_app_store_id", iosAppStoreId);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIosUrl (String iosUrl) {
-      this.setParam("ios_url", iosUrl);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIpadAppName (String ipadAppName) {
-      this.setParam("ipad_app_name", ipadAppName);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIpadAppStoreId (Long ipadAppStoreId) {
-      this.setParam("ipad_app_store_id", ipadAppStoreId);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setIpadAppStoreId (String ipadAppStoreId) {
-      this.setParam("ipad_app_store_id", ipadAppStoreId);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIpadUrl (String ipadUrl) {
-      this.setParam("ipad_url", ipadUrl);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIphoneAppName (String iphoneAppName) {
-      this.setParam("iphone_app_name", iphoneAppName);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIphoneAppStoreId (Long iphoneAppStoreId) {
-      this.setParam("iphone_app_store_id", iphoneAppStoreId);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setIphoneAppStoreId (String iphoneAppStoreId) {
-      this.setParam("iphone_app_store_id", iphoneAppStoreId);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setIphoneUrl (String iphoneUrl) {
-      this.setParam("iphone_url", iphoneUrl);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setMediaCategory (String mediaCategory) {
-      this.setParam("media_category", mediaCategory);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setName (String name) {
-      this.setParam("name", name);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setPrice (Long price) {
-      this.setParam("price", price);
-      return this;
-    }
-    public APIRequestCreateMediaTitle setPrice (String price) {
-      this.setParam("price", price);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setRating (String rating) {
-      this.setParam("rating", rating);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setReleaseDate (String releaseDate) {
-      this.setParam("release_date", releaseDate);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setRetailerId (String retailerId) {
-      this.setParam("retailer_id", retailerId);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setUrl (String url) {
-      this.setParam("url", url);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setWindowsPhoneAppId (String windowsPhoneAppId) {
-      this.setParam("windows_phone_app_id", windowsPhoneAppId);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setWindowsPhoneAppName (String windowsPhoneAppName) {
-      this.setParam("windows_phone_app_name", windowsPhoneAppName);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle setWindowsPhoneUrl (String windowsPhoneUrl) {
-      this.setParam("windows_phone_url", windowsPhoneUrl);
-      return this;
-    }
-
-    public APIRequestCreateMediaTitle requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestCreateMediaTitle requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateMediaTitle requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestCreateMediaTitle requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateMediaTitle requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateMediaTitle requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-  }
-
   public static class APIRequestGetPricingVariablesBatch extends APIRequest<ProductCatalogPricingVariablesBatch> {
 
     APINodeList<ProductCatalogPricingVariablesBatch> lastResponse = null;
@@ -8775,6 +8293,7 @@ public class ProductCatalog extends APINode {
       return lastResponse;
     }
     public static final String[] PARAMS = {
+      "configuration_source_name",
       "country",
       "default_currency",
       "deletion_enabled",
@@ -8853,6 +8372,11 @@ public class ProductCatalog extends APINode {
       return this;
     }
 
+
+    public APIRequestCreateProductFeed setConfigurationSourceName (String configurationSourceName) {
+      this.setParam("configuration_source_name", configurationSourceName);
+      return this;
+    }
 
     public APIRequestCreateProductFeed setCountry (String country) {
       this.setParam("country", country);
@@ -13842,6 +13366,8 @@ public class ProductCatalog extends APINode {
     }
     public static final String[] PARAMS = {
       "additional_vertical_option",
+      "checkout_country",
+      "checkout_url",
       "da_display_settings",
       "default_image_url",
       "destination_catalog_settings",
@@ -13915,6 +13441,20 @@ public class ProductCatalog extends APINode {
     }
     public APIRequestUpdate setAdditionalVerticalOption (String additionalVerticalOption) {
       this.setParam("additional_vertical_option", additionalVerticalOption);
+      return this;
+    }
+
+    public APIRequestUpdate setCheckoutCountry (ProductCatalog.EnumCheckoutCountry checkoutCountry) {
+      this.setParam("checkout_country", checkoutCountry);
+      return this;
+    }
+    public APIRequestUpdate setCheckoutCountry (String checkoutCountry) {
+      this.setParam("checkout_country", checkoutCountry);
+      return this;
+    }
+
+    public APIRequestUpdate setCheckoutUrl (String checkoutUrl) {
+      this.setParam("checkout_url", checkoutUrl);
       return this;
     }
 
@@ -14073,6 +13613,127 @@ public class ProductCatalog extends APINode {
       private String value;
 
       private EnumVertical(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumCheckoutCountry {
+      @SerializedName("AR")
+      VALUE_AR("AR"),
+      @SerializedName("AT")
+      VALUE_AT("AT"),
+      @SerializedName("AU")
+      VALUE_AU("AU"),
+      @SerializedName("BE")
+      VALUE_BE("BE"),
+      @SerializedName("BG")
+      VALUE_BG("BG"),
+      @SerializedName("BR")
+      VALUE_BR("BR"),
+      @SerializedName("CA")
+      VALUE_CA("CA"),
+      @SerializedName("CH")
+      VALUE_CH("CH"),
+      @SerializedName("CL")
+      VALUE_CL("CL"),
+      @SerializedName("CO")
+      VALUE_CO("CO"),
+      @SerializedName("CY")
+      VALUE_CY("CY"),
+      @SerializedName("CZ")
+      VALUE_CZ("CZ"),
+      @SerializedName("DE")
+      VALUE_DE("DE"),
+      @SerializedName("DK")
+      VALUE_DK("DK"),
+      @SerializedName("EC")
+      VALUE_EC("EC"),
+      @SerializedName("EE")
+      VALUE_EE("EE"),
+      @SerializedName("ES")
+      VALUE_ES("ES"),
+      @SerializedName("FI")
+      VALUE_FI("FI"),
+      @SerializedName("FR")
+      VALUE_FR("FR"),
+      @SerializedName("GB")
+      VALUE_GB("GB"),
+      @SerializedName("GR")
+      VALUE_GR("GR"),
+      @SerializedName("HK")
+      VALUE_HK("HK"),
+      @SerializedName("HR")
+      VALUE_HR("HR"),
+      @SerializedName("HU")
+      VALUE_HU("HU"),
+      @SerializedName("IE")
+      VALUE_IE("IE"),
+      @SerializedName("IN")
+      VALUE_IN("IN"),
+      @SerializedName("IT")
+      VALUE_IT("IT"),
+      @SerializedName("JP")
+      VALUE_JP("JP"),
+      @SerializedName("KR")
+      VALUE_KR("KR"),
+      @SerializedName("LT")
+      VALUE_LT("LT"),
+      @SerializedName("LU")
+      VALUE_LU("LU"),
+      @SerializedName("LV")
+      VALUE_LV("LV"),
+      @SerializedName("MT")
+      VALUE_MT("MT"),
+      @SerializedName("MX")
+      VALUE_MX("MX"),
+      @SerializedName("NL")
+      VALUE_NL("NL"),
+      @SerializedName("NO")
+      VALUE_NO("NO"),
+      @SerializedName("PE")
+      VALUE_PE("PE"),
+      @SerializedName("PH")
+      VALUE_PH("PH"),
+      @SerializedName("PK")
+      VALUE_PK("PK"),
+      @SerializedName("PL")
+      VALUE_PL("PL"),
+      @SerializedName("PR")
+      VALUE_PR("PR"),
+      @SerializedName("PT")
+      VALUE_PT("PT"),
+      @SerializedName("RO")
+      VALUE_RO("RO"),
+      @SerializedName("SE")
+      VALUE_SE("SE"),
+      @SerializedName("SG")
+      VALUE_SG("SG"),
+      @SerializedName("SI")
+      VALUE_SI("SI"),
+      @SerializedName("SK")
+      VALUE_SK("SK"),
+      @SerializedName("TH")
+      VALUE_TH("TH"),
+      @SerializedName("TR")
+      VALUE_TR("TR"),
+      @SerializedName("TW")
+      VALUE_TW("TW"),
+      @SerializedName("US")
+      VALUE_US("US"),
+      @SerializedName("UY")
+      VALUE_UY("UY"),
+      @SerializedName("VN")
+      VALUE_VN("VN"),
+      ;
+
+      private String value;
+
+      private EnumCheckoutCountry(String value) {
         this.value = value;
       }
 

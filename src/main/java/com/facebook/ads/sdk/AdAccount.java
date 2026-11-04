@@ -1222,6 +1222,7 @@ public class AdAccount extends APINode {
       "audience_controls",
       "campaigns_with_error",
       "is_age_restriction_enabled",
+      "is_gender_exclusion_enabled",
       "placement_controls",
       "placement_controls_per_objective",
       "status",
@@ -1336,6 +1337,13 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetAccountControls requestIsAgeRestrictionEnabledField (boolean value) {
       this.requestField("is_age_restriction_enabled", value);
+      return this;
+    }
+    public APIRequestGetAccountControls requestIsGenderExclusionEnabledField () {
+      return this.requestIsGenderExclusionEnabledField(true);
+    }
+    public APIRequestGetAccountControls requestIsGenderExclusionEnabledField (boolean value) {
+      this.requestField("is_gender_exclusion_enabled", value);
       return this;
     }
     public APIRequestGetAccountControls requestPlacementControlsField () {
@@ -6375,6 +6383,7 @@ public class AdAccount extends APINode {
       "evaluation_spec",
       "execution_spec",
       "name",
+      "recommended_rule_key",
       "schedule_spec",
       "status",
       "ui_creation_source",
@@ -6462,6 +6471,11 @@ public class AdAccount extends APINode {
 
     public APIRequestCreateAdRulesLibrary setName (String name) {
       this.setParam("name", name);
+      return this;
+    }
+
+    public APIRequestCreateAdRulesLibrary setRecommendedRuleKey (String recommendedRuleKey) {
+      this.setParam("recommended_rule_key", recommendedRuleKey);
       return this;
     }
 
@@ -9216,7 +9230,6 @@ public class AdAccount extends APINode {
       "bid_constraints",
       "bid_strategy",
       "billing_event",
-      "brand_safety_config",
       "budget_schedule_specs",
       "budget_source",
       "budget_split_set_id",
@@ -9435,15 +9448,6 @@ public class AdAccount extends APINode {
     }
     public APIRequestCreateAdSet setBillingEvent (String billingEvent) {
       this.setParam("billing_event", billingEvent);
-      return this;
-    }
-
-    public APIRequestCreateAdSet setBrandSafetyConfig (Map<String, String> brandSafetyConfig) {
-      this.setParam("brand_safety_config", brandSafetyConfig);
-      return this;
-    }
-    public APIRequestCreateAdSet setBrandSafetyConfig (String brandSafetyConfig) {
-      this.setParam("brand_safety_config", brandSafetyConfig);
       return this;
     }
 
@@ -18284,6 +18288,7 @@ public class AdAccount extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "issues_info",
@@ -18611,6 +18616,13 @@ public class AdAccount extends APINode {
       this.requestField("is_meta_moment_maker_enabled", value);
       return this;
     }
+    public APIRequestGetCampaigns requestIsPcaUnifiedField () {
+      return this.requestIsPcaUnifiedField(true);
+    }
+    public APIRequestGetCampaigns requestIsPcaUnifiedField (boolean value) {
+      this.requestField("is_pca_unified", value);
+      return this;
+    }
     public APIRequestGetCampaigns requestIsReelsTrendingAdsEnabledField () {
       return this.requestIsReelsTrendingAdsEnabledField(true);
     }
@@ -18801,6 +18813,7 @@ public class AdAccount extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "iterative_split_test_configs",
@@ -18978,6 +18991,15 @@ public class AdAccount extends APINode {
     }
     public APIRequestCreateCampaign setIsMetaMomentMakerEnabled (String isMetaMomentMakerEnabled) {
       this.setParam("is_meta_moment_maker_enabled", isMetaMomentMakerEnabled);
+      return this;
+    }
+
+    public APIRequestCreateCampaign setIsPcaUnified (Boolean isPcaUnified) {
+      this.setParam("is_pca_unified", isPcaUnified);
+      return this;
+    }
+    public APIRequestCreateCampaign setIsPcaUnified (String isPcaUnified) {
+      this.setParam("is_pca_unified", isPcaUnified);
       return this;
     }
 
@@ -19190,6 +19212,7 @@ public class AdAccount extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "issues_info",
@@ -19497,6 +19520,13 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetCampaignsByLabels requestIsMetaMomentMakerEnabledField (boolean value) {
       this.requestField("is_meta_moment_maker_enabled", value);
+      return this;
+    }
+    public APIRequestGetCampaignsByLabels requestIsPcaUnifiedField () {
+      return this.requestIsPcaUnifiedField(true);
+    }
+    public APIRequestGetCampaignsByLabels requestIsPcaUnifiedField (boolean value) {
+      this.requestField("is_pca_unified", value);
       return this;
     }
     public APIRequestGetCampaignsByLabels requestIsReelsTrendingAdsEnabledField () {
@@ -23275,6 +23305,7 @@ public class AdAccount extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -23386,6 +23417,11 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetInsights setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsights setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 
@@ -23598,6 +23634,7 @@ public class AdAccount extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -23709,6 +23746,11 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetInsightsAsync setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsightsAsync setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 
@@ -27914,6 +27956,7 @@ public class AdAccount extends APINode {
       "reservation_status",
       "start_time",
       "status",
+      "status_message",
       "story_event_type",
       "target_cpm",
       "target_frequency",
@@ -28584,6 +28627,13 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetReachFrequencyPredictions requestStatusField (boolean value) {
       this.requestField("status", value);
+      return this;
+    }
+    public APIRequestGetReachFrequencyPredictions requestStatusMessageField () {
+      return this.requestStatusMessageField(true);
+    }
+    public APIRequestGetReachFrequencyPredictions requestStatusMessageField (boolean value) {
+      this.requestField("status_message", value);
       return this;
     }
     public APIRequestGetReachFrequencyPredictions requestStoryEventTypeField () {
@@ -32400,6 +32450,7 @@ public class AdAccount extends APINode {
     public static final String[] PARAMS = {
       "entry_point",
       "name",
+      "origin",
       "product_type",
       "rules",
     };
@@ -32472,6 +32523,15 @@ public class AdAccount extends APINode {
 
     public APIRequestCreateValueRuleSet setName (String name) {
       this.setParam("name", name);
+      return this;
+    }
+
+    public APIRequestCreateValueRuleSet setOrigin (AdsValueAdjustmentRuleCollection.EnumOrigin origin) {
+      this.setParam("origin", origin);
+      return this;
+    }
+    public APIRequestCreateValueRuleSet setOrigin (String origin) {
+      this.setParam("origin", origin);
       return this;
     }
 
@@ -35075,6 +35135,10 @@ public class AdAccount extends APINode {
       VALUE_24("24"),
       @SerializedName("25")
       VALUE_25("25"),
+      @SerializedName("26")
+      VALUE_26("26"),
+      @SerializedName("27")
+      VALUE_27("27"),
       ;
 
       private String value;

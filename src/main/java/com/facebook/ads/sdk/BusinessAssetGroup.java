@@ -6823,16 +6823,12 @@ public class BusinessAssetGroup extends APINode {
       VALUE_ADVERTISE("ADVERTISE"),
       @SerializedName("ANALYZE")
       VALUE_ANALYZE("ANALYZE"),
-      @SerializedName("CASHIER_ROLE")
-      VALUE_CASHIER_ROLE("CASHIER_ROLE"),
       @SerializedName("CREATE_CONTENT")
       VALUE_CREATE_CONTENT("CREATE_CONTENT"),
       @SerializedName("GLOBAL_STRUCTURE_MANAGEMENT")
       VALUE_GLOBAL_STRUCTURE_MANAGEMENT("GLOBAL_STRUCTURE_MANAGEMENT"),
       @SerializedName("MANAGE")
       VALUE_MANAGE("MANAGE"),
-      @SerializedName("MANAGE_JOBS")
-      VALUE_MANAGE_JOBS("MANAGE_JOBS"),
       @SerializedName("MANAGE_LEADS")
       VALUE_MANAGE_LEADS("MANAGE_LEADS"),
       @SerializedName("MESSAGING")

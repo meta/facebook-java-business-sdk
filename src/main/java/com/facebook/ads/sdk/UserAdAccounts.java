@@ -219,11 +219,13 @@ public class UserAdAccounts extends APINode {
     public static final String[] PARAMS = {
       "after",
       "before",
+      "date_format",
       "fields",
       "filtering",
       "limit",
       "sort",
       "summary",
+      "timezone",
     };
 
     public static final String[] FIELDS = {
@@ -293,6 +295,11 @@ public class UserAdAccounts extends APINode {
       return this;
     }
 
+    public APIRequestGenget setDateFormat (String dateFormat) {
+      this.setParam("date_format", dateFormat);
+      return this;
+    }
+
     public APIRequestGenget setFields (String fields) {
       this.setParam("fields", fields);
       return this;
@@ -319,6 +326,11 @@ public class UserAdAccounts extends APINode {
 
     public APIRequestGenget setSummary (String summary) {
       this.setParam("summary", summary);
+      return this;
+    }
+
+    public APIRequestGenget setTimezone (String timezone) {
+      this.setParam("timezone", timezone);
       return this;
     }
 

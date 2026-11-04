@@ -91,6 +91,8 @@ public class Campaign extends APINode {
   private Boolean mIsMessageCampaign = null;
   @SerializedName("is_meta_moment_maker_enabled")
   private Boolean mIsMetaMomentMakerEnabled = null;
+  @SerializedName("is_pca_unified")
+  private Boolean mIsPcaUnified = null;
   @SerializedName("is_reels_trending_ads_enabled")
   private Boolean mIsReelsTrendingAdsEnabled = null;
   @SerializedName("is_skadnetwork_attribution")
@@ -503,6 +505,10 @@ public class Campaign extends APINode {
 
   public Boolean getFieldIsMetaMomentMakerEnabled() {
     return mIsMetaMomentMakerEnabled;
+  }
+
+  public Boolean getFieldIsPcaUnified() {
+    return mIsPcaUnified;
   }
 
   public Boolean getFieldIsReelsTrendingAdsEnabled() {
@@ -2871,6 +2877,7 @@ public class Campaign extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "issues_info",
@@ -3196,6 +3203,13 @@ public class Campaign extends APINode {
     }
     public APIRequestGetCopies requestIsMetaMomentMakerEnabledField (boolean value) {
       this.requestField("is_meta_moment_maker_enabled", value);
+      return this;
+    }
+    public APIRequestGetCopies requestIsPcaUnifiedField () {
+      return this.requestIsPcaUnifiedField(true);
+    }
+    public APIRequestGetCopies requestIsPcaUnifiedField (boolean value) {
+      this.requestField("is_pca_unified", value);
       return this;
     }
     public APIRequestGetCopies requestIsReelsTrendingAdsEnabledField () {
@@ -3547,6 +3561,7 @@ public class Campaign extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -3658,6 +3673,11 @@ public class Campaign extends APINode {
     }
     public APIRequestGetInsights setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsights setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 
@@ -3870,6 +3890,7 @@ public class Campaign extends APINode {
       "action_breakdowns",
       "action_report_time",
       "breakdowns",
+      "cpas_only",
       "date_preset",
       "default_summary",
       "export_columns",
@@ -3981,6 +4002,11 @@ public class Campaign extends APINode {
     }
     public APIRequestGetInsightsAsync setBreakdowns (String breakdowns) {
       this.setParam("breakdowns", breakdowns);
+      return this;
+    }
+
+    public APIRequestGetInsightsAsync setCpasOnly (String cpasOnly) {
+      this.setParam("cpas_only", cpasOnly);
       return this;
     }
 
@@ -4326,6 +4352,7 @@ public class Campaign extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "issues_info",
@@ -4653,6 +4680,13 @@ public class Campaign extends APINode {
       this.requestField("is_meta_moment_maker_enabled", value);
       return this;
     }
+    public APIRequestGet requestIsPcaUnifiedField () {
+      return this.requestIsPcaUnifiedField(true);
+    }
+    public APIRequestGet requestIsPcaUnifiedField (boolean value) {
+      this.requestField("is_pca_unified", value);
+      return this;
+    }
     public APIRequestGet requestIsReelsTrendingAdsEnabledField () {
       return this.requestIsReelsTrendingAdsEnabledField(true);
     }
@@ -4845,6 +4879,7 @@ public class Campaign extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "iterative_split_test_configs",
@@ -5044,6 +5079,15 @@ public class Campaign extends APINode {
     }
     public APIRequestUpdate setIsMetaMomentMakerEnabled (String isMetaMomentMakerEnabled) {
       this.setParam("is_meta_moment_maker_enabled", isMetaMomentMakerEnabled);
+      return this;
+    }
+
+    public APIRequestUpdate setIsPcaUnified (Boolean isPcaUnified) {
+      this.setParam("is_pca_unified", isPcaUnified);
+      return this;
+    }
+    public APIRequestUpdate setIsPcaUnified (String isPcaUnified) {
+      this.setParam("is_pca_unified", isPcaUnified);
       return this;
     }
 
@@ -6129,6 +6173,7 @@ public class Campaign extends APINode {
     this.mIsDirectSendCampaign = instance.mIsDirectSendCampaign;
     this.mIsMessageCampaign = instance.mIsMessageCampaign;
     this.mIsMetaMomentMakerEnabled = instance.mIsMetaMomentMakerEnabled;
+    this.mIsPcaUnified = instance.mIsPcaUnified;
     this.mIsReelsTrendingAdsEnabled = instance.mIsReelsTrendingAdsEnabled;
     this.mIsSkadnetworkAttribution = instance.mIsSkadnetworkAttribution;
     this.mIssuesInfo = instance.mIssuesInfo;

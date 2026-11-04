@@ -41,6 +41,10 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  *
  */
 public class AdCreativeAppExperienceSpec extends APINode {
+  @SerializedName("ad_extensions")
+  private Object mAdExtensions = null;
+  @SerializedName("collection")
+  private Object mCollection = null;
   @SerializedName("details_to_ad_layout")
   private Object mDetailsToAdLayout = null;
   @SerializedName("reveal_details")
@@ -200,6 +204,24 @@ public class AdCreativeAppExperienceSpec extends APINode {
   }
 
 
+  public Object getFieldAdExtensions() {
+    return mAdExtensions;
+  }
+
+  public AdCreativeAppExperienceSpec setFieldAdExtensions(Object value) {
+    this.mAdExtensions = value;
+    return this;
+  }
+
+  public Object getFieldCollection() {
+    return mCollection;
+  }
+
+  public AdCreativeAppExperienceSpec setFieldCollection(Object value) {
+    this.mCollection = value;
+    return this;
+  }
+
   public Object getFieldDetailsToAdLayout() {
     return mDetailsToAdLayout;
   }
@@ -253,6 +275,8 @@ public class AdCreativeAppExperienceSpec extends APINode {
   }
 
   public AdCreativeAppExperienceSpec copyFrom(AdCreativeAppExperienceSpec instance) {
+    this.mAdExtensions = instance.mAdExtensions;
+    this.mCollection = instance.mCollection;
     this.mDetailsToAdLayout = instance.mDetailsToAdLayout;
     this.mRevealDetails = instance.mRevealDetails;
     this.mShowSpotlights = instance.mShowSpotlights;

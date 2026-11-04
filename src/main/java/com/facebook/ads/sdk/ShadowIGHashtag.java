@@ -313,6 +313,7 @@ public class ShadowIGHashtag extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -597,6 +598,13 @@ public class ShadowIGHashtag extends APINode {
       this.requestField("like_count", value);
       return this;
     }
+    public APIRequestGetRecentMedia requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGetRecentMedia requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
+      return this;
+    }
     public APIRequestGetRecentMedia requestLiveStatusField () {
       return this.requestLiveStatusField(true);
     }
@@ -768,6 +776,7 @@ public class ShadowIGHashtag extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -1050,6 +1059,13 @@ public class ShadowIGHashtag extends APINode {
     }
     public APIRequestGetTopMedia requestLikeCountField (boolean value) {
       this.requestField("like_count", value);
+      return this;
+    }
+    public APIRequestGetTopMedia requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGetTopMedia requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
       return this;
     }
     public APIRequestGetTopMedia requestLiveStatusField () {

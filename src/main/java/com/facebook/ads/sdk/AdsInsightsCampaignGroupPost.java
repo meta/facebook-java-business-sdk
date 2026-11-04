@@ -40,23 +40,23 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class AdgroupDelete extends APINode {
-  @SerializedName("success")
-  private Boolean mSuccess = null;
+public class AdsInsightsCampaignGroupPost extends APINode {
+  @SerializedName("report_run_id")
+  private String mReportRunId = null;
   protected static Gson gson = null;
 
-  public AdgroupDelete() {
+  public AdsInsightsCampaignGroupPost() {
   }
 
   public String getId() {
     return null;
   }
-  public static AdgroupDelete loadJSON(String json, APIContext context, String header) {
-    AdgroupDelete adgroupDelete = getGson().fromJson(json, AdgroupDelete.class);
+  public static AdsInsightsCampaignGroupPost loadJSON(String json, APIContext context, String header) {
+    AdsInsightsCampaignGroupPost adsInsightsCampaignGroupPost = getGson().fromJson(json, AdsInsightsCampaignGroupPost.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(adgroupDelete.toString());
+      JsonElement o2 = parser.parse(adsInsightsCampaignGroupPost.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -66,14 +66,14 @@ public class AdgroupDelete extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    adgroupDelete.context = context;
-    adgroupDelete.rawValue = json;
-    adgroupDelete.header = header;
-    return adgroupDelete;
+    adsInsightsCampaignGroupPost.context = context;
+    adsInsightsCampaignGroupPost.rawValue = json;
+    adsInsightsCampaignGroupPost.header = header;
+    return adsInsightsCampaignGroupPost;
   }
 
-  public static APINodeList<AdgroupDelete> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<AdgroupDelete> adgroupDeletes = new APINodeList<AdgroupDelete>(request, json, header);
+  public static APINodeList<AdsInsightsCampaignGroupPost> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<AdsInsightsCampaignGroupPost> adsInsightsCampaignGroupPosts = new APINodeList<AdsInsightsCampaignGroupPost>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -84,9 +84,9 @@ public class AdgroupDelete extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          adgroupDeletes.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          adsInsightsCampaignGroupPosts.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return adgroupDeletes;
+        return adsInsightsCampaignGroupPosts;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -96,20 +96,20 @@ public class AdgroupDelete extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                adgroupDeletes.setCursors(before, after);
+                adsInsightsCampaignGroupPosts.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            adgroupDeletes.setPaging(previous, next);
+            adsInsightsCampaignGroupPosts.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              adgroupDeletes.setAppSecret(context.getAppSecretProof());
+              adsInsightsCampaignGroupPosts.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              adgroupDeletes.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              adsInsightsCampaignGroupPosts.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -120,23 +120,23 @@ public class AdgroupDelete extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  adgroupDeletes.add(loadJSON(entry.getValue().toString(), context, header));
+                  adsInsightsCampaignGroupPosts.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              adgroupDeletes.add(loadJSON(obj.toString(), context, header));
+              adsInsightsCampaignGroupPosts.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return adgroupDeletes;
+          return adsInsightsCampaignGroupPosts;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              adgroupDeletes.add(loadJSON(entry.getValue().toString(), context, header));
+              adsInsightsCampaignGroupPosts.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return adgroupDeletes;
+          return adsInsightsCampaignGroupPosts;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -153,20 +153,20 @@ public class AdgroupDelete extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              adgroupDeletes.add(loadJSON(value.toString(), context, header));
+              adsInsightsCampaignGroupPosts.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return adgroupDeletes;
+            return adsInsightsCampaignGroupPosts;
           }
 
           // Sixth, check if it's pure JsonObject
-          adgroupDeletes.clear();
-          adgroupDeletes.add(loadJSON(json, context, header));
-          return adgroupDeletes;
+          adsInsightsCampaignGroupPosts.clear();
+          adsInsightsCampaignGroupPosts.add(loadJSON(json, context, header));
+          return adsInsightsCampaignGroupPosts;
         }
       }
     } catch (Exception e) {
@@ -194,12 +194,12 @@ public class AdgroupDelete extends APINode {
   }
 
 
-  public Boolean getFieldSuccess() {
-    return mSuccess;
+  public String getFieldReportRunId() {
+    return mReportRunId;
   }
 
-  public AdgroupDelete setFieldSuccess(Boolean value) {
-    this.mSuccess = value;
+  public AdsInsightsCampaignGroupPost setFieldReportRunId(String value) {
+    this.mReportRunId = value;
     return this;
   }
 
@@ -219,17 +219,17 @@ public class AdgroupDelete extends APINode {
     return gson;
   }
 
-  public AdgroupDelete copyFrom(AdgroupDelete instance) {
-    this.mSuccess = instance.mSuccess;
+  public AdsInsightsCampaignGroupPost copyFrom(AdsInsightsCampaignGroupPost instance) {
+    this.mReportRunId = instance.mReportRunId;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<AdgroupDelete> getParser() {
-    return new APIRequest.ResponseParser<AdgroupDelete>() {
-      public APINodeList<AdgroupDelete> parseResponse(String response, APIContext context, APIRequest<AdgroupDelete> request, String header) throws MalformedResponseException {
-        return AdgroupDelete.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<AdsInsightsCampaignGroupPost> getParser() {
+    return new APIRequest.ResponseParser<AdsInsightsCampaignGroupPost>() {
+      public APINodeList<AdsInsightsCampaignGroupPost> parseResponse(String response, APIContext context, APIRequest<AdsInsightsCampaignGroupPost> request, String header) throws MalformedResponseException {
+        return AdsInsightsCampaignGroupPost.parseResponse(response, context, request, header);
       }
     };
   }

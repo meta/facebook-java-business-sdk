@@ -77,6 +77,8 @@ public class AdsInsights extends APINode {
   private String mAdvancedReach7dLookback = null;
   @SerializedName("age_targeting")
   private String mAgeTargeting = null;
+  @SerializedName("aggregated_play_time_per_reach")
+  private List<AdsActionStats> mAggregatedPlayTimePerReach = null;
   @SerializedName("anchor_event_attribution_setting")
   private String mAnchorEventAttributionSetting = null;
   @SerializedName("anchor_events_performance_indicator")
@@ -129,6 +131,18 @@ public class AdsInsights extends APINode {
   private String mConfigurableAudienceOverlapWithConvExposureImpressions = null;
   @SerializedName("configurable_audience_overlap_with_conv_exposure_reach")
   private String mConfigurableAudienceOverlapWithConvExposureReach = null;
+  @SerializedName("configurable_creative_format_performance_adset_count")
+  private String mConfigurableCreativeFormatPerformanceAdsetCount = null;
+  @SerializedName("configurable_creative_format_performance_clicks")
+  private String mConfigurableCreativeFormatPerformanceClicks = null;
+  @SerializedName("configurable_creative_format_performance_conversions")
+  private String mConfigurableCreativeFormatPerformanceConversions = null;
+  @SerializedName("configurable_creative_format_performance_converters")
+  private String mConfigurableCreativeFormatPerformanceConverters = null;
+  @SerializedName("configurable_creative_format_performance_impressions")
+  private String mConfigurableCreativeFormatPerformanceImpressions = null;
+  @SerializedName("configurable_creative_format_performance_spend")
+  private String mConfigurableCreativeFormatPerformanceSpend = null;
   @SerializedName("configurable_placement_ptc_conversions")
   private String mConfigurablePlacementPtcConversions = null;
   @SerializedName("configurable_placement_ptc_converters")
@@ -219,6 +233,8 @@ public class AdsInsights extends APINode {
   private String mCostPerInlinePostEngagement = null;
   @SerializedName("cost_per_message_delivered")
   private String mCostPerMessageDelivered = null;
+  @SerializedName("cost_per_mmp_credited_install")
+  private List<AdsActionStats> mCostPerMmpCreditedInstall = null;
   @SerializedName("cost_per_objective_result")
   private List<Object> mCostPerObjectiveResult = null;
   @SerializedName("cost_per_one_thousand_ad_impression")
@@ -363,6 +379,8 @@ public class AdsInsights extends APINode {
   private String mMessagesDelivered = null;
   @SerializedName("messages_delivered_ctr")
   private String mMessagesDeliveredCtr = null;
+  @SerializedName("mmp_credited_install")
+  private List<AdsActionStats> mMmpCreditedInstall = null;
   @SerializedName("mobile_app_purchase_roas")
   private List<AdsActionStats> mMobileAppPurchaseRoas = null;
   @SerializedName("msa_seller_budget")
@@ -534,6 +552,8 @@ public class AdsInsights extends APINode {
   private String mCreativeAutomationAssetId = null;
   @SerializedName("creative_fingerprint_details")
   private String mCreativeFingerprintDetails = null;
+  @SerializedName("creative_format_classification")
+  private String mCreativeFormatClassification = null;
   @SerializedName("creative_media_type_breakdown")
   private String mCreativeMediaTypeBreakdown = null;
   @SerializedName("creative_relaxation_asset_type")
@@ -606,6 +626,8 @@ public class AdsInsights extends APINode {
   private String mMediaDestinationUrl = null;
   @SerializedName("media_format")
   private String mMediaFormat = null;
+  @SerializedName("media_id")
+  private String mMediaId = null;
   @SerializedName("media_origin_url")
   private String mMediaOriginUrl = null;
   @SerializedName("media_text_content")
@@ -660,6 +682,8 @@ public class AdsInsights extends APINode {
   private String mRuleSetId = null;
   @SerializedName("rule_set_name")
   private String mRuleSetName = null;
+  @SerializedName("signal_source")
+  private String mSignalSource = null;
   @SerializedName("signal_source_bucket")
   private String mSignalSourceBucket = null;
   @SerializedName("skan_campaign_id")
@@ -1028,6 +1052,20 @@ public class AdsInsights extends APINode {
     return this;
   }
 
+  public List<AdsActionStats> getFieldAggregatedPlayTimePerReach() {
+    return mAggregatedPlayTimePerReach;
+  }
+
+  public AdsInsights setFieldAggregatedPlayTimePerReach(List<AdsActionStats> value) {
+    this.mAggregatedPlayTimePerReach = value;
+    return this;
+  }
+
+  public AdsInsights setFieldAggregatedPlayTimePerReach(String value) {
+    Type type = new TypeToken<List<AdsActionStats>>(){}.getType();
+    this.mAggregatedPlayTimePerReach = AdsActionStats.getGson().fromJson(value, type);
+    return this;
+  }
   public String getFieldAnchorEventAttributionSetting() {
     return mAnchorEventAttributionSetting;
   }
@@ -1304,6 +1342,60 @@ public class AdsInsights extends APINode {
 
   public AdsInsights setFieldConfigurableAudienceOverlapWithConvExposureReach(String value) {
     this.mConfigurableAudienceOverlapWithConvExposureReach = value;
+    return this;
+  }
+
+  public String getFieldConfigurableCreativeFormatPerformanceAdsetCount() {
+    return mConfigurableCreativeFormatPerformanceAdsetCount;
+  }
+
+  public AdsInsights setFieldConfigurableCreativeFormatPerformanceAdsetCount(String value) {
+    this.mConfigurableCreativeFormatPerformanceAdsetCount = value;
+    return this;
+  }
+
+  public String getFieldConfigurableCreativeFormatPerformanceClicks() {
+    return mConfigurableCreativeFormatPerformanceClicks;
+  }
+
+  public AdsInsights setFieldConfigurableCreativeFormatPerformanceClicks(String value) {
+    this.mConfigurableCreativeFormatPerformanceClicks = value;
+    return this;
+  }
+
+  public String getFieldConfigurableCreativeFormatPerformanceConversions() {
+    return mConfigurableCreativeFormatPerformanceConversions;
+  }
+
+  public AdsInsights setFieldConfigurableCreativeFormatPerformanceConversions(String value) {
+    this.mConfigurableCreativeFormatPerformanceConversions = value;
+    return this;
+  }
+
+  public String getFieldConfigurableCreativeFormatPerformanceConverters() {
+    return mConfigurableCreativeFormatPerformanceConverters;
+  }
+
+  public AdsInsights setFieldConfigurableCreativeFormatPerformanceConverters(String value) {
+    this.mConfigurableCreativeFormatPerformanceConverters = value;
+    return this;
+  }
+
+  public String getFieldConfigurableCreativeFormatPerformanceImpressions() {
+    return mConfigurableCreativeFormatPerformanceImpressions;
+  }
+
+  public AdsInsights setFieldConfigurableCreativeFormatPerformanceImpressions(String value) {
+    this.mConfigurableCreativeFormatPerformanceImpressions = value;
+    return this;
+  }
+
+  public String getFieldConfigurableCreativeFormatPerformanceSpend() {
+    return mConfigurableCreativeFormatPerformanceSpend;
+  }
+
+  public AdsInsights setFieldConfigurableCreativeFormatPerformanceSpend(String value) {
+    this.mConfigurableCreativeFormatPerformanceSpend = value;
     return this;
   }
 
@@ -1872,6 +1964,20 @@ public class AdsInsights extends APINode {
     return this;
   }
 
+  public List<AdsActionStats> getFieldCostPerMmpCreditedInstall() {
+    return mCostPerMmpCreditedInstall;
+  }
+
+  public AdsInsights setFieldCostPerMmpCreditedInstall(List<AdsActionStats> value) {
+    this.mCostPerMmpCreditedInstall = value;
+    return this;
+  }
+
+  public AdsInsights setFieldCostPerMmpCreditedInstall(String value) {
+    Type type = new TypeToken<List<AdsActionStats>>(){}.getType();
+    this.mCostPerMmpCreditedInstall = AdsActionStats.getGson().fromJson(value, type);
+    return this;
+  }
   public List<Object> getFieldCostPerObjectiveResult() {
     return mCostPerObjectiveResult;
   }
@@ -2560,6 +2666,20 @@ public class AdsInsights extends APINode {
     return this;
   }
 
+  public List<AdsActionStats> getFieldMmpCreditedInstall() {
+    return mMmpCreditedInstall;
+  }
+
+  public AdsInsights setFieldMmpCreditedInstall(List<AdsActionStats> value) {
+    this.mMmpCreditedInstall = value;
+    return this;
+  }
+
+  public AdsInsights setFieldMmpCreditedInstall(String value) {
+    Type type = new TypeToken<List<AdsActionStats>>(){}.getType();
+    this.mMmpCreditedInstall = AdsActionStats.getGson().fromJson(value, type);
+    return this;
+  }
   public List<AdsActionStats> getFieldMobileAppPurchaseRoas() {
     return mMobileAppPurchaseRoas;
   }
@@ -3405,6 +3525,10 @@ public class AdsInsights extends APINode {
     return mCreativeFingerprintDetails;
   }
 
+  public String getFieldCreativeFormatClassification() {
+    return mCreativeFormatClassification;
+  }
+
   public String getFieldCreativeMediaTypeBreakdown() {
     return mCreativeMediaTypeBreakdown;
   }
@@ -3549,6 +3673,10 @@ public class AdsInsights extends APINode {
     return mMediaFormat;
   }
 
+  public String getFieldMediaId() {
+    return mMediaId;
+  }
+
   public String getFieldMediaOriginUrl() {
     return mMediaOriginUrl;
   }
@@ -3655,6 +3783,10 @@ public class AdsInsights extends APINode {
 
   public String getFieldRuleSetName() {
     return mRuleSetName;
+  }
+
+  public String getFieldSignalSource() {
+    return mSignalSource;
   }
 
   public String getFieldSignalSourceBucket() {
@@ -3891,6 +4023,8 @@ public class AdsInsights extends APINode {
       VALUE_CREATIVE_AUTOMATION_ASSET_ID("creative_automation_asset_id"),
       @SerializedName("creative_fingerprint_details")
       VALUE_CREATIVE_FINGERPRINT_DETAILS("creative_fingerprint_details"),
+      @SerializedName("creative_format_classification")
+      VALUE_CREATIVE_FORMAT_CLASSIFICATION("creative_format_classification"),
       @SerializedName("creative_media_type_breakdown")
       VALUE_CREATIVE_MEDIA_TYPE_BREAKDOWN("creative_media_type_breakdown"),
       @SerializedName("creative_relaxation_asset_type")
@@ -3963,6 +4097,8 @@ public class AdsInsights extends APINode {
       VALUE_MEDIA_DESTINATION_URL("media_destination_url"),
       @SerializedName("media_format")
       VALUE_MEDIA_FORMAT("media_format"),
+      @SerializedName("media_id")
+      VALUE_MEDIA_ID("media_id"),
       @SerializedName("media_origin_url")
       VALUE_MEDIA_ORIGIN_URL("media_origin_url"),
       @SerializedName("media_text_content")
@@ -4017,6 +4153,8 @@ public class AdsInsights extends APINode {
       VALUE_RULE_SET_ID("rule_set_id"),
       @SerializedName("rule_set_name")
       VALUE_RULE_SET_NAME("rule_set_name"),
+      @SerializedName("signal_source")
+      VALUE_SIGNAL_SOURCE("signal_source"),
       @SerializedName("signal_source_bucket")
       VALUE_SIGNAL_SOURCE_BUCKET("signal_source_bucket"),
       @SerializedName("skan_campaign_id")
@@ -4219,6 +4357,7 @@ public class AdsInsights extends APINode {
     this.mAdvancedReach28dLookback = instance.mAdvancedReach28dLookback;
     this.mAdvancedReach7dLookback = instance.mAdvancedReach7dLookback;
     this.mAgeTargeting = instance.mAgeTargeting;
+    this.mAggregatedPlayTimePerReach = instance.mAggregatedPlayTimePerReach;
     this.mAnchorEventAttributionSetting = instance.mAnchorEventAttributionSetting;
     this.mAnchorEventsPerformanceIndicator = instance.mAnchorEventsPerformanceIndicator;
     this.mAttributionSetting = instance.mAttributionSetting;
@@ -4245,6 +4384,12 @@ public class AdsInsights extends APINode {
     this.mConfigurableAudienceOverlapWithConvExposureCost = instance.mConfigurableAudienceOverlapWithConvExposureCost;
     this.mConfigurableAudienceOverlapWithConvExposureImpressions = instance.mConfigurableAudienceOverlapWithConvExposureImpressions;
     this.mConfigurableAudienceOverlapWithConvExposureReach = instance.mConfigurableAudienceOverlapWithConvExposureReach;
+    this.mConfigurableCreativeFormatPerformanceAdsetCount = instance.mConfigurableCreativeFormatPerformanceAdsetCount;
+    this.mConfigurableCreativeFormatPerformanceClicks = instance.mConfigurableCreativeFormatPerformanceClicks;
+    this.mConfigurableCreativeFormatPerformanceConversions = instance.mConfigurableCreativeFormatPerformanceConversions;
+    this.mConfigurableCreativeFormatPerformanceConverters = instance.mConfigurableCreativeFormatPerformanceConverters;
+    this.mConfigurableCreativeFormatPerformanceImpressions = instance.mConfigurableCreativeFormatPerformanceImpressions;
+    this.mConfigurableCreativeFormatPerformanceSpend = instance.mConfigurableCreativeFormatPerformanceSpend;
     this.mConfigurablePlacementPtcConversions = instance.mConfigurablePlacementPtcConversions;
     this.mConfigurablePlacementPtcConverters = instance.mConfigurablePlacementPtcConverters;
     this.mConfigurablePlacementPtcReach = instance.mConfigurablePlacementPtcReach;
@@ -4290,6 +4435,7 @@ public class AdsInsights extends APINode {
     this.mCostPerInlineLinkClick = instance.mCostPerInlineLinkClick;
     this.mCostPerInlinePostEngagement = instance.mCostPerInlinePostEngagement;
     this.mCostPerMessageDelivered = instance.mCostPerMessageDelivered;
+    this.mCostPerMmpCreditedInstall = instance.mCostPerMmpCreditedInstall;
     this.mCostPerObjectiveResult = instance.mCostPerObjectiveResult;
     this.mCostPerOneThousandAdImpression = instance.mCostPerOneThousandAdImpression;
     this.mCostPerOutboundClick = instance.mCostPerOutboundClick;
@@ -4362,6 +4508,7 @@ public class AdsInsights extends APINode {
     this.mMarketingMessagesSpendCurrency = instance.mMarketingMessagesSpendCurrency;
     this.mMessagesDelivered = instance.mMessagesDelivered;
     this.mMessagesDeliveredCtr = instance.mMessagesDeliveredCtr;
+    this.mMmpCreditedInstall = instance.mMmpCreditedInstall;
     this.mMobileAppPurchaseRoas = instance.mMobileAppPurchaseRoas;
     this.mMsaSellerBudget = instance.mMsaSellerBudget;
     this.mMultiEventConversionAttributionSetting = instance.mMultiEventConversionAttributionSetting;
@@ -4447,6 +4594,7 @@ public class AdsInsights extends APINode {
     this.mCountry = instance.mCountry;
     this.mCreativeAutomationAssetId = instance.mCreativeAutomationAssetId;
     this.mCreativeFingerprintDetails = instance.mCreativeFingerprintDetails;
+    this.mCreativeFormatClassification = instance.mCreativeFormatClassification;
     this.mCreativeMediaTypeBreakdown = instance.mCreativeMediaTypeBreakdown;
     this.mCreativeRelaxationAssetType = instance.mCreativeRelaxationAssetType;
     this.mCrmAdvertiserL12TerritoryIds = instance.mCrmAdvertiserL12TerritoryIds;
@@ -4483,6 +4631,7 @@ public class AdsInsights extends APINode {
     this.mMediaCreator = instance.mMediaCreator;
     this.mMediaDestinationUrl = instance.mMediaDestinationUrl;
     this.mMediaFormat = instance.mMediaFormat;
+    this.mMediaId = instance.mMediaId;
     this.mMediaOriginUrl = instance.mMediaOriginUrl;
     this.mMediaTextContent = instance.mMediaTextContent;
     this.mMediaType = instance.mMediaType;
@@ -4510,6 +4659,7 @@ public class AdsInsights extends APINode {
     this.mRtaUgcTopic = instance.mRtaUgcTopic;
     this.mRuleSetId = instance.mRuleSetId;
     this.mRuleSetName = instance.mRuleSetName;
+    this.mSignalSource = instance.mSignalSource;
     this.mSignalSourceBucket = instance.mSignalSourceBucket;
     this.mSkanCampaignId = instance.mSkanCampaignId;
     this.mSkanConversionId = instance.mSkanConversionId;

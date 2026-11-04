@@ -91,6 +91,8 @@ public class WhatsAppBusinessAccount extends APINode {
   private String mPrimaryFundingId = null;
   @SerializedName("purchase_order_number")
   private String mPurchaseOrderNumber = null;
+  @SerializedName("service_pricing_policy")
+  private String mServicePricingPolicy = null;
   @SerializedName("status")
   private String mStatus = null;
   @SerializedName("template_auto_archival_enabled")
@@ -611,6 +613,10 @@ public class WhatsAppBusinessAccount extends APINode {
 
   public String getFieldPurchaseOrderNumber() {
     return mPurchaseOrderNumber;
+  }
+
+  public String getFieldServicePricingPolicy() {
+    return mServicePricingPolicy;
   }
 
   public String getFieldStatus() {
@@ -3337,6 +3343,7 @@ public class WhatsAppBusinessAccount extends APINode {
       "optimization_spec",
       "parameter_format",
       "product_set_id",
+      "routing_entrypoint",
       "send_type",
       "source_template_id",
       "sub_category",
@@ -3542,6 +3549,15 @@ public class WhatsAppBusinessAccount extends APINode {
 
     public APIRequestCreateMessageTemplate setProductSetId (String productSetId) {
       this.setParam("product_set_id", productSetId);
+      return this;
+    }
+
+    public APIRequestCreateMessageTemplate setRoutingEntrypoint (WhatsAppBusinessAccount.EnumRoutingEntrypoint routingEntrypoint) {
+      this.setParam("routing_entrypoint", routingEntrypoint);
+      return this;
+    }
+    public APIRequestCreateMessageTemplate setRoutingEntrypoint (String routingEntrypoint) {
+      this.setParam("routing_entrypoint", routingEntrypoint);
       return this;
     }
 
@@ -7110,6 +7126,7 @@ public class WhatsAppBusinessAccount extends APINode {
       "primary_business_location",
       "primary_funding_id",
       "purchase_order_number",
+      "service_pricing_policy",
       "status",
       "template_auto_archival_enabled",
       "timezone_id",
@@ -7380,6 +7397,13 @@ public class WhatsAppBusinessAccount extends APINode {
     }
     public APIRequestGet requestPurchaseOrderNumberField (boolean value) {
       this.requestField("purchase_order_number", value);
+      return this;
+    }
+    public APIRequestGet requestServicePricingPolicyField () {
+      return this.requestServicePricingPolicyField(true);
+    }
+    public APIRequestGet requestServicePricingPolicyField (boolean value) {
+      this.requestField("service_pricing_policy", value);
       return this;
     }
     public APIRequestGet requestStatusField () {
@@ -7769,6 +7793,27 @@ public class WhatsAppBusinessAccount extends APINode {
       private String value;
 
       private EnumParameterFormat(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumRoutingEntrypoint {
+      @SerializedName("MARKETING_ENTRYPOINT")
+      VALUE_MARKETING_ENTRYPOINT("MARKETING_ENTRYPOINT"),
+      @SerializedName("SERVICE_ENTRYPOINT")
+      VALUE_SERVICE_ENTRYPOINT("SERVICE_ENTRYPOINT"),
+      @SerializedName("UTILITY_ENTRYPOINT")
+      VALUE_UTILITY_ENTRYPOINT("UTILITY_ENTRYPOINT"),
+      ;
+
+      private String value;
+
+      private EnumRoutingEntrypoint(String value) {
         this.value = value;
       }
 
@@ -8256,6 +8301,7 @@ public class WhatsAppBusinessAccount extends APINode {
     this.mPrimaryBusinessLocation = instance.mPrimaryBusinessLocation;
     this.mPrimaryFundingId = instance.mPrimaryFundingId;
     this.mPurchaseOrderNumber = instance.mPurchaseOrderNumber;
+    this.mServicePricingPolicy = instance.mServicePricingPolicy;
     this.mStatus = instance.mStatus;
     this.mTemplateAutoArchivalEnabled = instance.mTemplateAutoArchivalEnabled;
     this.mTimezoneId = instance.mTimezoneId;

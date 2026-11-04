@@ -40,27 +40,23 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class AdAccountAdsGet extends APINode {
-  @SerializedName("data")
-  private List<Object> mData = null;
-  @SerializedName("paging")
-  private Object mPaging = null;
-  @SerializedName("summary")
-  private Object mSummary = null;
+public class ProductGroupDelete extends APINode {
+  @SerializedName("success")
+  private Boolean mSuccess = null;
   protected static Gson gson = null;
 
-  public AdAccountAdsGet() {
+  public ProductGroupDelete() {
   }
 
   public String getId() {
     return null;
   }
-  public static AdAccountAdsGet loadJSON(String json, APIContext context, String header) {
-    AdAccountAdsGet adAccountAdsGet = getGson().fromJson(json, AdAccountAdsGet.class);
+  public static ProductGroupDelete loadJSON(String json, APIContext context, String header) {
+    ProductGroupDelete productGroupDelete = getGson().fromJson(json, ProductGroupDelete.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(adAccountAdsGet.toString());
+      JsonElement o2 = parser.parse(productGroupDelete.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -70,14 +66,14 @@ public class AdAccountAdsGet extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    adAccountAdsGet.context = context;
-    adAccountAdsGet.rawValue = json;
-    adAccountAdsGet.header = header;
-    return adAccountAdsGet;
+    productGroupDelete.context = context;
+    productGroupDelete.rawValue = json;
+    productGroupDelete.header = header;
+    return productGroupDelete;
   }
 
-  public static APINodeList<AdAccountAdsGet> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<AdAccountAdsGet> adAccountAdsGets = new APINodeList<AdAccountAdsGet>(request, json, header);
+  public static APINodeList<ProductGroupDelete> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<ProductGroupDelete> productGroupDeletes = new APINodeList<ProductGroupDelete>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -88,9 +84,9 @@ public class AdAccountAdsGet extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          adAccountAdsGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          productGroupDeletes.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return adAccountAdsGets;
+        return productGroupDeletes;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -100,20 +96,20 @@ public class AdAccountAdsGet extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                adAccountAdsGets.setCursors(before, after);
+                productGroupDeletes.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            adAccountAdsGets.setPaging(previous, next);
+            productGroupDeletes.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              adAccountAdsGets.setAppSecret(context.getAppSecretProof());
+              productGroupDeletes.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              adAccountAdsGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              productGroupDeletes.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -124,23 +120,23 @@ public class AdAccountAdsGet extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  adAccountAdsGets.add(loadJSON(entry.getValue().toString(), context, header));
+                  productGroupDeletes.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              adAccountAdsGets.add(loadJSON(obj.toString(), context, header));
+              productGroupDeletes.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return adAccountAdsGets;
+          return productGroupDeletes;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              adAccountAdsGets.add(loadJSON(entry.getValue().toString(), context, header));
+              productGroupDeletes.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return adAccountAdsGets;
+          return productGroupDeletes;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -157,20 +153,20 @@ public class AdAccountAdsGet extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              adAccountAdsGets.add(loadJSON(value.toString(), context, header));
+              productGroupDeletes.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return adAccountAdsGets;
+            return productGroupDeletes;
           }
 
           // Sixth, check if it's pure JsonObject
-          adAccountAdsGets.clear();
-          adAccountAdsGets.add(loadJSON(json, context, header));
-          return adAccountAdsGets;
+          productGroupDeletes.clear();
+          productGroupDeletes.add(loadJSON(json, context, header));
+          return productGroupDeletes;
         }
       }
     } catch (Exception e) {
@@ -198,30 +194,12 @@ public class AdAccountAdsGet extends APINode {
   }
 
 
-  public List<Object> getFieldData() {
-    return mData;
+  public Boolean getFieldSuccess() {
+    return mSuccess;
   }
 
-  public AdAccountAdsGet setFieldData(List<Object> value) {
-    this.mData = value;
-    return this;
-  }
-
-  public Object getFieldPaging() {
-    return mPaging;
-  }
-
-  public AdAccountAdsGet setFieldPaging(Object value) {
-    this.mPaging = value;
-    return this;
-  }
-
-  public Object getFieldSummary() {
-    return mSummary;
-  }
-
-  public AdAccountAdsGet setFieldSummary(Object value) {
-    this.mSummary = value;
+  public ProductGroupDelete setFieldSuccess(Boolean value) {
+    this.mSuccess = value;
     return this;
   }
 
@@ -241,19 +219,17 @@ public class AdAccountAdsGet extends APINode {
     return gson;
   }
 
-  public AdAccountAdsGet copyFrom(AdAccountAdsGet instance) {
-    this.mData = instance.mData;
-    this.mPaging = instance.mPaging;
-    this.mSummary = instance.mSummary;
+  public ProductGroupDelete copyFrom(ProductGroupDelete instance) {
+    this.mSuccess = instance.mSuccess;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<AdAccountAdsGet> getParser() {
-    return new APIRequest.ResponseParser<AdAccountAdsGet>() {
-      public APINodeList<AdAccountAdsGet> parseResponse(String response, APIContext context, APIRequest<AdAccountAdsGet> request, String header) throws MalformedResponseException {
-        return AdAccountAdsGet.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<ProductGroupDelete> getParser() {
+    return new APIRequest.ResponseParser<ProductGroupDelete>() {
+      public APINodeList<ProductGroupDelete> parseResponse(String response, APIContext context, APIRequest<ProductGroupDelete> request, String header) throws MalformedResponseException {
+        return ProductGroupDelete.parseResponse(response, context, request, header);
       }
     };
   }

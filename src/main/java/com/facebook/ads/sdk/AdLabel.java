@@ -2321,6 +2321,7 @@ public class AdLabel extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "issues_info",
@@ -2610,6 +2611,13 @@ public class AdLabel extends APINode {
     }
     public APIRequestGetCampaigns requestIsMetaMomentMakerEnabledField (boolean value) {
       this.requestField("is_meta_moment_maker_enabled", value);
+      return this;
+    }
+    public APIRequestGetCampaigns requestIsPcaUnifiedField () {
+      return this.requestIsPcaUnifiedField(true);
+    }
+    public APIRequestGetCampaigns requestIsPcaUnifiedField (boolean value) {
+      this.requestField("is_pca_unified", value);
       return this;
     }
     public APIRequestGetCampaigns requestIsReelsTrendingAdsEnabledField () {

@@ -40,7 +40,7 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class IGUserExportForCAM extends APINode {
+public class UserExportForCAM extends APINode {
   @SerializedName("age_bucket")
   private String mAgeBucket = null;
   @SerializedName("badges")
@@ -53,6 +53,8 @@ public class IGUserExportForCAM extends APINode {
   private String mCountry = null;
   @SerializedName("email")
   private String mEmail = null;
+  @SerializedName("facebook_messaging_id")
+  private String mFacebookMessagingId = null;
   @SerializedName("gender")
   private String mGender = null;
   @SerializedName("has_brand_partnership_experience")
@@ -87,18 +89,18 @@ public class IGUserExportForCAM extends APINode {
   private String mUsername = null;
   protected static Gson gson = null;
 
-  public IGUserExportForCAM() {
+  public UserExportForCAM() {
   }
 
   public String getId() {
     return getFieldId().toString();
   }
-  public static IGUserExportForCAM loadJSON(String json, APIContext context, String header) {
-    IGUserExportForCAM igUserExportForCAM = getGson().fromJson(json, IGUserExportForCAM.class);
+  public static UserExportForCAM loadJSON(String json, APIContext context, String header) {
+    UserExportForCAM userExportForCAM = getGson().fromJson(json, UserExportForCAM.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(igUserExportForCAM.toString());
+      JsonElement o2 = parser.parse(userExportForCAM.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -108,14 +110,14 @@ public class IGUserExportForCAM extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    igUserExportForCAM.context = context;
-    igUserExportForCAM.rawValue = json;
-    igUserExportForCAM.header = header;
-    return igUserExportForCAM;
+    userExportForCAM.context = context;
+    userExportForCAM.rawValue = json;
+    userExportForCAM.header = header;
+    return userExportForCAM;
   }
 
-  public static APINodeList<IGUserExportForCAM> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<IGUserExportForCAM> igUserExportForCAMs = new APINodeList<IGUserExportForCAM>(request, json, header);
+  public static APINodeList<UserExportForCAM> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<UserExportForCAM> userExportForCAMs = new APINodeList<UserExportForCAM>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -126,9 +128,9 @@ public class IGUserExportForCAM extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          igUserExportForCAMs.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          userExportForCAMs.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return igUserExportForCAMs;
+        return userExportForCAMs;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -138,20 +140,20 @@ public class IGUserExportForCAM extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                igUserExportForCAMs.setCursors(before, after);
+                userExportForCAMs.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            igUserExportForCAMs.setPaging(previous, next);
+            userExportForCAMs.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              igUserExportForCAMs.setAppSecret(context.getAppSecretProof());
+              userExportForCAMs.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              igUserExportForCAMs.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              userExportForCAMs.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -162,23 +164,23 @@ public class IGUserExportForCAM extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  igUserExportForCAMs.add(loadJSON(entry.getValue().toString(), context, header));
+                  userExportForCAMs.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              igUserExportForCAMs.add(loadJSON(obj.toString(), context, header));
+              userExportForCAMs.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return igUserExportForCAMs;
+          return userExportForCAMs;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              igUserExportForCAMs.add(loadJSON(entry.getValue().toString(), context, header));
+              userExportForCAMs.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return igUserExportForCAMs;
+          return userExportForCAMs;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -195,20 +197,20 @@ public class IGUserExportForCAM extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              igUserExportForCAMs.add(loadJSON(value.toString(), context, header));
+              userExportForCAMs.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return igUserExportForCAMs;
+            return userExportForCAMs;
           }
 
           // Sixth, check if it's pure JsonObject
-          igUserExportForCAMs.clear();
-          igUserExportForCAMs.add(loadJSON(json, context, header));
-          return igUserExportForCAMs;
+          userExportForCAMs.clear();
+          userExportForCAMs.add(loadJSON(json, context, header));
+          return userExportForCAMs;
         }
       }
     } catch (Exception e) {
@@ -256,7 +258,7 @@ public class IGUserExportForCAM extends APINode {
     return mAgeBucket;
   }
 
-  public IGUserExportForCAM setFieldAgeBucket(String value) {
+  public UserExportForCAM setFieldAgeBucket(String value) {
     this.mAgeBucket = value;
     return this;
   }
@@ -265,7 +267,7 @@ public class IGUserExportForCAM extends APINode {
     return mBadges;
   }
 
-  public IGUserExportForCAM setFieldBadges(List<String> value) {
+  public UserExportForCAM setFieldBadges(List<String> value) {
     this.mBadges = value;
     return this;
   }
@@ -274,7 +276,7 @@ public class IGUserExportForCAM extends APINode {
     return mBiography;
   }
 
-  public IGUserExportForCAM setFieldBiography(String value) {
+  public UserExportForCAM setFieldBiography(String value) {
     this.mBiography = value;
     return this;
   }
@@ -283,7 +285,7 @@ public class IGUserExportForCAM extends APINode {
     return mCategory;
   }
 
-  public IGUserExportForCAM setFieldCategory(String value) {
+  public UserExportForCAM setFieldCategory(String value) {
     this.mCategory = value;
     return this;
   }
@@ -292,7 +294,7 @@ public class IGUserExportForCAM extends APINode {
     return mCountry;
   }
 
-  public IGUserExportForCAM setFieldCountry(String value) {
+  public UserExportForCAM setFieldCountry(String value) {
     this.mCountry = value;
     return this;
   }
@@ -301,8 +303,17 @@ public class IGUserExportForCAM extends APINode {
     return mEmail;
   }
 
-  public IGUserExportForCAM setFieldEmail(String value) {
+  public UserExportForCAM setFieldEmail(String value) {
     this.mEmail = value;
+    return this;
+  }
+
+  public String getFieldFacebookMessagingId() {
+    return mFacebookMessagingId;
+  }
+
+  public UserExportForCAM setFieldFacebookMessagingId(String value) {
+    this.mFacebookMessagingId = value;
     return this;
   }
 
@@ -310,7 +321,7 @@ public class IGUserExportForCAM extends APINode {
     return mGender;
   }
 
-  public IGUserExportForCAM setFieldGender(String value) {
+  public UserExportForCAM setFieldGender(String value) {
     this.mGender = value;
     return this;
   }
@@ -319,7 +330,7 @@ public class IGUserExportForCAM extends APINode {
     return mHasBrandPartnershipExperience;
   }
 
-  public IGUserExportForCAM setFieldHasBrandPartnershipExperience(Boolean value) {
+  public UserExportForCAM setFieldHasBrandPartnershipExperience(Boolean value) {
     this.mHasBrandPartnershipExperience = value;
     return this;
   }
@@ -328,7 +339,7 @@ public class IGUserExportForCAM extends APINode {
     return mId;
   }
 
-  public IGUserExportForCAM setFieldId(String value) {
+  public UserExportForCAM setFieldId(String value) {
     this.mId = value;
     return this;
   }
@@ -337,7 +348,7 @@ public class IGUserExportForCAM extends APINode {
     return mIsAccountVerified;
   }
 
-  public IGUserExportForCAM setFieldIsAccountVerified(Boolean value) {
+  public UserExportForCAM setFieldIsAccountVerified(Boolean value) {
     this.mIsAccountVerified = value;
     return this;
   }
@@ -346,7 +357,7 @@ public class IGUserExportForCAM extends APINode {
     return mIsBrandFollowingCreator;
   }
 
-  public IGUserExportForCAM setFieldIsBrandFollowingCreator(Boolean value) {
+  public UserExportForCAM setFieldIsBrandFollowingCreator(Boolean value) {
     this.mIsBrandFollowingCreator = value;
     return this;
   }
@@ -355,7 +366,7 @@ public class IGUserExportForCAM extends APINode {
     return mIsCreatorFollowingBrand;
   }
 
-  public IGUserExportForCAM setFieldIsCreatorFollowingBrand(Boolean value) {
+  public UserExportForCAM setFieldIsCreatorFollowingBrand(Boolean value) {
     this.mIsCreatorFollowingBrand = value;
     return this;
   }
@@ -364,7 +375,7 @@ public class IGUserExportForCAM extends APINode {
     return mIsPaidPartnershipMessagesEnabled;
   }
 
-  public IGUserExportForCAM setFieldIsPaidPartnershipMessagesEnabled(Boolean value) {
+  public UserExportForCAM setFieldIsPaidPartnershipMessagesEnabled(Boolean value) {
     this.mIsPaidPartnershipMessagesEnabled = value;
     return this;
   }
@@ -373,7 +384,7 @@ public class IGUserExportForCAM extends APINode {
     return mMessagingId;
   }
 
-  public IGUserExportForCAM setFieldMessagingId(String value) {
+  public UserExportForCAM setFieldMessagingId(String value) {
     this.mMessagingId = value;
     return this;
   }
@@ -382,7 +393,7 @@ public class IGUserExportForCAM extends APINode {
     return mOnboardedStatus;
   }
 
-  public IGUserExportForCAM setFieldOnboardedStatus(Boolean value) {
+  public UserExportForCAM setFieldOnboardedStatus(Boolean value) {
     this.mOnboardedStatus = value;
     return this;
   }
@@ -391,7 +402,7 @@ public class IGUserExportForCAM extends APINode {
     return mPageId;
   }
 
-  public IGUserExportForCAM setFieldPageId(String value) {
+  public UserExportForCAM setFieldPageId(String value) {
     this.mPageId = value;
     return this;
   }
@@ -400,7 +411,7 @@ public class IGUserExportForCAM extends APINode {
     return mPageName;
   }
 
-  public IGUserExportForCAM setFieldPageName(String value) {
+  public UserExportForCAM setFieldPageName(String value) {
     this.mPageName = value;
     return this;
   }
@@ -409,7 +420,7 @@ public class IGUserExportForCAM extends APINode {
     return mPastBrandPartnershipPartners;
   }
 
-  public IGUserExportForCAM setFieldPastBrandPartnershipPartners(List<String> value) {
+  public UserExportForCAM setFieldPastBrandPartnershipPartners(List<String> value) {
     this.mPastBrandPartnershipPartners = value;
     return this;
   }
@@ -418,7 +429,7 @@ public class IGUserExportForCAM extends APINode {
     return mPlatforms;
   }
 
-  public IGUserExportForCAM setFieldPlatforms(List<String> value) {
+  public UserExportForCAM setFieldPlatforms(List<String> value) {
     this.mPlatforms = value;
     return this;
   }
@@ -427,7 +438,7 @@ public class IGUserExportForCAM extends APINode {
     return mPortfolioUrl;
   }
 
-  public IGUserExportForCAM setFieldPortfolioUrl(String value) {
+  public UserExportForCAM setFieldPortfolioUrl(String value) {
     this.mPortfolioUrl = value;
     return this;
   }
@@ -436,7 +447,7 @@ public class IGUserExportForCAM extends APINode {
     return mProfilePictureUrl;
   }
 
-  public IGUserExportForCAM setFieldProfilePictureUrl(String value) {
+  public UserExportForCAM setFieldProfilePictureUrl(String value) {
     this.mProfilePictureUrl = value;
     return this;
   }
@@ -445,7 +456,7 @@ public class IGUserExportForCAM extends APINode {
     return mUsername;
   }
 
-  public IGUserExportForCAM setFieldUsername(String value) {
+  public UserExportForCAM setFieldUsername(String value) {
     this.mUsername = value;
     return this;
   }
@@ -1494,6 +1505,69 @@ public class IGUserExportForCAM extends APINode {
       }
   }
 
+  public static enum EnumCreatorLanguage {
+      @SerializedName("ar")
+      VALUE_AR("ar"),
+      @SerializedName("as")
+      VALUE_AS("as"),
+      @SerializedName("bn")
+      VALUE_BN("bn"),
+      @SerializedName("de")
+      VALUE_DE("de"),
+      @SerializedName("en")
+      VALUE_EN("en"),
+      @SerializedName("es")
+      VALUE_ES("es"),
+      @SerializedName("fr")
+      VALUE_FR("fr"),
+      @SerializedName("gu")
+      VALUE_GU("gu"),
+      @SerializedName("hi")
+      VALUE_HI("hi"),
+      @SerializedName("id")
+      VALUE_ID("id"),
+      @SerializedName("ja")
+      VALUE_JA("ja"),
+      @SerializedName("kn")
+      VALUE_KN("kn"),
+      @SerializedName("ko")
+      VALUE_KO("ko"),
+      @SerializedName("ml")
+      VALUE_ML("ml"),
+      @SerializedName("mr")
+      VALUE_MR("mr"),
+      @SerializedName("nl")
+      VALUE_NL("nl"),
+      @SerializedName("or")
+      VALUE_OR("or"),
+      @SerializedName("pa")
+      VALUE_PA("pa"),
+      @SerializedName("pt")
+      VALUE_PT("pt"),
+      @SerializedName("ta")
+      VALUE_TA("ta"),
+      @SerializedName("te")
+      VALUE_TE("te"),
+      @SerializedName("tr")
+      VALUE_TR("tr"),
+      @SerializedName("ur")
+      VALUE_UR("ur"),
+      @SerializedName("zh")
+      VALUE_ZH("zh"),
+      ;
+
+      private String value;
+
+      private EnumCreatorLanguage(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
   public static enum EnumMajorAudienceCountries {
       @SerializedName("AC")
       VALUE_AC("AC"),
@@ -2200,13 +2274,14 @@ public class IGUserExportForCAM extends APINode {
     return gson;
   }
 
-  public IGUserExportForCAM copyFrom(IGUserExportForCAM instance) {
+  public UserExportForCAM copyFrom(UserExportForCAM instance) {
     this.mAgeBucket = instance.mAgeBucket;
     this.mBadges = instance.mBadges;
     this.mBiography = instance.mBiography;
     this.mCategory = instance.mCategory;
     this.mCountry = instance.mCountry;
     this.mEmail = instance.mEmail;
+    this.mFacebookMessagingId = instance.mFacebookMessagingId;
     this.mGender = instance.mGender;
     this.mHasBrandPartnershipExperience = instance.mHasBrandPartnershipExperience;
     this.mId = instance.mId;
@@ -2228,10 +2303,10 @@ public class IGUserExportForCAM extends APINode {
     return this;
   }
 
-  public static APIRequest.ResponseParser<IGUserExportForCAM> getParser() {
-    return new APIRequest.ResponseParser<IGUserExportForCAM>() {
-      public APINodeList<IGUserExportForCAM> parseResponse(String response, APIContext context, APIRequest<IGUserExportForCAM> request, String header) throws MalformedResponseException {
-        return IGUserExportForCAM.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<UserExportForCAM> getParser() {
+    return new APIRequest.ResponseParser<UserExportForCAM>() {
+      public APINodeList<UserExportForCAM> parseResponse(String response, APIContext context, APIRequest<UserExportForCAM> request, String header) throws MalformedResponseException {
+        return UserExportForCAM.parseResponse(response, context, request, header);
       }
     };
   }

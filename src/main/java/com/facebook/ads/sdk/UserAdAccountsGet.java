@@ -41,6 +41,12 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  *
  */
 public class UserAdAccountsGet extends APINode {
+  @SerializedName("data")
+  private List<Object> mData = null;
+  @SerializedName("paging")
+  private Object mPaging = null;
+  @SerializedName("summary")
+  private Object mSummary = null;
   protected static Gson gson = null;
 
   public UserAdAccountsGet() {
@@ -192,6 +198,33 @@ public class UserAdAccountsGet extends APINode {
   }
 
 
+  public List<Object> getFieldData() {
+    return mData;
+  }
+
+  public UserAdAccountsGet setFieldData(List<Object> value) {
+    this.mData = value;
+    return this;
+  }
+
+  public Object getFieldPaging() {
+    return mPaging;
+  }
+
+  public UserAdAccountsGet setFieldPaging(Object value) {
+    this.mPaging = value;
+    return this;
+  }
+
+  public Object getFieldSummary() {
+    return mSummary;
+  }
+
+  public UserAdAccountsGet setFieldSummary(Object value) {
+    this.mSummary = value;
+    return this;
+  }
+
 
 
 
@@ -209,6 +242,9 @@ public class UserAdAccountsGet extends APINode {
   }
 
   public UserAdAccountsGet copyFrom(UserAdAccountsGet instance) {
+    this.mData = instance.mData;
+    this.mPaging = instance.mPaging;
+    this.mSummary = instance.mSummary;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;

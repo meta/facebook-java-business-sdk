@@ -613,6 +613,8 @@ public class AdAssetFeedSpec extends APINode {
       VALUE_BROWSE_SHOP("BROWSE_SHOP"),
       @SerializedName("BUY")
       VALUE_BUY("BUY"),
+      @SerializedName("BUY_ACTIVITY_TICKETS")
+      VALUE_BUY_ACTIVITY_TICKETS("BUY_ACTIVITY_TICKETS"),
       @SerializedName("BUY_NOW")
       VALUE_BUY_NOW("BUY_NOW"),
       @SerializedName("BUY_TICKETS")
@@ -751,6 +753,8 @@ public class AdAssetFeedSpec extends APINode {
       VALUE_START_A_CHAT("START_A_CHAT"),
       @SerializedName("START_ORDER")
       VALUE_START_ORDER("START_ORDER"),
+      @SerializedName("STREAM_NOW")
+      VALUE_STREAM_NOW("STREAM_NOW"),
       @SerializedName("SUBSCRIBE")
       VALUE_SUBSCRIBE("SUBSCRIBE"),
       @SerializedName("SWIPE_UP_PRODUCT")
@@ -787,6 +791,8 @@ public class AdAssetFeedSpec extends APINode {
       VALUE_WATCH_LIVE_VIDEO("WATCH_LIVE_VIDEO"),
       @SerializedName("WATCH_MORE")
       VALUE_WATCH_MORE("WATCH_MORE"),
+      @SerializedName("WATCH_NOW")
+      VALUE_WATCH_NOW("WATCH_NOW"),
       @SerializedName("WATCH_VIDEO")
       VALUE_WATCH_VIDEO("WATCH_VIDEO"),
       @SerializedName("WHATSAPP_MESSAGE")

@@ -650,10 +650,6 @@ public class Business extends APINode {
     return new APIRequestCreatePartnerPremiumOptIOn(this.getPrefixedId().toString(), context);
   }
 
-  public APIRequestGetPassbackAttributionMetadataConfigs getPassbackAttributionMetadataConfigs() {
-    return new APIRequestGetPassbackAttributionMetadataConfigs(this.getPrefixedId().toString(), context);
-  }
-
   public APIRequestGetPendingClientAdAccounts getPendingClientAdAccounts() {
     return new APIRequestGetPendingClientAdAccounts(this.getPrefixedId().toString(), context);
   }
@@ -10737,6 +10733,7 @@ public class Business extends APINode {
       "primary_business_location",
       "primary_funding_id",
       "purchase_order_number",
+      "service_pricing_policy",
       "status",
       "template_auto_archival_enabled",
       "timezone_id",
@@ -11007,6 +11004,13 @@ public class Business extends APINode {
     }
     public APIRequestGetClientWhatsAppBusinessAccounts requestPurchaseOrderNumberField (boolean value) {
       this.requestField("purchase_order_number", value);
+      return this;
+    }
+    public APIRequestGetClientWhatsAppBusinessAccounts requestServicePricingPolicyField () {
+      return this.requestServicePricingPolicyField(true);
+    }
+    public APIRequestGetClientWhatsAppBusinessAccounts requestServicePricingPolicyField (boolean value) {
+      this.requestField("service_pricing_policy", value);
       return this;
     }
     public APIRequestGetClientWhatsAppBusinessAccounts requestStatusField () {
@@ -11464,6 +11468,7 @@ public class Business extends APINode {
     public static final String[] FIELDS = {
       "ad_account_id",
       "ad_account_name",
+      "archived_time",
       "brands",
       "catalog_segment",
       "collaborative_ads_share_settings",
@@ -11618,6 +11623,13 @@ public class Business extends APINode {
     }
     public APIRequestGetCollaborativeAdsCollaborationRequests requestAdAccountNameField (boolean value) {
       this.requestField("ad_account_name", value);
+      return this;
+    }
+    public APIRequestGetCollaborativeAdsCollaborationRequests requestArchivedTimeField () {
+      return this.requestArchivedTimeField(true);
+    }
+    public APIRequestGetCollaborativeAdsCollaborationRequests requestArchivedTimeField (boolean value) {
+      this.requestField("archived_time", value);
       return this;
     }
     public APIRequestGetCollaborativeAdsCollaborationRequests requestBrandsField () {
@@ -22192,6 +22204,7 @@ public class Business extends APINode {
       "primary_business_location",
       "primary_funding_id",
       "purchase_order_number",
+      "service_pricing_policy",
       "status",
       "template_auto_archival_enabled",
       "timezone_id",
@@ -22462,6 +22475,13 @@ public class Business extends APINode {
     }
     public APIRequestGetOwnedWhatsAppBusinessAccounts requestPurchaseOrderNumberField (boolean value) {
       this.requestField("purchase_order_number", value);
+      return this;
+    }
+    public APIRequestGetOwnedWhatsAppBusinessAccounts requestServicePricingPolicyField () {
+      return this.requestServicePricingPolicyField(true);
+    }
+    public APIRequestGetOwnedWhatsAppBusinessAccounts requestServicePricingPolicyField (boolean value) {
+      this.requestField("service_pricing_policy", value);
       return this;
     }
     public APIRequestGetOwnedWhatsAppBusinessAccounts requestStatusField () {
@@ -22932,111 +22952,6 @@ public class Business extends APINode {
 
     @Override
     public APIRequestCreatePartnerPremiumOptIOn requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-  }
-
-  public static class APIRequestGetPassbackAttributionMetadataConfigs extends APIRequest<APINode> {
-
-    APINodeList<APINode> lastResponse = null;
-    @Override
-    public APINodeList<APINode> getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
-      return APINode.parseResponse(response, getContext(), this, header);
-    }
-
-    @Override
-    public APINodeList<APINode> execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<APINode>>() {
-           public APINodeList<APINode> apply(ResponseWrapper result) {
-             try {
-               return APIRequestGetPassbackAttributionMetadataConfigs.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         },
-         MoreExecutors.directExecutor()
-      );
-    };
-
-    public APIRequestGetPassbackAttributionMetadataConfigs(String nodeId, APIContext context) {
-      super(context, nodeId, "/passback_attribution_metadata_configs", "GET", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestGetPassbackAttributionMetadataConfigs setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetPassbackAttributionMetadataConfigs setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestGetPassbackAttributionMetadataConfigs requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestGetPassbackAttributionMetadataConfigs requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetPassbackAttributionMetadataConfigs requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestGetPassbackAttributionMetadataConfigs requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetPassbackAttributionMetadataConfigs requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetPassbackAttributionMetadataConfigs requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }
@@ -27371,16 +27286,12 @@ public class Business extends APINode {
       VALUE_ADVERTISE("ADVERTISE"),
       @SerializedName("ANALYZE")
       VALUE_ANALYZE("ANALYZE"),
-      @SerializedName("CASHIER_ROLE")
-      VALUE_CASHIER_ROLE("CASHIER_ROLE"),
       @SerializedName("CREATE_CONTENT")
       VALUE_CREATE_CONTENT("CREATE_CONTENT"),
       @SerializedName("GLOBAL_STRUCTURE_MANAGEMENT")
       VALUE_GLOBAL_STRUCTURE_MANAGEMENT("GLOBAL_STRUCTURE_MANAGEMENT"),
       @SerializedName("MANAGE")
       VALUE_MANAGE("MANAGE"),
-      @SerializedName("MANAGE_JOBS")
-      VALUE_MANAGE_JOBS("MANAGE_JOBS"),
       @SerializedName("MANAGE_LEADS")
       VALUE_MANAGE_LEADS("MANAGE_LEADS"),
       @SerializedName("MESSAGING")
@@ -28668,16 +28579,12 @@ public class Business extends APINode {
       VALUE_ADVERTISE("ADVERTISE"),
       @SerializedName("ANALYZE")
       VALUE_ANALYZE("ANALYZE"),
-      @SerializedName("CASHIER_ROLE")
-      VALUE_CASHIER_ROLE("CASHIER_ROLE"),
       @SerializedName("CREATE_CONTENT")
       VALUE_CREATE_CONTENT("CREATE_CONTENT"),
       @SerializedName("GLOBAL_STRUCTURE_MANAGEMENT")
       VALUE_GLOBAL_STRUCTURE_MANAGEMENT("GLOBAL_STRUCTURE_MANAGEMENT"),
       @SerializedName("MANAGE")
       VALUE_MANAGE("MANAGE"),
-      @SerializedName("MANAGE_JOBS")
-      VALUE_MANAGE_JOBS("MANAGE_JOBS"),
       @SerializedName("MANAGE_LEADS")
       VALUE_MANAGE_LEADS("MANAGE_LEADS"),
       @SerializedName("MESSAGING")

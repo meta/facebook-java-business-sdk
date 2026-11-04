@@ -75,6 +75,8 @@ public class AdCreativeSourcingSpec extends APINode {
   private List<AdCreativeSiteLinksSpec> mSiteLinksSpec = null;
   @SerializedName("source_url")
   private String mSourceUrl = null;
+  @SerializedName("ugc_spec")
+  private Object mUgcSpec = null;
   @SerializedName("website_media_spec")
   private Object mWebsiteMediaSpec = null;
   @SerializedName("website_summary_spec")
@@ -393,6 +395,15 @@ public class AdCreativeSourcingSpec extends APINode {
     return this;
   }
 
+  public Object getFieldUgcSpec() {
+    return mUgcSpec;
+  }
+
+  public AdCreativeSourcingSpec setFieldUgcSpec(Object value) {
+    this.mUgcSpec = value;
+    return this;
+  }
+
   public Object getFieldWebsiteMediaSpec() {
     return mWebsiteMediaSpec;
   }
@@ -445,6 +456,7 @@ public class AdCreativeSourcingSpec extends APINode {
     this.mSiteLinksDataConsented = instance.mSiteLinksDataConsented;
     this.mSiteLinksSpec = instance.mSiteLinksSpec;
     this.mSourceUrl = instance.mSourceUrl;
+    this.mUgcSpec = instance.mUgcSpec;
     this.mWebsiteMediaSpec = instance.mWebsiteMediaSpec;
     this.mWebsiteSummarySpec = instance.mWebsiteSummarySpec;
     this.context = instance.context;

@@ -360,6 +360,10 @@ public class IGUser extends APINode {
     return new APIRequestGetContentPublishingLimit(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestGetConversations getConversations() {
+    return new APIRequestGetConversations(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestGetCreatorMarketPlaceCreators getCreatorMarketPlaceCreators() {
     return new APIRequestGetCreatorMarketPlaceCreators(this.getPrefixedId().toString(), context);
   }
@@ -370,6 +374,10 @@ public class IGUser extends APINode {
 
   public APIRequestCreateDataset createDataset() {
     return new APIRequestCreateDataset(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateExtendThreadControl createExtendThreadControl() {
+    return new APIRequestCreateExtendThreadControl(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetInsights getInsights() {
@@ -404,12 +412,36 @@ public class IGUser extends APINode {
     return new APIRequestCreateMention(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestCreateMessageAttachment createMessageAttachment() {
+    return new APIRequestCreateMessageAttachment(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateMessage createMessage() {
+    return new APIRequestCreateMessage(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestDeleteMessengerProfile deleteMessengerProfile() {
+    return new APIRequestDeleteMessengerProfile(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestGetMessengerProfile getMessengerProfile() {
+    return new APIRequestGetMessengerProfile(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateMessengerProfile createMessengerProfile() {
+    return new APIRequestCreateMessengerProfile(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestCreateModerateConversation createModerateConversation() {
     return new APIRequestCreateModerateConversation(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetNotificationMessageTokens getNotificationMessageTokens() {
     return new APIRequestGetNotificationMessageTokens(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreatePassThreadControl createPassThreadControl() {
+    return new APIRequestCreatePassThreadControl(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetProductAppeal getProductAppeal() {
@@ -424,6 +456,14 @@ public class IGUser extends APINode {
     return new APIRequestGetRecentlySearchedHashtags(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestCreateReleaseThreadControl createReleaseThreadControl() {
+    return new APIRequestCreateReleaseThreadControl(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateRequestThreadControl createRequestThreadControl() {
+    return new APIRequestCreateRequestThreadControl(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestGetScheduledMedia getScheduledMedia() {
     return new APIRequestGetScheduledMedia(this.getPrefixedId().toString(), context);
   }
@@ -432,8 +472,28 @@ public class IGUser extends APINode {
     return new APIRequestGetStories(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestDeleteSubscribedApps deleteSubscribedApps() {
+    return new APIRequestDeleteSubscribedApps(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestGetSubscribedApps getSubscribedApps() {
+    return new APIRequestGetSubscribedApps(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateSubscribedApp createSubscribedApp() {
+    return new APIRequestCreateSubscribedApp(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestGetTags getTags() {
     return new APIRequestGetTags(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateTakeThreadControl createTakeThreadControl() {
+    return new APIRequestCreateTakeThreadControl(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestGetThreadOwner getThreadOwner() {
+    return new APIRequestGetThreadOwner(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGetUpcomingEvents getUpcomingEvents() {
@@ -444,8 +504,16 @@ public class IGUser extends APINode {
     return new APIRequestCreateUpcomingEvent(this.getPrefixedId().toString(), context);
   }
 
+  public APIRequestDeleteWelcomeMessageFlows deleteWelcomeMessageFlows() {
+    return new APIRequestDeleteWelcomeMessageFlows(this.getPrefixedId().toString(), context);
+  }
+
   public APIRequestGetWelcomeMessageFlows getWelcomeMessageFlows() {
     return new APIRequestGetWelcomeMessageFlows(this.getPrefixedId().toString(), context);
+  }
+
+  public APIRequestCreateWelcomeMessageFlow createWelcomeMessageFlow() {
+    return new APIRequestCreateWelcomeMessageFlow(this.getPrefixedId().toString(), context);
   }
 
   public APIRequestGet get() {
@@ -3703,11 +3771,168 @@ public class IGUser extends APINode {
     }
   }
 
-  public static class APIRequestGetCreatorMarketPlaceCreators extends APIRequest<IGUserExportForCAM> {
+  public static class APIRequestGetConversations extends APIRequest<APINode> {
 
-    APINodeList<IGUserExportForCAM> lastResponse = null;
+    APINodeList<APINode> lastResponse = null;
     @Override
-    public APINodeList<IGUserExportForCAM> getLastResponse() {
+    public APINodeList<APINode> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "folder",
+      "platform",
+      "tags",
+      "updated_after_ms",
+      "updated_before_ms",
+      "user_id",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<APINode> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetConversations.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestGetConversations(String nodeId, APIContext context) {
+      super(context, nodeId, "/conversations", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetConversations setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetConversations setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetConversations setFolder (String folder) {
+      this.setParam("folder", folder);
+      return this;
+    }
+
+    public APIRequestGetConversations setPlatform (EnumPlatform platform) {
+      this.setParam("platform", platform);
+      return this;
+    }
+    public APIRequestGetConversations setPlatform (String platform) {
+      this.setParam("platform", platform);
+      return this;
+    }
+
+    public APIRequestGetConversations setTags (List<String> tags) {
+      this.setParam("tags", tags);
+      return this;
+    }
+    public APIRequestGetConversations setTags (String tags) {
+      this.setParam("tags", tags);
+      return this;
+    }
+
+    public APIRequestGetConversations setUpdatedAfterMs (Long updatedAfterMs) {
+      this.setParam("updated_after_ms", updatedAfterMs);
+      return this;
+    }
+    public APIRequestGetConversations setUpdatedAfterMs (String updatedAfterMs) {
+      this.setParam("updated_after_ms", updatedAfterMs);
+      return this;
+    }
+
+    public APIRequestGetConversations setUpdatedBeforeMs (Long updatedBeforeMs) {
+      this.setParam("updated_before_ms", updatedBeforeMs);
+      return this;
+    }
+    public APIRequestGetConversations setUpdatedBeforeMs (String updatedBeforeMs) {
+      this.setParam("updated_before_ms", updatedBeforeMs);
+      return this;
+    }
+
+    public APIRequestGetConversations setUserId (String userId) {
+      this.setParam("user_id", userId);
+      return this;
+    }
+
+    public APIRequestGetConversations requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetConversations requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetConversations requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetConversations requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetConversations requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetConversations requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestGetCreatorMarketPlaceCreators extends APIRequest<UserExportForCAM> {
+
+    APINodeList<UserExportForCAM> lastResponse = null;
+    @Override
+    public APINodeList<UserExportForCAM> getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
@@ -3716,6 +3941,7 @@ public class IGUser extends APINode {
       "creator_follower_growth",
       "creator_gender",
       "creator_interests",
+      "creator_language",
       "creator_latest_post_activity",
       "creator_max_engaged_accounts",
       "creator_max_followers",
@@ -3723,6 +3949,9 @@ public class IGUser extends APINode {
       "creator_min_followers",
       "creator_states",
       "custom_audience_id",
+      "exclude_messaged_creators",
+      "featured_in_paid_ads",
+      "has_portfolio",
       "has_public_contact_email",
       "is_paid_partnership_messages_enabled",
       "major_audience_age_bucket",
@@ -3739,6 +3968,7 @@ public class IGUser extends APINode {
       "similar_to_creators",
       "username",
       "usernames",
+      "verified_account",
     };
 
     public static final String[] FIELDS = {
@@ -3748,6 +3978,7 @@ public class IGUser extends APINode {
       "category",
       "country",
       "email",
+      "facebook_messaging_id",
       "gender",
       "has_brand_partnership_experience",
       "id",
@@ -3767,31 +3998,31 @@ public class IGUser extends APINode {
     };
 
     @Override
-    public APINodeList<IGUserExportForCAM> parseResponse(String response, String header) throws APIException {
-      return IGUserExportForCAM.parseResponse(response, getContext(), this, header);
+    public APINodeList<UserExportForCAM> parseResponse(String response, String header) throws APIException {
+      return UserExportForCAM.parseResponse(response, getContext(), this, header);
     }
 
     @Override
-    public APINodeList<IGUserExportForCAM> execute() throws APIException {
+    public APINodeList<UserExportForCAM> execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public APINodeList<IGUserExportForCAM> execute(Map<String, Object> extraParams) throws APIException {
+    public APINodeList<UserExportForCAM> execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
       lastResponse = parseResponse(rw.getBody(),rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<APINodeList<IGUserExportForCAM>> executeAsync() throws APIException {
+    public ListenableFuture<APINodeList<UserExportForCAM>> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<APINodeList<IGUserExportForCAM>> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<APINodeList<UserExportForCAM>> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<IGUserExportForCAM>>() {
-           public APINodeList<IGUserExportForCAM> apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, APINodeList<UserExportForCAM>>() {
+           public APINodeList<UserExportForCAM> apply(ResponseWrapper result) {
              try {
                return APIRequestGetCreatorMarketPlaceCreators.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
@@ -3829,7 +4060,7 @@ public class IGUser extends APINode {
       return this;
     }
 
-    public APIRequestGetCreatorMarketPlaceCreators setCreatorCountries (List<IGUserExportForCAM.EnumCreatorCountries> creatorCountries) {
+    public APIRequestGetCreatorMarketPlaceCreators setCreatorCountries (List<UserExportForCAM.EnumCreatorCountries> creatorCountries) {
       this.setParam("creator_countries", creatorCountries);
       return this;
     }
@@ -3847,7 +4078,7 @@ public class IGUser extends APINode {
       return this;
     }
 
-    public APIRequestGetCreatorMarketPlaceCreators setCreatorGender (List<IGUserExportForCAM.EnumCreatorGender> creatorGender) {
+    public APIRequestGetCreatorMarketPlaceCreators setCreatorGender (List<UserExportForCAM.EnumCreatorGender> creatorGender) {
       this.setParam("creator_gender", creatorGender);
       return this;
     }
@@ -3862,6 +4093,15 @@ public class IGUser extends APINode {
     }
     public APIRequestGetCreatorMarketPlaceCreators setCreatorInterests (String creatorInterests) {
       this.setParam("creator_interests", creatorInterests);
+      return this;
+    }
+
+    public APIRequestGetCreatorMarketPlaceCreators setCreatorLanguage (List<UserExportForCAM.EnumCreatorLanguage> creatorLanguage) {
+      this.setParam("creator_language", creatorLanguage);
+      return this;
+    }
+    public APIRequestGetCreatorMarketPlaceCreators setCreatorLanguage (String creatorLanguage) {
+      this.setParam("creator_language", creatorLanguage);
       return this;
     }
 
@@ -3924,6 +4164,33 @@ public class IGUser extends APINode {
       return this;
     }
 
+    public APIRequestGetCreatorMarketPlaceCreators setExcludeMessagedCreators (Boolean excludeMessagedCreators) {
+      this.setParam("exclude_messaged_creators", excludeMessagedCreators);
+      return this;
+    }
+    public APIRequestGetCreatorMarketPlaceCreators setExcludeMessagedCreators (String excludeMessagedCreators) {
+      this.setParam("exclude_messaged_creators", excludeMessagedCreators);
+      return this;
+    }
+
+    public APIRequestGetCreatorMarketPlaceCreators setFeaturedInPaidAds (Boolean featuredInPaidAds) {
+      this.setParam("featured_in_paid_ads", featuredInPaidAds);
+      return this;
+    }
+    public APIRequestGetCreatorMarketPlaceCreators setFeaturedInPaidAds (String featuredInPaidAds) {
+      this.setParam("featured_in_paid_ads", featuredInPaidAds);
+      return this;
+    }
+
+    public APIRequestGetCreatorMarketPlaceCreators setHasPortfolio (Boolean hasPortfolio) {
+      this.setParam("has_portfolio", hasPortfolio);
+      return this;
+    }
+    public APIRequestGetCreatorMarketPlaceCreators setHasPortfolio (String hasPortfolio) {
+      this.setParam("has_portfolio", hasPortfolio);
+      return this;
+    }
+
     public APIRequestGetCreatorMarketPlaceCreators setHasPublicContactEmail (Boolean hasPublicContactEmail) {
       this.setParam("has_public_contact_email", hasPublicContactEmail);
       return this;
@@ -3951,7 +4218,7 @@ public class IGUser extends APINode {
       return this;
     }
 
-    public APIRequestGetCreatorMarketPlaceCreators setMajorAudienceCountries (List<IGUserExportForCAM.EnumMajorAudienceCountries> majorAudienceCountries) {
+    public APIRequestGetCreatorMarketPlaceCreators setMajorAudienceCountries (List<UserExportForCAM.EnumMajorAudienceCountries> majorAudienceCountries) {
       this.setParam("major_audience_countries", majorAudienceCountries);
       return this;
     }
@@ -3969,7 +4236,7 @@ public class IGUser extends APINode {
       return this;
     }
 
-    public APIRequestGetCreatorMarketPlaceCreators setMajorAudienceGender (List<IGUserExportForCAM.EnumMajorAudienceGender> majorAudienceGender) {
+    public APIRequestGetCreatorMarketPlaceCreators setMajorAudienceGender (List<UserExportForCAM.EnumMajorAudienceGender> majorAudienceGender) {
       this.setParam("major_audience_gender", majorAudienceGender);
       return this;
     }
@@ -3992,7 +4259,7 @@ public class IGUser extends APINode {
       return this;
     }
 
-    public APIRequestGetCreatorMarketPlaceCreators setPlatform (IGUserExportForCAM.EnumPlatform platform) {
+    public APIRequestGetCreatorMarketPlaceCreators setPlatform (UserExportForCAM.EnumPlatform platform) {
       this.setParam("platform", platform);
       return this;
     }
@@ -4006,7 +4273,7 @@ public class IGUser extends APINode {
       return this;
     }
 
-    public APIRequestGetCreatorMarketPlaceCreators setRecommendationType (IGUserExportForCAM.EnumRecommendationType recommendationType) {
+    public APIRequestGetCreatorMarketPlaceCreators setRecommendationType (UserExportForCAM.EnumRecommendationType recommendationType) {
       this.setParam("recommendation_type", recommendationType);
       return this;
     }
@@ -4053,6 +4320,15 @@ public class IGUser extends APINode {
     }
     public APIRequestGetCreatorMarketPlaceCreators setUsernames (String usernames) {
       this.setParam("usernames", usernames);
+      return this;
+    }
+
+    public APIRequestGetCreatorMarketPlaceCreators setVerifiedAccount (Boolean verifiedAccount) {
+      this.setParam("verified_account", verifiedAccount);
+      return this;
+    }
+    public APIRequestGetCreatorMarketPlaceCreators setVerifiedAccount (String verifiedAccount) {
+      this.setParam("verified_account", verifiedAccount);
       return this;
     }
 
@@ -4132,6 +4408,13 @@ public class IGUser extends APINode {
     }
     public APIRequestGetCreatorMarketPlaceCreators requestEmailField (boolean value) {
       this.requestField("email", value);
+      return this;
+    }
+    public APIRequestGetCreatorMarketPlaceCreators requestFacebookMessagingIdField () {
+      return this.requestFacebookMessagingIdField(true);
+    }
+    public APIRequestGetCreatorMarketPlaceCreators requestFacebookMessagingIdField (boolean value) {
+      this.requestField("facebook_messaging_id", value);
       return this;
     }
     public APIRequestGetCreatorMarketPlaceCreators requestGenderField () {
@@ -4474,6 +4757,131 @@ public class IGUser extends APINode {
 
     @Override
     public APIRequestCreateDataset requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestCreateExtendThreadControl extends APIRequest<IGUser> {
+
+    IGUser lastResponse = null;
+    @Override
+    public IGUser getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "duration",
+      "recipient",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public IGUser parseResponse(String response, String header) throws APIException {
+      return IGUser.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public IGUser execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public IGUser execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<IGUser> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<IGUser> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, IGUser>() {
+           public IGUser apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateExtendThreadControl.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateExtendThreadControl(String nodeId, APIContext context) {
+      super(context, nodeId, "/extend_thread_control", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateExtendThreadControl setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateExtendThreadControl setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateExtendThreadControl setDuration (Long duration) {
+      this.setParam("duration", duration);
+      return this;
+    }
+    public APIRequestCreateExtendThreadControl setDuration (String duration) {
+      this.setParam("duration", duration);
+      return this;
+    }
+
+    public APIRequestCreateExtendThreadControl setRecipient (Object recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+    public APIRequestCreateExtendThreadControl setRecipient (String recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+
+    public APIRequestCreateExtendThreadControl requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateExtendThreadControl requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateExtendThreadControl requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateExtendThreadControl requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateExtendThreadControl requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateExtendThreadControl requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }
@@ -4966,6 +5374,7 @@ public class IGUser extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -5255,6 +5664,13 @@ public class IGUser extends APINode {
       this.requestField("like_count", value);
       return this;
     }
+    public APIRequestGetLiveMedia requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGetLiveMedia requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
+      return this;
+    }
     public APIRequestGetLiveMedia requestLiveStatusField () {
       return this.requestLiveStatusField(true);
     }
@@ -5427,6 +5843,7 @@ public class IGUser extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -5716,6 +6133,13 @@ public class IGUser extends APINode {
       this.requestField("like_count", value);
       return this;
     }
+    public APIRequestGetMedia requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGetMedia requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
+      return this;
+    }
     public APIRequestGetMedia requestLiveStatusField () {
       return this.requestLiveStatusField(true);
     }
@@ -5867,6 +6291,7 @@ public class IGUser extends APINode {
       "children",
       "collaborators",
       "cover_url",
+      "cross_post_to_threads",
       "image_url",
       "is_ai_generated",
       "is_carousel_item",
@@ -5878,7 +6303,9 @@ public class IGUser extends APINode {
       "poll_attachment",
       "product_tags",
       "share_to_feed",
+      "show_ig_link",
       "thumb_offset",
+      "title",
       "trial_params",
       "upload_type",
       "user_tags",
@@ -5994,6 +6421,15 @@ public class IGUser extends APINode {
       return this;
     }
 
+    public APIRequestCreateMedia setCrossPostToThreads (Boolean crossPostToThreads) {
+      this.setParam("cross_post_to_threads", crossPostToThreads);
+      return this;
+    }
+    public APIRequestCreateMedia setCrossPostToThreads (String crossPostToThreads) {
+      this.setParam("cross_post_to_threads", crossPostToThreads);
+      return this;
+    }
+
     public APIRequestCreateMedia setImageUrl (String imageUrl) {
       this.setParam("image_url", imageUrl);
       return this;
@@ -6077,8 +6513,22 @@ public class IGUser extends APINode {
       return this;
     }
 
+    public APIRequestCreateMedia setShowIgLink (Boolean showIgLink) {
+      this.setParam("show_ig_link", showIgLink);
+      return this;
+    }
+    public APIRequestCreateMedia setShowIgLink (String showIgLink) {
+      this.setParam("show_ig_link", showIgLink);
+      return this;
+    }
+
     public APIRequestCreateMedia setThumbOffset (String thumbOffset) {
       this.setParam("thumb_offset", thumbOffset);
+      return this;
+    }
+
+    public APIRequestCreateMedia setTitle (String title) {
+      this.setParam("title", title);
       return this;
     }
 
@@ -6380,6 +6830,673 @@ public class IGUser extends APINode {
 
     @Override
     public APIRequestCreateMention requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestCreateMessageAttachment extends APIRequest<APINode> {
+
+    APINode lastResponse = null;
+    @Override
+    public APINode getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "message",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINode parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public APINode execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINode execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINode> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINode>() {
+           public APINode apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateMessageAttachment.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateMessageAttachment(String nodeId, APIContext context) {
+      super(context, nodeId, "/message_attachments", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateMessageAttachment setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessageAttachment setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateMessageAttachment setMessage (Map<String, String> message) {
+      this.setParam("message", message);
+      return this;
+    }
+    public APIRequestCreateMessageAttachment setMessage (String message) {
+      this.setParam("message", message);
+      return this;
+    }
+
+    public APIRequestCreateMessageAttachment requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateMessageAttachment requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessageAttachment requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateMessageAttachment requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessageAttachment requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessageAttachment requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestCreateMessage extends APIRequest<APINode> {
+
+    APINode lastResponse = null;
+    @Override
+    public APINode getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "folder",
+      "message",
+      "messaging_type",
+      "payload",
+      "recipient",
+      "reply_to",
+      "sender_action",
+      "tag",
+      "thread_control",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINode parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public APINode execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINode execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINode> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINode>() {
+           public APINode apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateMessage.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateMessage(String nodeId, APIContext context) {
+      super(context, nodeId, "/messages", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateMessage setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessage setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateMessage setFolder (EnumFolder folder) {
+      this.setParam("folder", folder);
+      return this;
+    }
+    public APIRequestCreateMessage setFolder (String folder) {
+      this.setParam("folder", folder);
+      return this;
+    }
+
+    public APIRequestCreateMessage setMessage (Object message) {
+      this.setParam("message", message);
+      return this;
+    }
+    public APIRequestCreateMessage setMessage (String message) {
+      this.setParam("message", message);
+      return this;
+    }
+
+    public APIRequestCreateMessage setMessagingType (EnumMessagingType messagingType) {
+      this.setParam("messaging_type", messagingType);
+      return this;
+    }
+    public APIRequestCreateMessage setMessagingType (String messagingType) {
+      this.setParam("messaging_type", messagingType);
+      return this;
+    }
+
+    public APIRequestCreateMessage setPayload (String payload) {
+      this.setParam("payload", payload);
+      return this;
+    }
+
+    public APIRequestCreateMessage setRecipient (Object recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+    public APIRequestCreateMessage setRecipient (String recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+
+    public APIRequestCreateMessage setReplyTo (Object replyTo) {
+      this.setParam("reply_to", replyTo);
+      return this;
+    }
+    public APIRequestCreateMessage setReplyTo (String replyTo) {
+      this.setParam("reply_to", replyTo);
+      return this;
+    }
+
+    public APIRequestCreateMessage setSenderAction (EnumSenderAction senderAction) {
+      this.setParam("sender_action", senderAction);
+      return this;
+    }
+    public APIRequestCreateMessage setSenderAction (String senderAction) {
+      this.setParam("sender_action", senderAction);
+      return this;
+    }
+
+    public APIRequestCreateMessage setTag (Object tag) {
+      this.setParam("tag", tag);
+      return this;
+    }
+    public APIRequestCreateMessage setTag (String tag) {
+      this.setParam("tag", tag);
+      return this;
+    }
+
+    public APIRequestCreateMessage setThreadControl (Object threadControl) {
+      this.setParam("thread_control", threadControl);
+      return this;
+    }
+    public APIRequestCreateMessage setThreadControl (String threadControl) {
+      this.setParam("thread_control", threadControl);
+      return this;
+    }
+
+    public APIRequestCreateMessage requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateMessage requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessage requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateMessage requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessage requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessage requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestDeleteMessengerProfile extends APIRequest<APINode> {
+
+    APINodeList<APINode> lastResponse = null;
+    @Override
+    public APINodeList<APINode> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "fields",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<APINode> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
+             try {
+               return APIRequestDeleteMessengerProfile.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestDeleteMessengerProfile(String nodeId, APIContext context) {
+      super(context, nodeId, "/messenger_profile", "DELETE", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestDeleteMessengerProfile setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteMessengerProfile setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestDeleteMessengerProfile setFields (List<EnumFields> fields) {
+      this.setParam("fields", fields);
+      return this;
+    }
+    public APIRequestDeleteMessengerProfile setFields (String fields) {
+      this.setParam("fields", fields);
+      return this;
+    }
+
+    public APIRequestDeleteMessengerProfile requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestDeleteMessengerProfile requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteMessengerProfile requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestDeleteMessengerProfile requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteMessengerProfile requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteMessengerProfile requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestGetMessengerProfile extends APIRequest<IGUserMessengerProfile> {
+
+    APINodeList<IGUserMessengerProfile> lastResponse = null;
+    @Override
+    public APINodeList<IGUserMessengerProfile> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+      "ice_breakers",
+      "persistent_menu",
+    };
+
+    @Override
+    public APINodeList<IGUserMessengerProfile> parseResponse(String response, String header) throws APIException {
+      return IGUserMessengerProfile.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<IGUserMessengerProfile> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<IGUserMessengerProfile> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<IGUserMessengerProfile>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<IGUserMessengerProfile>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<IGUserMessengerProfile>>() {
+           public APINodeList<IGUserMessengerProfile> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetMessengerProfile.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestGetMessengerProfile(String nodeId, APIContext context) {
+      super(context, nodeId, "/messenger_profile", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetMessengerProfile setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetMessengerProfile setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetMessengerProfile requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetMessengerProfile requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetMessengerProfile requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetMessengerProfile requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetMessengerProfile requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetMessengerProfile requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+    public APIRequestGetMessengerProfile requestIceBreakersField () {
+      return this.requestIceBreakersField(true);
+    }
+    public APIRequestGetMessengerProfile requestIceBreakersField (boolean value) {
+      this.requestField("ice_breakers", value);
+      return this;
+    }
+    public APIRequestGetMessengerProfile requestPersistentMenuField () {
+      return this.requestPersistentMenuField(true);
+    }
+    public APIRequestGetMessengerProfile requestPersistentMenuField (boolean value) {
+      this.requestField("persistent_menu", value);
+      return this;
+    }
+  }
+
+  public static class APIRequestCreateMessengerProfile extends APIRequest<IGUserMessengerProfile> {
+
+    IGUserMessengerProfile lastResponse = null;
+    @Override
+    public IGUserMessengerProfile getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "ice_breakers",
+      "persistent_menu",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public IGUserMessengerProfile parseResponse(String response, String header) throws APIException {
+      return IGUserMessengerProfile.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public IGUserMessengerProfile execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public IGUserMessengerProfile execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<IGUserMessengerProfile> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<IGUserMessengerProfile> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, IGUserMessengerProfile>() {
+           public IGUserMessengerProfile apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateMessengerProfile.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateMessengerProfile(String nodeId, APIContext context) {
+      super(context, nodeId, "/messenger_profile", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateMessengerProfile setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessengerProfile setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateMessengerProfile setIceBreakers (List<Map<String, String>> iceBreakers) {
+      this.setParam("ice_breakers", iceBreakers);
+      return this;
+    }
+    public APIRequestCreateMessengerProfile setIceBreakers (String iceBreakers) {
+      this.setParam("ice_breakers", iceBreakers);
+      return this;
+    }
+
+    public APIRequestCreateMessengerProfile setPersistentMenu (List<Object> persistentMenu) {
+      this.setParam("persistent_menu", persistentMenu);
+      return this;
+    }
+    public APIRequestCreateMessengerProfile setPersistentMenu (String persistentMenu) {
+      this.setParam("persistent_menu", persistentMenu);
+      return this;
+    }
+
+    public APIRequestCreateMessengerProfile requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateMessengerProfile requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessengerProfile requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateMessengerProfile requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessengerProfile requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateMessengerProfile requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }
@@ -6718,6 +7835,133 @@ public class IGUser extends APINode {
       this.requestField("id", value);
       return this;
     }
+  }
+
+  public static class APIRequestCreatePassThreadControl extends APIRequest<APINode> {
+
+    APINode lastResponse = null;
+    @Override
+    public APINode getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "metadata",
+      "recipient",
+      "target_app_id",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINode parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public APINode execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINode execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINode> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINode>() {
+           public APINode apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreatePassThreadControl.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreatePassThreadControl(String nodeId, APIContext context) {
+      super(context, nodeId, "/pass_thread_control", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreatePassThreadControl setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreatePassThreadControl setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreatePassThreadControl setMetadata (String metadata) {
+      this.setParam("metadata", metadata);
+      return this;
+    }
+
+    public APIRequestCreatePassThreadControl setRecipient (Object recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+    public APIRequestCreatePassThreadControl setRecipient (String recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+
+    public APIRequestCreatePassThreadControl setTargetAppId (String targetAppId) {
+      this.setParam("target_app_id", targetAppId);
+      return this;
+    }
+
+    public APIRequestCreatePassThreadControl requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreatePassThreadControl requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreatePassThreadControl requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreatePassThreadControl requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreatePassThreadControl requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreatePassThreadControl requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
   }
 
   public static class APIRequestGetProductAppeal extends APIRequest<IGShoppingProductAppeal> {
@@ -7109,6 +8353,242 @@ public class IGUser extends APINode {
     }
   }
 
+  public static class APIRequestCreateReleaseThreadControl extends APIRequest<IGUser> {
+
+    IGUser lastResponse = null;
+    @Override
+    public IGUser getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "recipient",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public IGUser parseResponse(String response, String header) throws APIException {
+      return IGUser.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public IGUser execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public IGUser execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<IGUser> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<IGUser> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, IGUser>() {
+           public IGUser apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateReleaseThreadControl.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateReleaseThreadControl(String nodeId, APIContext context) {
+      super(context, nodeId, "/release_thread_control", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateReleaseThreadControl setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateReleaseThreadControl setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateReleaseThreadControl setRecipient (Object recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+    public APIRequestCreateReleaseThreadControl setRecipient (String recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+
+    public APIRequestCreateReleaseThreadControl requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateReleaseThreadControl requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateReleaseThreadControl requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateReleaseThreadControl requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateReleaseThreadControl requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateReleaseThreadControl requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestCreateRequestThreadControl extends APIRequest<APINode> {
+
+    APINode lastResponse = null;
+    @Override
+    public APINode getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "metadata",
+      "recipient",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINode parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public APINode execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINode execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINode> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINode>() {
+           public APINode apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateRequestThreadControl.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateRequestThreadControl(String nodeId, APIContext context) {
+      super(context, nodeId, "/request_thread_control", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateRequestThreadControl setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateRequestThreadControl setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateRequestThreadControl setMetadata (String metadata) {
+      this.setParam("metadata", metadata);
+      return this;
+    }
+
+    public APIRequestCreateRequestThreadControl setRecipient (Object recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+    public APIRequestCreateRequestThreadControl setRecipient (String recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+
+    public APIRequestCreateRequestThreadControl requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateRequestThreadControl requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateRequestThreadControl requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateRequestThreadControl requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateRequestThreadControl requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateRequestThreadControl requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
   public static class APIRequestGetScheduledMedia extends APIRequest<ShadowIGScheduledMedia> {
 
     APINodeList<ShadowIGScheduledMedia> lastResponse = null;
@@ -7297,6 +8777,7 @@ public class IGUser extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -7576,6 +9057,13 @@ public class IGUser extends APINode {
       this.requestField("like_count", value);
       return this;
     }
+    public APIRequestGetStories requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGetStories requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
+      return this;
+    }
     public APIRequestGetStories requestLiveStatusField () {
       return this.requestLiveStatusField(true);
     }
@@ -7711,6 +9199,347 @@ public class IGUser extends APINode {
     }
   }
 
+  public static class APIRequestDeleteSubscribedApps extends APIRequest<APINode> {
+
+    APINodeList<APINode> lastResponse = null;
+    @Override
+    public APINodeList<APINode> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<APINode> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
+             try {
+               return APIRequestDeleteSubscribedApps.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestDeleteSubscribedApps(String nodeId, APIContext context) {
+      super(context, nodeId, "/subscribed_apps", "DELETE", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestDeleteSubscribedApps setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteSubscribedApps setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestDeleteSubscribedApps requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestDeleteSubscribedApps requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteSubscribedApps requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestDeleteSubscribedApps requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteSubscribedApps requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteSubscribedApps requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestGetSubscribedApps extends APIRequest<IGUserSubscribedAppsData> {
+
+    APINodeList<IGUserSubscribedAppsData> lastResponse = null;
+    @Override
+    public APINodeList<IGUserSubscribedAppsData> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+    };
+
+    public static final String[] FIELDS = {
+      "app_id",
+      "subscribed_fields",
+    };
+
+    @Override
+    public APINodeList<IGUserSubscribedAppsData> parseResponse(String response, String header) throws APIException {
+      return IGUserSubscribedAppsData.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<IGUserSubscribedAppsData> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<IGUserSubscribedAppsData> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<IGUserSubscribedAppsData>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<IGUserSubscribedAppsData>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<IGUserSubscribedAppsData>>() {
+           public APINodeList<IGUserSubscribedAppsData> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetSubscribedApps.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestGetSubscribedApps(String nodeId, APIContext context) {
+      super(context, nodeId, "/subscribed_apps", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetSubscribedApps setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetSubscribedApps setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetSubscribedApps requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetSubscribedApps requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetSubscribedApps requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetSubscribedApps requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetSubscribedApps requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetSubscribedApps requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+    public APIRequestGetSubscribedApps requestAppIdField () {
+      return this.requestAppIdField(true);
+    }
+    public APIRequestGetSubscribedApps requestAppIdField (boolean value) {
+      this.requestField("app_id", value);
+      return this;
+    }
+    public APIRequestGetSubscribedApps requestSubscribedFieldsField () {
+      return this.requestSubscribedFieldsField(true);
+    }
+    public APIRequestGetSubscribedApps requestSubscribedFieldsField (boolean value) {
+      this.requestField("subscribed_fields", value);
+      return this;
+    }
+  }
+
+  public static class APIRequestCreateSubscribedApp extends APIRequest<IGUser> {
+
+    IGUser lastResponse = null;
+    @Override
+    public IGUser getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "subscribed_fields",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public IGUser parseResponse(String response, String header) throws APIException {
+      return IGUser.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public IGUser execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public IGUser execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<IGUser> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<IGUser> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, IGUser>() {
+           public IGUser apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateSubscribedApp.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateSubscribedApp(String nodeId, APIContext context) {
+      super(context, nodeId, "/subscribed_apps", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateSubscribedApp setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateSubscribedApp setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateSubscribedApp setSubscribedFields (List<IGUser.EnumSubscribedFields> subscribedFields) {
+      this.setParam("subscribed_fields", subscribedFields);
+      return this;
+    }
+    public APIRequestCreateSubscribedApp setSubscribedFields (String subscribedFields) {
+      this.setParam("subscribed_fields", subscribedFields);
+      return this;
+    }
+
+    public APIRequestCreateSubscribedApp requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateSubscribedApp requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateSubscribedApp requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateSubscribedApp requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateSubscribedApp requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateSubscribedApp requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
   public static class APIRequestGetTags extends APIRequest<IGMedia> {
 
     APINodeList<IGMedia> lastResponse = null;
@@ -7749,6 +9578,7 @@ public class IGUser extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -8043,6 +9873,13 @@ public class IGUser extends APINode {
       this.requestField("like_count", value);
       return this;
     }
+    public APIRequestGetTags requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGetTags requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
+      return this;
+    }
     public APIRequestGetTags requestLiveStatusField () {
       return this.requestLiveStatusField(true);
     }
@@ -8174,6 +10011,246 @@ public class IGUser extends APINode {
     }
     public APIRequestGetTags requestViewCountField (boolean value) {
       this.requestField("view_count", value);
+      return this;
+    }
+  }
+
+  public static class APIRequestCreateTakeThreadControl extends APIRequest<APINode> {
+
+    APINode lastResponse = null;
+    @Override
+    public APINode getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "metadata",
+      "recipient",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINode parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public APINode execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINode execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINode> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINode>() {
+           public APINode apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateTakeThreadControl.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateTakeThreadControl(String nodeId, APIContext context) {
+      super(context, nodeId, "/take_thread_control", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateTakeThreadControl setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateTakeThreadControl setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateTakeThreadControl setMetadata (String metadata) {
+      this.setParam("metadata", metadata);
+      return this;
+    }
+
+    public APIRequestCreateTakeThreadControl setRecipient (Object recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+    public APIRequestCreateTakeThreadControl setRecipient (String recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+
+    public APIRequestCreateTakeThreadControl requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateTakeThreadControl requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateTakeThreadControl requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateTakeThreadControl requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateTakeThreadControl requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateTakeThreadControl requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
+  public static class APIRequestGetThreadOwner extends APIRequest<ShadowIGUserThreadOwner> {
+
+    APINodeList<ShadowIGUserThreadOwner> lastResponse = null;
+    @Override
+    public APINodeList<ShadowIGUserThreadOwner> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "recipient",
+    };
+
+    public static final String[] FIELDS = {
+      "thread_owner",
+    };
+
+    @Override
+    public APINodeList<ShadowIGUserThreadOwner> parseResponse(String response, String header) throws APIException {
+      return ShadowIGUserThreadOwner.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<ShadowIGUserThreadOwner> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<ShadowIGUserThreadOwner> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<ShadowIGUserThreadOwner>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<ShadowIGUserThreadOwner>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<ShadowIGUserThreadOwner>>() {
+           public APINodeList<ShadowIGUserThreadOwner> apply(ResponseWrapper result) {
+             try {
+               return APIRequestGetThreadOwner.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestGetThreadOwner(String nodeId, APIContext context) {
+      super(context, nodeId, "/thread_owner", "GET", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestGetThreadOwner setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetThreadOwner setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestGetThreadOwner setRecipient (String recipient) {
+      this.setParam("recipient", recipient);
+      return this;
+    }
+
+    public APIRequestGetThreadOwner requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestGetThreadOwner requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetThreadOwner requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestGetThreadOwner requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestGetThreadOwner requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestGetThreadOwner requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+    public APIRequestGetThreadOwner requestThreadOwnerField () {
+      return this.requestThreadOwnerField(true);
+    }
+    public APIRequestGetThreadOwner requestThreadOwnerField (boolean value) {
+      this.requestField("thread_owner", value);
       return this;
     }
   }
@@ -8464,6 +10541,117 @@ public class IGUser extends APINode {
 
   }
 
+  public static class APIRequestDeleteWelcomeMessageFlows extends APIRequest<APINode> {
+
+    APINodeList<APINode> lastResponse = null;
+    @Override
+    public APINodeList<APINode> getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "flow_id",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header);
+    }
+
+    @Override
+    public APINodeList<APINode> execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, APINodeList<APINode>>() {
+           public APINodeList<APINode> apply(ResponseWrapper result) {
+             try {
+               return APIRequestDeleteWelcomeMessageFlows.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestDeleteWelcomeMessageFlows(String nodeId, APIContext context) {
+      super(context, nodeId, "/welcome_message_flows", "DELETE", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestDeleteWelcomeMessageFlows setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteWelcomeMessageFlows setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestDeleteWelcomeMessageFlows setFlowId (String flowId) {
+      this.setParam("flow_id", flowId);
+      return this;
+    }
+
+    public APIRequestDeleteWelcomeMessageFlows requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestDeleteWelcomeMessageFlows requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteWelcomeMessageFlows requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestDeleteWelcomeMessageFlows requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteWelcomeMessageFlows requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestDeleteWelcomeMessageFlows requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
+  }
+
   public static class APIRequestGetWelcomeMessageFlows extends APIRequest<ShadowIGUserCTXPartnerAppWelcomeMessageFlow> {
 
     APINodeList<ShadowIGUserCTXPartnerAppWelcomeMessageFlow> lastResponse = null;
@@ -8643,6 +10831,143 @@ public class IGUser extends APINode {
       this.requestField("welcome_message_flow", value);
       return this;
     }
+  }
+
+  public static class APIRequestCreateWelcomeMessageFlow extends APIRequest<ShadowIGUserCTXPartnerAppWelcomeMessageFlow> {
+
+    ShadowIGUserCTXPartnerAppWelcomeMessageFlow lastResponse = null;
+    @Override
+    public ShadowIGUserCTXPartnerAppWelcomeMessageFlow getLastResponse() {
+      return lastResponse;
+    }
+    public static final String[] PARAMS = {
+      "eligible_platforms",
+      "flow_id",
+      "name",
+      "welcome_message_flow",
+    };
+
+    public static final String[] FIELDS = {
+    };
+
+    @Override
+    public ShadowIGUserCTXPartnerAppWelcomeMessageFlow parseResponse(String response, String header) throws APIException {
+      return ShadowIGUserCTXPartnerAppWelcomeMessageFlow.parseResponse(response, getContext(), this, header).head();
+    }
+
+    @Override
+    public ShadowIGUserCTXPartnerAppWelcomeMessageFlow execute() throws APIException {
+      return execute(new HashMap<String, Object>());
+    }
+
+    @Override
+    public ShadowIGUserCTXPartnerAppWelcomeMessageFlow execute(Map<String, Object> extraParams) throws APIException {
+      ResponseWrapper rw = executeInternal(extraParams);
+      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
+      return lastResponse;
+    }
+
+    public ListenableFuture<ShadowIGUserCTXPartnerAppWelcomeMessageFlow> executeAsync() throws APIException {
+      return executeAsync(new HashMap<String, Object>());
+    };
+
+    public ListenableFuture<ShadowIGUserCTXPartnerAppWelcomeMessageFlow> executeAsync(Map<String, Object> extraParams) throws APIException {
+      return Futures.transform(
+        executeAsyncInternal(extraParams),
+        new Function<ResponseWrapper, ShadowIGUserCTXPartnerAppWelcomeMessageFlow>() {
+           public ShadowIGUserCTXPartnerAppWelcomeMessageFlow apply(ResponseWrapper result) {
+             try {
+               return APIRequestCreateWelcomeMessageFlow.this.parseResponse(result.getBody(), result.getHeader());
+             } catch (Exception e) {
+               throw new RuntimeException(e);
+             }
+           }
+         },
+         MoreExecutors.directExecutor()
+      );
+    };
+
+    public APIRequestCreateWelcomeMessageFlow(String nodeId, APIContext context) {
+      super(context, nodeId, "/welcome_message_flows", "POST", Arrays.asList(PARAMS));
+    }
+
+    @Override
+    public APIRequestCreateWelcomeMessageFlow setParam(String param, Object value) {
+      setParamInternal(param, value);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateWelcomeMessageFlow setParams(Map<String, Object> params) {
+      setParamsInternal(params);
+      return this;
+    }
+
+
+    public APIRequestCreateWelcomeMessageFlow setEligiblePlatforms (List<ShadowIGUserCTXPartnerAppWelcomeMessageFlow.EnumEligiblePlatforms> eligiblePlatforms) {
+      this.setParam("eligible_platforms", eligiblePlatforms);
+      return this;
+    }
+    public APIRequestCreateWelcomeMessageFlow setEligiblePlatforms (String eligiblePlatforms) {
+      this.setParam("eligible_platforms", eligiblePlatforms);
+      return this;
+    }
+
+    public APIRequestCreateWelcomeMessageFlow setFlowId (String flowId) {
+      this.setParam("flow_id", flowId);
+      return this;
+    }
+
+    public APIRequestCreateWelcomeMessageFlow setName (String name) {
+      this.setParam("name", name);
+      return this;
+    }
+
+    public APIRequestCreateWelcomeMessageFlow setWelcomeMessageFlow (List<Object> welcomeMessageFlow) {
+      this.setParam("welcome_message_flow", welcomeMessageFlow);
+      return this;
+    }
+    public APIRequestCreateWelcomeMessageFlow setWelcomeMessageFlow (String welcomeMessageFlow) {
+      this.setParam("welcome_message_flow", welcomeMessageFlow);
+      return this;
+    }
+
+    public APIRequestCreateWelcomeMessageFlow requestAllFields () {
+      return this.requestAllFields(true);
+    }
+
+    public APIRequestCreateWelcomeMessageFlow requestAllFields (boolean value) {
+      for (String field : FIELDS) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateWelcomeMessageFlow requestFields (List<String> fields) {
+      return this.requestFields(fields, true);
+    }
+
+    @Override
+    public APIRequestCreateWelcomeMessageFlow requestFields (List<String> fields, boolean value) {
+      for (String field : fields) {
+        this.requestField(field, value);
+      }
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateWelcomeMessageFlow requestField (String field) {
+      this.requestField(field, true);
+      return this;
+    }
+
+    @Override
+    public APIRequestCreateWelcomeMessageFlow requestField (String field, boolean value) {
+      this.requestFieldInternal(field, value);
+      return this;
+    }
+
   }
 
   public static class APIRequestGet extends APIRequest<IGUser> {
@@ -8922,6 +11247,176 @@ public class IGUser extends APINode {
       this.requestField("website", value);
       return this;
     }
+  }
+
+  public static enum EnumSubscribedFields {
+      @SerializedName("comment_poll_response")
+      VALUE_COMMENT_POLL_RESPONSE("comment_poll_response"),
+      @SerializedName("comments")
+      VALUE_COMMENTS("comments"),
+      @SerializedName("follow")
+      VALUE_FOLLOW("follow"),
+      @SerializedName("live_comments")
+      VALUE_LIVE_COMMENTS("live_comments"),
+      @SerializedName("mentions")
+      VALUE_MENTIONS("mentions"),
+      @SerializedName("message_edit")
+      VALUE_MESSAGE_EDIT("message_edit"),
+      @SerializedName("message_reactions")
+      VALUE_MESSAGE_REACTIONS("message_reactions"),
+      @SerializedName("messages")
+      VALUE_MESSAGES("messages"),
+      @SerializedName("messaging_optins")
+      VALUE_MESSAGING_OPTINS("messaging_optins"),
+      @SerializedName("messaging_postbacks")
+      VALUE_MESSAGING_POSTBACKS("messaging_postbacks"),
+      @SerializedName("messaging_referral")
+      VALUE_MESSAGING_REFERRAL("messaging_referral"),
+      @SerializedName("messaging_seen")
+      VALUE_MESSAGING_SEEN("messaging_seen"),
+      @SerializedName("onboarding_welcome_message_series")
+      VALUE_ONBOARDING_WELCOME_MESSAGE_SERIES("onboarding_welcome_message_series"),
+      @SerializedName("share_to_story")
+      VALUE_SHARE_TO_STORY("share_to_story"),
+      @SerializedName("standby")
+      VALUE_STANDBY("standby"),
+      @SerializedName("story_insights")
+      VALUE_STORY_INSIGHTS("story_insights"),
+      @SerializedName("story_poll_response")
+      VALUE_STORY_POLL_RESPONSE("story_poll_response"),
+      ;
+
+      private String value;
+
+      private EnumSubscribedFields(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumPlatform {
+      @SerializedName("INSTAGRAM")
+      VALUE_INSTAGRAM("INSTAGRAM"),
+      @SerializedName("MESSENGER")
+      VALUE_MESSENGER("MESSENGER"),
+      ;
+
+      private String value;
+
+      private EnumPlatform(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumFolder {
+      @SerializedName("PARTNERSHIP")
+      VALUE_PARTNERSHIP("PARTNERSHIP"),
+      ;
+
+      private String value;
+
+      private EnumFolder(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumMessagingType {
+      @SerializedName("MESSAGE_TAG")
+      VALUE_MESSAGE_TAG("MESSAGE_TAG"),
+      @SerializedName("RESPONSE")
+      VALUE_RESPONSE("RESPONSE"),
+      @SerializedName("UPDATE")
+      VALUE_UPDATE("UPDATE"),
+      @SerializedName("UTILITY")
+      VALUE_UTILITY("UTILITY"),
+      ;
+
+      private String value;
+
+      private EnumMessagingType(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumSenderAction {
+      @SerializedName("MARK_SEEN")
+      VALUE_MARK_SEEN("MARK_SEEN"),
+      @SerializedName("REACT")
+      VALUE_REACT("REACT"),
+      @SerializedName("TYPING_OFF")
+      VALUE_TYPING_OFF("TYPING_OFF"),
+      @SerializedName("TYPING_ON")
+      VALUE_TYPING_ON("TYPING_ON"),
+      @SerializedName("UNREACT")
+      VALUE_UNREACT("UNREACT"),
+      ;
+
+      private String value;
+
+      private EnumSenderAction(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumFields {
+      @SerializedName("ACCOUNT_LINKING_URL")
+      VALUE_ACCOUNT_LINKING_URL("ACCOUNT_LINKING_URL"),
+      @SerializedName("COMMANDS")
+      VALUE_COMMANDS("COMMANDS"),
+      @SerializedName("DESCRIPTION")
+      VALUE_DESCRIPTION("DESCRIPTION"),
+      @SerializedName("GET_STARTED")
+      VALUE_GET_STARTED("GET_STARTED"),
+      @SerializedName("HOME_URL")
+      VALUE_HOME_URL("HOME_URL"),
+      @SerializedName("ICE_BREAKERS")
+      VALUE_ICE_BREAKERS("ICE_BREAKERS"),
+      @SerializedName("PERSISTENT_MENU")
+      VALUE_PERSISTENT_MENU("PERSISTENT_MENU"),
+      @SerializedName("PLATFORM")
+      VALUE_PLATFORM("PLATFORM"),
+      @SerializedName("SUBJECT_TO_NEW_EU_PRIVACY_RULES")
+      VALUE_SUBJECT_TO_NEW_EU_PRIVACY_RULES("SUBJECT_TO_NEW_EU_PRIVACY_RULES"),
+      @SerializedName("TITLE")
+      VALUE_TITLE("TITLE"),
+      @SerializedName("WHITELISTED_DOMAINS")
+      VALUE_WHITELISTED_DOMAINS("WHITELISTED_DOMAINS"),
+      ;
+
+      private String value;
+
+      private EnumFields(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
   }
 
   public static enum EnumActions {

@@ -73,6 +73,8 @@ public class AdCreativeGet extends APINode {
   private EnumCategoryMediaSource mCategoryMediaSource = null;
   @SerializedName("contextual_multi_ads")
   private Object mContextualMultiAds = null;
+  @SerializedName("creative_readiness")
+  private Object mCreativeReadiness = null;
   @SerializedName("creative_sourcing_spec")
   private Object mCreativeSourcingSpec = null;
   @SerializedName("degrees_of_freedom_spec")
@@ -483,6 +485,15 @@ public class AdCreativeGet extends APINode {
 
   public AdCreativeGet setFieldContextualMultiAds(Object value) {
     this.mContextualMultiAds = value;
+    return this;
+  }
+
+  public Object getFieldCreativeReadiness() {
+    return mCreativeReadiness;
+  }
+
+  public AdCreativeGet setFieldCreativeReadiness(Object value) {
+    this.mCreativeReadiness = value;
     return this;
   }
 
@@ -1138,6 +1149,8 @@ public class AdCreativeGet extends APINode {
       VALUE_BROWSE_SHOP("BROWSE_SHOP"),
       @SerializedName("BUY")
       VALUE_BUY("BUY"),
+      @SerializedName("BUY_ACTIVITY_TICKETS")
+      VALUE_BUY_ACTIVITY_TICKETS("BUY_ACTIVITY_TICKETS"),
       @SerializedName("BUY_NOW")
       VALUE_BUY_NOW("BUY_NOW"),
       @SerializedName("BUY_TICKETS")
@@ -1356,6 +1369,8 @@ public class AdCreativeGet extends APINode {
       VALUE_START_A_CHAT("START_A_CHAT"),
       @SerializedName("START_ORDER")
       VALUE_START_ORDER("START_ORDER"),
+      @SerializedName("STREAM_NOW")
+      VALUE_STREAM_NOW("STREAM_NOW"),
       @SerializedName("SUBSCRIBE")
       VALUE_SUBSCRIBE("SUBSCRIBE"),
       @SerializedName("SWIPE_UP_PRODUCT")
@@ -1416,6 +1431,8 @@ public class AdCreativeGet extends APINode {
       VALUE_WATCH_MORE("WATCH_MORE"),
       @SerializedName("WATCH_MUSIC_VIDEO")
       VALUE_WATCH_MUSIC_VIDEO("WATCH_MUSIC_VIDEO"),
+      @SerializedName("WATCH_NOW")
+      VALUE_WATCH_NOW("WATCH_NOW"),
       @SerializedName("WATCH_VIDEO")
       VALUE_WATCH_VIDEO("WATCH_VIDEO"),
       @SerializedName("WHATSAPP_LINK")
@@ -1618,6 +1635,7 @@ public class AdCreativeGet extends APINode {
     this.mCategorizationCriteria = instance.mCategorizationCriteria;
     this.mCategoryMediaSource = instance.mCategoryMediaSource;
     this.mContextualMultiAds = instance.mContextualMultiAds;
+    this.mCreativeReadiness = instance.mCreativeReadiness;
     this.mCreativeSourcingSpec = instance.mCreativeSourcingSpec;
     this.mDegreesOfFreedomSpec = instance.mDegreesOfFreedomSpec;
     this.mDestinationSpec = instance.mDestinationSpec;

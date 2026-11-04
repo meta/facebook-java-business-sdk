@@ -45,6 +45,8 @@ public class CPASCollaborationRequest extends APINode {
   private String mAdAccountId = null;
   @SerializedName("ad_account_name")
   private String mAdAccountName = null;
+  @SerializedName("archived_time")
+  private String mArchivedTime = null;
   @SerializedName("brands")
   private List<String> mBrands = null;
   @SerializedName("catalog_segment")
@@ -301,6 +303,10 @@ public class CPASCollaborationRequest extends APINode {
     return mAdAccountName;
   }
 
+  public String getFieldArchivedTime() {
+    return mArchivedTime;
+  }
+
   public List<String> getFieldBrands() {
     return mBrands;
   }
@@ -399,6 +405,7 @@ public class CPASCollaborationRequest extends APINode {
     public static final String[] FIELDS = {
       "ad_account_id",
       "ad_account_name",
+      "archived_time",
       "brands",
       "catalog_segment",
       "collaborative_ads_share_settings",
@@ -520,6 +527,13 @@ public class CPASCollaborationRequest extends APINode {
     }
     public APIRequestGet requestAdAccountNameField (boolean value) {
       this.requestField("ad_account_name", value);
+      return this;
+    }
+    public APIRequestGet requestArchivedTimeField () {
+      return this.requestArchivedTimeField(true);
+    }
+    public APIRequestGet requestArchivedTimeField (boolean value) {
+      this.requestField("archived_time", value);
       return this;
     }
     public APIRequestGet requestBrandsField () {
@@ -669,6 +683,8 @@ public class CPASCollaborationRequest extends APINode {
       VALUE_INTERNAL("INTERNAL"),
       @SerializedName("SELF_SERVE")
       VALUE_SELF_SERVE("SELF_SERVE"),
+      @SerializedName("SELF_SERVE_ADS_MANAGER")
+      VALUE_SELF_SERVE_ADS_MANAGER("SELF_SERVE_ADS_MANAGER"),
       @SerializedName("SELF_SERVE_CONTACT_FORM")
       VALUE_SELF_SERVE_CONTACT_FORM("SELF_SERVE_CONTACT_FORM"),
       ;
@@ -702,6 +718,7 @@ public class CPASCollaborationRequest extends APINode {
   public CPASCollaborationRequest copyFrom(CPASCollaborationRequest instance) {
     this.mAdAccountId = instance.mAdAccountId;
     this.mAdAccountName = instance.mAdAccountName;
+    this.mArchivedTime = instance.mArchivedTime;
     this.mBrands = instance.mBrands;
     this.mCatalogSegment = instance.mCatalogSegment;
     this.mCollaborativeAdsShareSettings = instance.mCollaborativeAdsShareSettings;

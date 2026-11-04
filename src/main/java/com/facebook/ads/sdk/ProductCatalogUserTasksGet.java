@@ -40,35 +40,23 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class ProductGroupGet extends APINode {
-  @SerializedName("id")
-  private Long mId = null;
-  @SerializedName("mini_shops_product_sets_count")
-  private Long mMiniShopsProductSetsCount = null;
-  @SerializedName("product_catalog")
-  private Object mProductCatalog = null;
-  @SerializedName("products")
-  private Object mProducts = null;
-  @SerializedName("representative_item_id")
-  private String mRepresentativeItemId = null;
-  @SerializedName("retailer_id")
-  private String mRetailerId = null;
-  @SerializedName("variants")
-  private List<Object> mVariants = null;
+public class ProductCatalogUserTasksGet extends APINode {
+  @SerializedName("data")
+  private List<Object> mData = null;
   protected static Gson gson = null;
 
-  public ProductGroupGet() {
+  public ProductCatalogUserTasksGet() {
   }
 
   public String getId() {
-    return getFieldId().toString();
+    return null;
   }
-  public static ProductGroupGet loadJSON(String json, APIContext context, String header) {
-    ProductGroupGet productGroupGet = getGson().fromJson(json, ProductGroupGet.class);
+  public static ProductCatalogUserTasksGet loadJSON(String json, APIContext context, String header) {
+    ProductCatalogUserTasksGet productCatalogUserTasksGet = getGson().fromJson(json, ProductCatalogUserTasksGet.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(productGroupGet.toString());
+      JsonElement o2 = parser.parse(productCatalogUserTasksGet.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -78,14 +66,14 @@ public class ProductGroupGet extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    productGroupGet.context = context;
-    productGroupGet.rawValue = json;
-    productGroupGet.header = header;
-    return productGroupGet;
+    productCatalogUserTasksGet.context = context;
+    productCatalogUserTasksGet.rawValue = json;
+    productCatalogUserTasksGet.header = header;
+    return productCatalogUserTasksGet;
   }
 
-  public static APINodeList<ProductGroupGet> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<ProductGroupGet> productGroupGets = new APINodeList<ProductGroupGet>(request, json, header);
+  public static APINodeList<ProductCatalogUserTasksGet> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<ProductCatalogUserTasksGet> productCatalogUserTasksGets = new APINodeList<ProductCatalogUserTasksGet>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -96,9 +84,9 @@ public class ProductGroupGet extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          productGroupGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          productCatalogUserTasksGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return productGroupGets;
+        return productCatalogUserTasksGets;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -108,20 +96,20 @@ public class ProductGroupGet extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                productGroupGets.setCursors(before, after);
+                productCatalogUserTasksGets.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            productGroupGets.setPaging(previous, next);
+            productCatalogUserTasksGets.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              productGroupGets.setAppSecret(context.getAppSecretProof());
+              productCatalogUserTasksGets.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              productGroupGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              productCatalogUserTasksGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -132,23 +120,23 @@ public class ProductGroupGet extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  productGroupGets.add(loadJSON(entry.getValue().toString(), context, header));
+                  productCatalogUserTasksGets.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              productGroupGets.add(loadJSON(obj.toString(), context, header));
+              productCatalogUserTasksGets.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return productGroupGets;
+          return productCatalogUserTasksGets;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              productGroupGets.add(loadJSON(entry.getValue().toString(), context, header));
+              productCatalogUserTasksGets.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return productGroupGets;
+          return productCatalogUserTasksGets;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -165,20 +153,20 @@ public class ProductGroupGet extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              productGroupGets.add(loadJSON(value.toString(), context, header));
+              productCatalogUserTasksGets.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return productGroupGets;
+            return productCatalogUserTasksGets;
           }
 
           // Sixth, check if it's pure JsonObject
-          productGroupGets.clear();
-          productGroupGets.add(loadJSON(json, context, header));
-          return productGroupGets;
+          productCatalogUserTasksGets.clear();
+          productCatalogUserTasksGets.add(loadJSON(json, context, header));
+          return productCatalogUserTasksGets;
         }
       }
     } catch (Exception e) {
@@ -206,66 +194,12 @@ public class ProductGroupGet extends APINode {
   }
 
 
-  public Long getFieldId() {
-    return mId;
+  public List<Object> getFieldData() {
+    return mData;
   }
 
-  public ProductGroupGet setFieldId(Long value) {
-    this.mId = value;
-    return this;
-  }
-
-  public Long getFieldMiniShopsProductSetsCount() {
-    return mMiniShopsProductSetsCount;
-  }
-
-  public ProductGroupGet setFieldMiniShopsProductSetsCount(Long value) {
-    this.mMiniShopsProductSetsCount = value;
-    return this;
-  }
-
-  public Object getFieldProductCatalog() {
-    return mProductCatalog;
-  }
-
-  public ProductGroupGet setFieldProductCatalog(Object value) {
-    this.mProductCatalog = value;
-    return this;
-  }
-
-  public Object getFieldProducts() {
-    return mProducts;
-  }
-
-  public ProductGroupGet setFieldProducts(Object value) {
-    this.mProducts = value;
-    return this;
-  }
-
-  public String getFieldRepresentativeItemId() {
-    return mRepresentativeItemId;
-  }
-
-  public ProductGroupGet setFieldRepresentativeItemId(String value) {
-    this.mRepresentativeItemId = value;
-    return this;
-  }
-
-  public String getFieldRetailerId() {
-    return mRetailerId;
-  }
-
-  public ProductGroupGet setFieldRetailerId(String value) {
-    this.mRetailerId = value;
-    return this;
-  }
-
-  public List<Object> getFieldVariants() {
-    return mVariants;
-  }
-
-  public ProductGroupGet setFieldVariants(List<Object> value) {
-    this.mVariants = value;
+  public ProductCatalogUserTasksGet setFieldData(List<Object> value) {
+    this.mData = value;
     return this;
   }
 
@@ -285,23 +219,17 @@ public class ProductGroupGet extends APINode {
     return gson;
   }
 
-  public ProductGroupGet copyFrom(ProductGroupGet instance) {
-    this.mId = instance.mId;
-    this.mMiniShopsProductSetsCount = instance.mMiniShopsProductSetsCount;
-    this.mProductCatalog = instance.mProductCatalog;
-    this.mProducts = instance.mProducts;
-    this.mRepresentativeItemId = instance.mRepresentativeItemId;
-    this.mRetailerId = instance.mRetailerId;
-    this.mVariants = instance.mVariants;
+  public ProductCatalogUserTasksGet copyFrom(ProductCatalogUserTasksGet instance) {
+    this.mData = instance.mData;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<ProductGroupGet> getParser() {
-    return new APIRequest.ResponseParser<ProductGroupGet>() {
-      public APINodeList<ProductGroupGet> parseResponse(String response, APIContext context, APIRequest<ProductGroupGet> request, String header) throws MalformedResponseException {
-        return ProductGroupGet.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<ProductCatalogUserTasksGet> getParser() {
+    return new APIRequest.ResponseParser<ProductCatalogUserTasksGet>() {
+      public APINodeList<ProductCatalogUserTasksGet> parseResponse(String response, APIContext context, APIRequest<ProductCatalogUserTasksGet> request, String header) throws MalformedResponseException {
+        return ProductCatalogUserTasksGet.parseResponse(response, context, request, header);
       }
     };
   }

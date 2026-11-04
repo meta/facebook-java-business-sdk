@@ -45,6 +45,8 @@ public class TrendingTopicsSpec extends APINode {
   private Boolean mIsAllTrending = null;
   @SerializedName("is_special_budget_alloc")
   private Boolean mIsSpecialBudgetAlloc = null;
+  @SerializedName("program_id")
+  private String mProgramId = null;
   @SerializedName("trending_topics")
   private List<String> mTrendingTopics = null;
   protected static Gson gson = null;
@@ -216,6 +218,15 @@ public class TrendingTopicsSpec extends APINode {
     return this;
   }
 
+  public String getFieldProgramId() {
+    return mProgramId;
+  }
+
+  public TrendingTopicsSpec setFieldProgramId(String value) {
+    this.mProgramId = value;
+    return this;
+  }
+
   public List<String> getFieldTrendingTopics() {
     return mTrendingTopics;
   }
@@ -244,6 +255,7 @@ public class TrendingTopicsSpec extends APINode {
   public TrendingTopicsSpec copyFrom(TrendingTopicsSpec instance) {
     this.mIsAllTrending = instance.mIsAllTrending;
     this.mIsSpecialBudgetAlloc = instance.mIsSpecialBudgetAlloc;
+    this.mProgramId = instance.mProgramId;
     this.mTrendingTopics = instance.mTrendingTopics;
     this.context = instance.context;
     this.rawValue = instance.rawValue;

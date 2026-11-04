@@ -89,6 +89,8 @@ public class IGMedia extends APINode {
   private String mLegacyInstagramMediaId = null;
   @SerializedName("like_count")
   private Long mLikeCount = null;
+  @SerializedName("live_reactions")
+  private IGLiveMediaReactions mLiveReactions = null;
   @SerializedName("live_status")
   private String mLiveStatus = null;
   @SerializedName("media_audio_type")
@@ -494,6 +496,10 @@ public class IGMedia extends APINode {
 
   public Long getFieldLikeCount() {
     return mLikeCount;
+  }
+
+  public IGLiveMediaReactions getFieldLiveReactions() {
+    return mLiveReactions;
   }
 
   public String getFieldLiveStatus() {
@@ -979,6 +985,7 @@ public class IGMedia extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -1256,6 +1263,13 @@ public class IGMedia extends APINode {
     }
     public APIRequestGetChildren requestLikeCountField (boolean value) {
       this.requestField("like_count", value);
+      return this;
+    }
+    public APIRequestGetChildren requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGetChildren requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
       return this;
     }
     public APIRequestGetChildren requestLiveStatusField () {
@@ -2706,6 +2720,7 @@ public class IGMedia extends APINode {
       "is_shared_to_feed",
       "legacy_instagram_media_id",
       "like_count",
+      "live_reactions",
       "live_status",
       "media_audio_type",
       "media_product_type",
@@ -3026,6 +3041,13 @@ public class IGMedia extends APINode {
     }
     public APIRequestGet requestLikeCountField (boolean value) {
       this.requestField("like_count", value);
+      return this;
+    }
+    public APIRequestGet requestLiveReactionsField () {
+      return this.requestLiveReactionsField(true);
+    }
+    public APIRequestGet requestLiveReactionsField (boolean value) {
+      this.requestField("live_reactions", value);
       return this;
     }
     public APIRequestGet requestLiveStatusField () {
@@ -3365,6 +3387,7 @@ public class IGMedia extends APINode {
     this.mIsSharedToFeed = instance.mIsSharedToFeed;
     this.mLegacyInstagramMediaId = instance.mLegacyInstagramMediaId;
     this.mLikeCount = instance.mLikeCount;
+    this.mLiveReactions = instance.mLiveReactions;
     this.mLiveStatus = instance.mLiveStatus;
     this.mMediaAudioType = instance.mMediaAudioType;
     this.mMediaProductType = instance.mMediaProductType;

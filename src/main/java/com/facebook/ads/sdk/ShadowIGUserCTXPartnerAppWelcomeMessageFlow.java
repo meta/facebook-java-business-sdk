@@ -282,6 +282,27 @@ public class ShadowIGUserCTXPartnerAppWelcomeMessageFlow extends APINode {
 
 
 
+  public static enum EnumEligiblePlatforms {
+      @SerializedName("INSTAGRAM")
+      VALUE_INSTAGRAM("INSTAGRAM"),
+      @SerializedName("MESSENGER")
+      VALUE_MESSENGER("MESSENGER"),
+      @SerializedName("WHATSAPP")
+      VALUE_WHATSAPP("WHATSAPP"),
+      ;
+
+      private String value;
+
+      private EnumEligiblePlatforms(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
 
   synchronized /*package*/ static Gson getGson() {
     if (gson != null) {

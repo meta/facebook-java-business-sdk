@@ -59,6 +59,8 @@ public class AdsUserSettings extends APINode {
   private String mAdsCsSitelinksOptInStatus = null;
   @SerializedName("ads_cs_sitelinks_opt_out_timestamp")
   private List<Map<String, Long>> mAdsCsSitelinksOptOutTimestamp = null;
+  @SerializedName("ads_cs_ugc_opt_out_timestamp")
+  private List<Map<String, Long>> mAdsCsUgcOptOutTimestamp = null;
   @SerializedName("ads_destination_optimization_opt_out_timestamp")
   private List<Map<String, Long>> mAdsDestinationOptimizationOptOutTimestamp = null;
   @SerializedName("ads_tool_visits")
@@ -159,12 +161,16 @@ public class AdsUserSettings extends APINode {
   private Boolean mIsAdsAiConsented = null;
   @SerializedName("is_cbo_default_on")
   private Boolean mIsCboDefaultOn = null;
+  @SerializedName("is_negative_keywords_dismissed")
+  private Boolean mIsNegativeKeywordsDismissed = null;
   @SerializedName("is_se_removal_guidance_dismissed")
   private Boolean mIsSeRemovalGuidanceDismissed = null;
   @SerializedName("last_used_post_format")
   private String mLastUsedPostFormat = null;
   @SerializedName("last_visited_time")
   private String mLastVisitedTime = null;
+  @SerializedName("maiba_r23_e2e_odax_default_mode")
+  private String mMaibaR23E2eOdaxDefaultMode = null;
   @SerializedName("metadata_brand_kit_last_opt_out_timestamp")
   private Long mMetadataBrandKitLastOptOutTimestamp = null;
   @SerializedName("metadata_brand_kit_opt_in_status")
@@ -211,6 +217,12 @@ public class AdsUserSettings extends APINode {
   private String mSaoffPublishedL2ConvLocSeen = null;
   @SerializedName("saon_migr_l1_seen_status")
   private String mSaonMigrL1SeenStatus = null;
+  @SerializedName("se_optout_survey_impr")
+  private Long mSeOptoutSurveyImpr = null;
+  @SerializedName("se_optout_survey_last_impr_ts")
+  private String mSeOptoutSurveyLastImprTs = null;
+  @SerializedName("se_optout_survey_resp_ts")
+  private String mSeOptoutSurveyRespTs = null;
   @SerializedName("selected_ad_account")
   private AdAccount mSelectedAdAccount = null;
   @SerializedName("selected_comparison_timerange")
@@ -275,6 +287,8 @@ public class AdsUserSettings extends APINode {
   private String mVoiceoverTransOptInStatus = null;
   @SerializedName("website_media_opt_in_status")
   private String mWebsiteMediaOptInStatus = null;
+  @SerializedName("website_media_opt_out_ts")
+  private String mWebsiteMediaOptOutTs = null;
   @SerializedName("website_reviews_data_opt_in_status")
   private String mWebsiteReviewsDataOptInStatus = null;
   @SerializedName("website_selling_points_data_opt_in_status")
@@ -529,6 +543,10 @@ public class AdsUserSettings extends APINode {
     return mAdsCsSitelinksOptOutTimestamp;
   }
 
+  public List<Map<String, Long>> getFieldAdsCsUgcOptOutTimestamp() {
+    return mAdsCsUgcOptOutTimestamp;
+  }
+
   public List<Map<String, Long>> getFieldAdsDestinationOptimizationOptOutTimestamp() {
     return mAdsDestinationOptimizationOptOutTimestamp;
   }
@@ -729,6 +747,10 @@ public class AdsUserSettings extends APINode {
     return mIsCboDefaultOn;
   }
 
+  public Boolean getFieldIsNegativeKeywordsDismissed() {
+    return mIsNegativeKeywordsDismissed;
+  }
+
   public Boolean getFieldIsSeRemovalGuidanceDismissed() {
     return mIsSeRemovalGuidanceDismissed;
   }
@@ -739,6 +761,10 @@ public class AdsUserSettings extends APINode {
 
   public String getFieldLastVisitedTime() {
     return mLastVisitedTime;
+  }
+
+  public String getFieldMaibaR23E2eOdaxDefaultMode() {
+    return mMaibaR23E2eOdaxDefaultMode;
   }
 
   public Long getFieldMetadataBrandKitLastOptOutTimestamp() {
@@ -831,6 +857,18 @@ public class AdsUserSettings extends APINode {
 
   public String getFieldSaonMigrL1SeenStatus() {
     return mSaonMigrL1SeenStatus;
+  }
+
+  public Long getFieldSeOptoutSurveyImpr() {
+    return mSeOptoutSurveyImpr;
+  }
+
+  public String getFieldSeOptoutSurveyLastImprTs() {
+    return mSeOptoutSurveyLastImprTs;
+  }
+
+  public String getFieldSeOptoutSurveyRespTs() {
+    return mSeOptoutSurveyRespTs;
   }
 
   public AdAccount getFieldSelectedAdAccount() {
@@ -970,6 +1008,10 @@ public class AdsUserSettings extends APINode {
     return mWebsiteMediaOptInStatus;
   }
 
+  public String getFieldWebsiteMediaOptOutTs() {
+    return mWebsiteMediaOptOutTs;
+  }
+
   public String getFieldWebsiteReviewsDataOptInStatus() {
     return mWebsiteReviewsDataOptInStatus;
   }
@@ -1000,6 +1042,7 @@ public class AdsUserSettings extends APINode {
       "ads_cs_dynamic_se_opt_out_timestamp",
       "ads_cs_sitelinks_opt_in_status",
       "ads_cs_sitelinks_opt_out_timestamp",
+      "ads_cs_ugc_opt_out_timestamp",
       "ads_destination_optimization_opt_out_timestamp",
       "ads_tool_visits",
       "aplusc_ai_agent_opt_in_status",
@@ -1050,9 +1093,11 @@ public class AdsUserSettings extends APINode {
       "image_text_translation_opt_in_status",
       "is_ads_ai_consented",
       "is_cbo_default_on",
+      "is_negative_keywords_dismissed",
       "is_se_removal_guidance_dismissed",
       "last_used_post_format",
       "last_visited_time",
+      "maiba_r23_e2e_odax_default_mode",
       "metadata_brand_kit_last_opt_out_timestamp",
       "metadata_brand_kit_opt_in_status",
       "multi_media_opt_out_status",
@@ -1076,6 +1121,9 @@ public class AdsUserSettings extends APINode {
       "sa_off_conv_loc_seen",
       "saoff_published_l2_conv_loc_seen",
       "saon_migr_l1_seen_status",
+      "se_optout_survey_impr",
+      "se_optout_survey_last_impr_ts",
+      "se_optout_survey_resp_ts",
       "selected_ad_account",
       "selected_comparison_timerange",
       "selected_metric_cic",
@@ -1108,6 +1156,7 @@ public class AdsUserSettings extends APINode {
       "video_to_image_opt_in_status",
       "voiceover_trans_opt_in_status",
       "website_media_opt_in_status",
+      "website_media_opt_out_ts",
       "website_reviews_data_opt_in_status",
       "website_selling_points_data_opt_in_status",
     };
@@ -1263,6 +1312,13 @@ public class AdsUserSettings extends APINode {
     }
     public APIRequestGet requestAdsCsSitelinksOptOutTimestampField (boolean value) {
       this.requestField("ads_cs_sitelinks_opt_out_timestamp", value);
+      return this;
+    }
+    public APIRequestGet requestAdsCsUgcOptOutTimestampField () {
+      return this.requestAdsCsUgcOptOutTimestampField(true);
+    }
+    public APIRequestGet requestAdsCsUgcOptOutTimestampField (boolean value) {
+      this.requestField("ads_cs_ugc_opt_out_timestamp", value);
       return this;
     }
     public APIRequestGet requestAdsDestinationOptimizationOptOutTimestampField () {
@@ -1615,6 +1671,13 @@ public class AdsUserSettings extends APINode {
       this.requestField("is_cbo_default_on", value);
       return this;
     }
+    public APIRequestGet requestIsNegativeKeywordsDismissedField () {
+      return this.requestIsNegativeKeywordsDismissedField(true);
+    }
+    public APIRequestGet requestIsNegativeKeywordsDismissedField (boolean value) {
+      this.requestField("is_negative_keywords_dismissed", value);
+      return this;
+    }
     public APIRequestGet requestIsSeRemovalGuidanceDismissedField () {
       return this.requestIsSeRemovalGuidanceDismissedField(true);
     }
@@ -1634,6 +1697,13 @@ public class AdsUserSettings extends APINode {
     }
     public APIRequestGet requestLastVisitedTimeField (boolean value) {
       this.requestField("last_visited_time", value);
+      return this;
+    }
+    public APIRequestGet requestMaibaR23E2eOdaxDefaultModeField () {
+      return this.requestMaibaR23E2eOdaxDefaultModeField(true);
+    }
+    public APIRequestGet requestMaibaR23E2eOdaxDefaultModeField (boolean value) {
+      this.requestField("maiba_r23_e2e_odax_default_mode", value);
       return this;
     }
     public APIRequestGet requestMetadataBrandKitLastOptOutTimestampField () {
@@ -1795,6 +1865,27 @@ public class AdsUserSettings extends APINode {
     }
     public APIRequestGet requestSaonMigrL1SeenStatusField (boolean value) {
       this.requestField("saon_migr_l1_seen_status", value);
+      return this;
+    }
+    public APIRequestGet requestSeOptoutSurveyImprField () {
+      return this.requestSeOptoutSurveyImprField(true);
+    }
+    public APIRequestGet requestSeOptoutSurveyImprField (boolean value) {
+      this.requestField("se_optout_survey_impr", value);
+      return this;
+    }
+    public APIRequestGet requestSeOptoutSurveyLastImprTsField () {
+      return this.requestSeOptoutSurveyLastImprTsField(true);
+    }
+    public APIRequestGet requestSeOptoutSurveyLastImprTsField (boolean value) {
+      this.requestField("se_optout_survey_last_impr_ts", value);
+      return this;
+    }
+    public APIRequestGet requestSeOptoutSurveyRespTsField () {
+      return this.requestSeOptoutSurveyRespTsField(true);
+    }
+    public APIRequestGet requestSeOptoutSurveyRespTsField (boolean value) {
+      this.requestField("se_optout_survey_resp_ts", value);
       return this;
     }
     public APIRequestGet requestSelectedAdAccountField () {
@@ -2021,6 +2112,13 @@ public class AdsUserSettings extends APINode {
       this.requestField("website_media_opt_in_status", value);
       return this;
     }
+    public APIRequestGet requestWebsiteMediaOptOutTsField () {
+      return this.requestWebsiteMediaOptOutTsField(true);
+    }
+    public APIRequestGet requestWebsiteMediaOptOutTsField (boolean value) {
+      this.requestField("website_media_opt_out_ts", value);
+      return this;
+    }
     public APIRequestGet requestWebsiteReviewsDataOptInStatusField () {
       return this.requestWebsiteReviewsDataOptInStatusField(true);
     }
@@ -2061,6 +2159,7 @@ public class AdsUserSettings extends APINode {
     this.mAdsCsDynamicSeOptOutTimestamp = instance.mAdsCsDynamicSeOptOutTimestamp;
     this.mAdsCsSitelinksOptInStatus = instance.mAdsCsSitelinksOptInStatus;
     this.mAdsCsSitelinksOptOutTimestamp = instance.mAdsCsSitelinksOptOutTimestamp;
+    this.mAdsCsUgcOptOutTimestamp = instance.mAdsCsUgcOptOutTimestamp;
     this.mAdsDestinationOptimizationOptOutTimestamp = instance.mAdsDestinationOptimizationOptOutTimestamp;
     this.mAdsToolVisits = instance.mAdsToolVisits;
     this.mApluscAiAgentOptInStatus = instance.mApluscAiAgentOptInStatus;
@@ -2111,9 +2210,11 @@ public class AdsUserSettings extends APINode {
     this.mImageTextTranslationOptInStatus = instance.mImageTextTranslationOptInStatus;
     this.mIsAdsAiConsented = instance.mIsAdsAiConsented;
     this.mIsCboDefaultOn = instance.mIsCboDefaultOn;
+    this.mIsNegativeKeywordsDismissed = instance.mIsNegativeKeywordsDismissed;
     this.mIsSeRemovalGuidanceDismissed = instance.mIsSeRemovalGuidanceDismissed;
     this.mLastUsedPostFormat = instance.mLastUsedPostFormat;
     this.mLastVisitedTime = instance.mLastVisitedTime;
+    this.mMaibaR23E2eOdaxDefaultMode = instance.mMaibaR23E2eOdaxDefaultMode;
     this.mMetadataBrandKitLastOptOutTimestamp = instance.mMetadataBrandKitLastOptOutTimestamp;
     this.mMetadataBrandKitOptInStatus = instance.mMetadataBrandKitOptInStatus;
     this.mMultiMediaOptOutStatus = instance.mMultiMediaOptOutStatus;
@@ -2137,6 +2238,9 @@ public class AdsUserSettings extends APINode {
     this.mSaOffConvLocSeen = instance.mSaOffConvLocSeen;
     this.mSaoffPublishedL2ConvLocSeen = instance.mSaoffPublishedL2ConvLocSeen;
     this.mSaonMigrL1SeenStatus = instance.mSaonMigrL1SeenStatus;
+    this.mSeOptoutSurveyImpr = instance.mSeOptoutSurveyImpr;
+    this.mSeOptoutSurveyLastImprTs = instance.mSeOptoutSurveyLastImprTs;
+    this.mSeOptoutSurveyRespTs = instance.mSeOptoutSurveyRespTs;
     this.mSelectedAdAccount = instance.mSelectedAdAccount;
     this.mSelectedComparisonTimerange = instance.mSelectedComparisonTimerange;
     this.mSelectedMetricCic = instance.mSelectedMetricCic;
@@ -2169,6 +2273,7 @@ public class AdsUserSettings extends APINode {
     this.mVideoToImageOptInStatus = instance.mVideoToImageOptInStatus;
     this.mVoiceoverTransOptInStatus = instance.mVoiceoverTransOptInStatus;
     this.mWebsiteMediaOptInStatus = instance.mWebsiteMediaOptInStatus;
+    this.mWebsiteMediaOptOutTs = instance.mWebsiteMediaOptOutTs;
     this.mWebsiteReviewsDataOptInStatus = instance.mWebsiteReviewsDataOptInStatus;
     this.mWebsiteSellingPointsDataOptInStatus = instance.mWebsiteSellingPointsDataOptInStatus;
     this.context = instance.context;

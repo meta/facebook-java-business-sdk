@@ -1571,6 +1571,7 @@ public class Application extends APINode {
       "consider_views",
       "custom_events",
       "custom_events_file",
+      "custom_vendor_id",
       "data_processing_options",
       "data_processing_options_country",
       "data_processing_options_state",
@@ -1787,6 +1788,11 @@ public class Application extends APINode {
     }
     public APIRequestCreateActivity setCustomEventsFile (String customEventsFile) {
       this.setParam("custom_events_file", customEventsFile);
+      return this;
+    }
+
+    public APIRequestCreateActivity setCustomVendorId (String customVendorId) {
+      this.setParam("custom_vendor_id", customVendorId);
       return this;
     }
 
@@ -7599,6 +7605,7 @@ public class Application extends APINode {
       "attribution_referrer",
       "auditing_token",
       "click_attr_window",
+      "click_id",
       "custom_events",
       "decline_reason",
       "device_os",
@@ -7713,6 +7720,11 @@ public class Application extends APINode {
     }
     public APIRequestCreateMmpAuditing setClickAttrWindow (String clickAttrWindow) {
       this.setParam("click_attr_window", clickAttrWindow);
+      return this;
+    }
+
+    public APIRequestCreateMmpAuditing setClickId (String clickId) {
+      this.setParam("click_id", clickId);
       return this;
     }
 

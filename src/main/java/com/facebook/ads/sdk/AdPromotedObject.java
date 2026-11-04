@@ -105,6 +105,8 @@ public class AdPromotedObject extends APINode {
   private String mOffsiteConversionEventId = null;
   @SerializedName("omnichannel_object")
   private Object mOmnichannelObject = null;
+  @SerializedName("optimization_product_set_id")
+  private String mOptimizationProductSetId = null;
   @SerializedName("page_id")
   private String mPageId = null;
   @SerializedName("passback_application_id")
@@ -584,6 +586,15 @@ public class AdPromotedObject extends APINode {
     return this;
   }
 
+  public String getFieldOptimizationProductSetId() {
+    return mOptimizationProductSetId;
+  }
+
+  public AdPromotedObject setFieldOptimizationProductSetId(String value) {
+    this.mOptimizationProductSetId = value;
+    return this;
+  }
+
   public String getFieldPageId() {
     return mPageId;
   }
@@ -1032,6 +1043,7 @@ public class AdPromotedObject extends APINode {
     this.mOfflineConversionDataSetId = instance.mOfflineConversionDataSetId;
     this.mOffsiteConversionEventId = instance.mOffsiteConversionEventId;
     this.mOmnichannelObject = instance.mOmnichannelObject;
+    this.mOptimizationProductSetId = instance.mOptimizationProductSetId;
     this.mPageId = instance.mPageId;
     this.mPassbackApplicationId = instance.mPassbackApplicationId;
     this.mPassbackPixelId = instance.mPassbackPixelId;

@@ -420,7 +420,7 @@ public class AdAccountGet extends APINode {
   @SerializedName("last_spend_time")
   private Long mLastSpendTime = null;
   @SerializedName("last_used_time")
-  private Long mLastUsedTime = null;
+  private Object mLastUsedTime = null;
   @SerializedName("liable_address")
   private Object mLiableAddress = null;
   @SerializedName("liable_addresses")
@@ -521,6 +521,8 @@ public class AdAccountGet extends APINode {
   private Object mSendBillToAddress = null;
   @SerializedName("send_bill_to_addresses")
   private Object mSendBillToAddresses = null;
+  @SerializedName("show_checkout_experience")
+  private Boolean mShowCheckoutExperience = null;
   @SerializedName("show_improved_boleto")
   private Boolean mShowImprovedBoleto = null;
   @SerializedName("show_sac_campaign_group_input")
@@ -2447,11 +2449,11 @@ public class AdAccountGet extends APINode {
     return this;
   }
 
-  public Long getFieldLastUsedTime() {
+  public Object getFieldLastUsedTime() {
     return mLastUsedTime;
   }
 
-  public AdAccountGet setFieldLastUsedTime(Long value) {
+  public AdAccountGet setFieldLastUsedTime(Object value) {
     this.mLastUsedTime = value;
     return this;
   }
@@ -2903,6 +2905,15 @@ public class AdAccountGet extends APINode {
 
   public AdAccountGet setFieldSendBillToAddresses(Object value) {
     this.mSendBillToAddresses = value;
+    return this;
+  }
+
+  public Boolean getFieldShowCheckoutExperience() {
+    return mShowCheckoutExperience;
+  }
+
+  public AdAccountGet setFieldShowCheckoutExperience(Boolean value) {
+    this.mShowCheckoutExperience = value;
     return this;
   }
 
@@ -4252,6 +4263,7 @@ public class AdAccountGet extends APINode {
     this.mSegment = instance.mSegment;
     this.mSendBillToAddress = instance.mSendBillToAddress;
     this.mSendBillToAddresses = instance.mSendBillToAddresses;
+    this.mShowCheckoutExperience = instance.mShowCheckoutExperience;
     this.mShowImprovedBoleto = instance.mShowImprovedBoleto;
     this.mShowSacCampaignGroupInput = instance.mShowSacCampaignGroupInput;
     this.mSiteLinksLiveCrawl = instance.mSiteLinksLiveCrawl;

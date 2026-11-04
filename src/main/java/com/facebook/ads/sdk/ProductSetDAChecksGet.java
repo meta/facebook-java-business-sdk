@@ -393,6 +393,8 @@ public class ProductSetDAChecksGet extends APINode {
   public static enum EnumFeatures {
       @SerializedName("AGENTIC_CHECKOUT")
       VALUE_AGENTIC_CHECKOUT("AGENTIC_CHECKOUT"),
+      @SerializedName("AGENTIC_CHECKOUT_PRE_CLICK")
+      VALUE_AGENTIC_CHECKOUT_PRE_CLICK("AGENTIC_CHECKOUT_PRE_CLICK"),
       @SerializedName("AMAZON_BUY_WITH_PRIME")
       VALUE_AMAZON_BUY_WITH_PRIME("AMAZON_BUY_WITH_PRIME"),
       @SerializedName("AUGMENTED_REALITY")

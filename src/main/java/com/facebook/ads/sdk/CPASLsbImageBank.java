@@ -264,10 +264,6 @@ public class CPASLsbImageBank extends APINode {
     return new APIRequestGet(this.getPrefixedId().toString(), context);
   }
 
-  public APIRequestUpdate update() {
-    return new APIRequestUpdate(this.getPrefixedId().toString(), context);
-  }
-
 
   public String getFieldAdGroupId() {
     return mAdGroupId;
@@ -547,121 +543,6 @@ public class CPASLsbImageBank extends APINode {
       this.requestField("id", value);
       return this;
     }
-  }
-
-  public static class APIRequestUpdate extends APIRequest<CPASLsbImageBank> {
-
-    CPASLsbImageBank lastResponse = null;
-    @Override
-    public CPASLsbImageBank getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-      "backup_image_urls",
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public CPASLsbImageBank parseResponse(String response, String header) throws APIException {
-      return CPASLsbImageBank.parseResponse(response, getContext(), this, header).head();
-    }
-
-    @Override
-    public CPASLsbImageBank execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public CPASLsbImageBank execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<CPASLsbImageBank> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<CPASLsbImageBank> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, CPASLsbImageBank>() {
-           public CPASLsbImageBank apply(ResponseWrapper result) {
-             try {
-               return APIRequestUpdate.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         },
-         MoreExecutors.directExecutor()
-      );
-    };
-
-    public APIRequestUpdate(String nodeId, APIContext context) {
-      super(context, nodeId, "/", "POST", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestUpdate setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestUpdate setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestUpdate setBackupImageUrls (List<String> backupImageUrls) {
-      this.setParam("backup_image_urls", backupImageUrls);
-      return this;
-    }
-    public APIRequestUpdate setBackupImageUrls (String backupImageUrls) {
-      this.setParam("backup_image_urls", backupImageUrls);
-      return this;
-    }
-
-    public APIRequestUpdate requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestUpdate requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestUpdate requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestUpdate requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestUpdate requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestUpdate requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
   }
 
 

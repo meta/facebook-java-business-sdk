@@ -425,6 +425,7 @@ public class AdStudy extends APINode {
       "ad_entities_count",
       "ad_ids",
       "control_percentage",
+      "exclusion_geo",
       "id",
       "name",
       "treatment_percentage",
@@ -539,6 +540,13 @@ public class AdStudy extends APINode {
     }
     public APIRequestGetCells requestControlPercentageField (boolean value) {
       this.requestField("control_percentage", value);
+      return this;
+    }
+    public APIRequestGetCells requestExclusionGeoField () {
+      return this.requestExclusionGeoField(true);
+    }
+    public APIRequestGetCells requestExclusionGeoField (boolean value) {
+      this.requestField("exclusion_geo", value);
       return this;
     }
     public APIRequestGetCells requestIdField () {

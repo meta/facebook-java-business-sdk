@@ -47,6 +47,8 @@ public class AdAccountBusinessConstraints extends APINode {
   private List<String> mCampaignsWithError = null;
   @SerializedName("is_age_restriction_enabled")
   private Boolean mIsAgeRestrictionEnabled = null;
+  @SerializedName("is_gender_exclusion_enabled")
+  private Boolean mIsGenderExclusionEnabled = null;
   @SerializedName("placement_controls")
   private Object mPlacementControls = null;
   @SerializedName("placement_controls_per_objective")
@@ -231,6 +233,15 @@ public class AdAccountBusinessConstraints extends APINode {
     return this;
   }
 
+  public Boolean getFieldIsGenderExclusionEnabled() {
+    return mIsGenderExclusionEnabled;
+  }
+
+  public AdAccountBusinessConstraints setFieldIsGenderExclusionEnabled(Boolean value) {
+    this.mIsGenderExclusionEnabled = value;
+    return this;
+  }
+
   public Object getFieldPlacementControls() {
     return mPlacementControls;
   }
@@ -299,6 +310,7 @@ public class AdAccountBusinessConstraints extends APINode {
     this.mAudienceControls = instance.mAudienceControls;
     this.mCampaignsWithError = instance.mCampaignsWithError;
     this.mIsAgeRestrictionEnabled = instance.mIsAgeRestrictionEnabled;
+    this.mIsGenderExclusionEnabled = instance.mIsGenderExclusionEnabled;
     this.mPlacementControls = instance.mPlacementControls;
     this.mPlacementControlsPerObjective = instance.mPlacementControlsPerObjective;
     this.mStatus = instance.mStatus;

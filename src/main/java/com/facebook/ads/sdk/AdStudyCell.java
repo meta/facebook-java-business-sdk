@@ -47,6 +47,8 @@ public class AdStudyCell extends APINode {
   private List<String> mAdIds = null;
   @SerializedName("control_percentage")
   private Double mControlPercentage = null;
+  @SerializedName("exclusion_geo")
+  private List<String> mExclusionGeo = null;
   @SerializedName("id")
   private String mId = null;
   @SerializedName("name")
@@ -293,6 +295,10 @@ public class AdStudyCell extends APINode {
 
   public Double getFieldControlPercentage() {
     return mControlPercentage;
+  }
+
+  public List<String> getFieldExclusionGeo() {
+    return mExclusionGeo;
   }
 
   public String getFieldId() {
@@ -1859,6 +1865,7 @@ public class AdStudyCell extends APINode {
       "is_direct_send_campaign",
       "is_message_campaign",
       "is_meta_moment_maker_enabled",
+      "is_pca_unified",
       "is_reels_trending_ads_enabled",
       "is_skadnetwork_attribution",
       "issues_info",
@@ -2150,6 +2157,13 @@ public class AdStudyCell extends APINode {
       this.requestField("is_meta_moment_maker_enabled", value);
       return this;
     }
+    public APIRequestGetCampaigns requestIsPcaUnifiedField () {
+      return this.requestIsPcaUnifiedField(true);
+    }
+    public APIRequestGetCampaigns requestIsPcaUnifiedField (boolean value) {
+      this.requestField("is_pca_unified", value);
+      return this;
+    }
     public APIRequestGetCampaigns requestIsReelsTrendingAdsEnabledField () {
       return this.requestIsReelsTrendingAdsEnabledField(true);
     }
@@ -2334,6 +2348,7 @@ public class AdStudyCell extends APINode {
       "ad_entities_count",
       "ad_ids",
       "control_percentage",
+      "exclusion_geo",
       "id",
       "name",
       "treatment_percentage",
@@ -2448,6 +2463,13 @@ public class AdStudyCell extends APINode {
     }
     public APIRequestGet requestControlPercentageField (boolean value) {
       this.requestField("control_percentage", value);
+      return this;
+    }
+    public APIRequestGet requestExclusionGeoField () {
+      return this.requestExclusionGeoField(true);
+    }
+    public APIRequestGet requestExclusionGeoField (boolean value) {
+      this.requestField("exclusion_geo", value);
       return this;
     }
     public APIRequestGet requestIdField () {
@@ -2709,6 +2731,7 @@ public class AdStudyCell extends APINode {
     this.mAdEntitiesCount = instance.mAdEntitiesCount;
     this.mAdIds = instance.mAdIds;
     this.mControlPercentage = instance.mControlPercentage;
+    this.mExclusionGeo = instance.mExclusionGeo;
     this.mId = instance.mId;
     this.mName = instance.mName;
     this.mTreatmentPercentage = instance.mTreatmentPercentage;

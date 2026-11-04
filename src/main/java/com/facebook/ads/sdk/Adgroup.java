@@ -193,8 +193,8 @@ public class Adgroup extends APINode {
     return getGson().toJson(this);
   }
 
-  public APIRequestGendelete gendelete() {
-    return new APIRequestGendelete(this.getId(), context);
+  public APIRequestGenget genget() {
+    return new APIRequestGenget(this.getId(), context);
   }
 
 
@@ -209,47 +209,53 @@ public class Adgroup extends APINode {
 
 
 
-  public static class APIRequestGendelete extends APIRequest<AdgroupDelete> {
+  public static class APIRequestGenget extends APIRequest<AdgroupGet> {
 
-    APINodeList<AdgroupDelete> lastResponse = null;
+    APINodeList<AdgroupGet> lastResponse = null;
     @Override
-    public APINodeList<AdgroupDelete> getLastResponse() {
+    public APINodeList<AdgroupGet> getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
+      "am_call_tags",
+      "date_preset",
+      "fields",
+      "from_adtable",
+      "review_feedback_breakdown",
+      "time_range",
     };
 
     public static final String[] FIELDS = {
     };
 
     @Override
-    public APINodeList<AdgroupDelete> parseResponse(String response, String header) throws APIException {
-      return AdgroupDelete.parseResponse(response, getContext(), this, header);
+    public APINodeList<AdgroupGet> parseResponse(String response, String header) throws APIException {
+      return AdgroupGet.parseResponse(response, getContext(), this, header);
     }
 
     @Override
-    public APINodeList<AdgroupDelete> execute() throws APIException {
+    public APINodeList<AdgroupGet> execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public APINodeList<AdgroupDelete> execute(Map<String, Object> extraParams) throws APIException {
+    public APINodeList<AdgroupGet> execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
       lastResponse = parseResponse(rw.getBody(),rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<APINodeList<AdgroupDelete>> executeAsync() throws APIException {
+    public ListenableFuture<APINodeList<AdgroupGet>> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<APINodeList<AdgroupDelete>> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<APINodeList<AdgroupGet>> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<AdgroupDelete>>() {
-           public APINodeList<AdgroupDelete> apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, APINodeList<AdgroupGet>>() {
+           public APINodeList<AdgroupGet> apply(ResponseWrapper result) {
              try {
-               return APIRequestGendelete.this.parseResponse(result.getBody(), result.getHeader());
+               return APIRequestGenget.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
                throw new RuntimeException(e);
              }
@@ -259,28 +265,78 @@ public class Adgroup extends APINode {
       );
     };
 
-    public APIRequestGendelete(String nodeId, APIContext context) {
-      super(context, nodeId, "/", "DELETE", Arrays.asList(PARAMS));
+    public APIRequestGenget(String nodeId, APIContext context) {
+      super(context, nodeId, "/", "GET", Arrays.asList(PARAMS));
     }
 
     @Override
-    public APIRequestGendelete setParam(String param, Object value) {
+    public APIRequestGenget setParam(String param, Object value) {
       setParamInternal(param, value);
       return this;
     }
 
     @Override
-    public APIRequestGendelete setParams(Map<String, Object> params) {
+    public APIRequestGenget setParams(Map<String, Object> params) {
       setParamsInternal(params);
       return this;
     }
 
 
-    public APIRequestGendelete requestAllFields () {
+    public APIRequestGenget setAmCallTags (Map<String, String> amCallTags) {
+      this.setParam("am_call_tags", amCallTags);
+      return this;
+    }
+    public APIRequestGenget setAmCallTags (String amCallTags) {
+      this.setParam("am_call_tags", amCallTags);
+      return this;
+    }
+
+    public APIRequestGenget setDatePreset (AdgroupGet.EnumDatePreset datePreset) {
+      this.setParam("date_preset", datePreset);
+      return this;
+    }
+    public APIRequestGenget setDatePreset (String datePreset) {
+      this.setParam("date_preset", datePreset);
+      return this;
+    }
+
+    public APIRequestGenget setFields (String fields) {
+      this.setParam("fields", fields);
+      return this;
+    }
+
+    public APIRequestGenget setFromAdtable (Boolean fromAdtable) {
+      this.setParam("from_adtable", fromAdtable);
+      return this;
+    }
+    public APIRequestGenget setFromAdtable (String fromAdtable) {
+      this.setParam("from_adtable", fromAdtable);
+      return this;
+    }
+
+    public APIRequestGenget setReviewFeedbackBreakdown (Boolean reviewFeedbackBreakdown) {
+      this.setParam("review_feedback_breakdown", reviewFeedbackBreakdown);
+      return this;
+    }
+    public APIRequestGenget setReviewFeedbackBreakdown (String reviewFeedbackBreakdown) {
+      this.setParam("review_feedback_breakdown", reviewFeedbackBreakdown);
+      return this;
+    }
+
+    public APIRequestGenget setTimeRange (Map<String, String> timeRange) {
+      this.setParam("time_range", timeRange);
+      return this;
+    }
+    public APIRequestGenget setTimeRange (String timeRange) {
+      this.setParam("time_range", timeRange);
+      return this;
+    }
+
+    public APIRequestGenget requestAllFields () {
       return this.requestAllFields(true);
     }
 
-    public APIRequestGendelete requestAllFields (boolean value) {
+    public APIRequestGenget requestAllFields (boolean value) {
       for (String field : FIELDS) {
         this.requestField(field, value);
       }
@@ -288,12 +344,12 @@ public class Adgroup extends APINode {
     }
 
     @Override
-    public APIRequestGendelete requestFields (List<String> fields) {
+    public APIRequestGenget requestFields (List<String> fields) {
       return this.requestFields(fields, true);
     }
 
     @Override
-    public APIRequestGendelete requestFields (List<String> fields, boolean value) {
+    public APIRequestGenget requestFields (List<String> fields, boolean value) {
       for (String field : fields) {
         this.requestField(field, value);
       }
@@ -301,13 +357,13 @@ public class Adgroup extends APINode {
     }
 
     @Override
-    public APIRequestGendelete requestField (String field) {
+    public APIRequestGenget requestField (String field) {
       this.requestField(field, true);
       return this;
     }
 
     @Override
-    public APIRequestGendelete requestField (String field, boolean value) {
+    public APIRequestGenget requestField (String field, boolean value) {
       this.requestFieldInternal(field, value);
       return this;
     }

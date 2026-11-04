@@ -668,6 +668,8 @@ public class IGUserForIGOnlyAPI extends APINode {
       "folder",
       "platform",
       "tags",
+      "updated_after_ms",
+      "updated_before_ms",
       "user_id",
     };
 
@@ -765,6 +767,24 @@ public class IGUserForIGOnlyAPI extends APINode {
     }
     public APIRequestGetConversations setTags (String tags) {
       this.setParam("tags", tags);
+      return this;
+    }
+
+    public APIRequestGetConversations setUpdatedAfterMs (Long updatedAfterMs) {
+      this.setParam("updated_after_ms", updatedAfterMs);
+      return this;
+    }
+    public APIRequestGetConversations setUpdatedAfterMs (String updatedAfterMs) {
+      this.setParam("updated_after_ms", updatedAfterMs);
+      return this;
+    }
+
+    public APIRequestGetConversations setUpdatedBeforeMs (Long updatedBeforeMs) {
+      this.setParam("updated_before_ms", updatedBeforeMs);
+      return this;
+    }
+    public APIRequestGetConversations setUpdatedBeforeMs (String updatedBeforeMs) {
+      this.setParam("updated_before_ms", updatedBeforeMs);
       return this;
     }
 

@@ -203,6 +203,8 @@ public class ReachFrequencyPrediction extends APINode {
   private String mStartTime = null;
   @SerializedName("status")
   private Long mStatus = null;
+  @SerializedName("status_message")
+  private String mStatusMessage = null;
   @SerializedName("story_event_type")
   private Long mStoryEventType = null;
   @SerializedName("target_cpm")
@@ -767,6 +769,10 @@ public class ReachFrequencyPrediction extends APINode {
     return mStatus;
   }
 
+  public String getFieldStatusMessage() {
+    return mStatusMessage;
+  }
+
   public Long getFieldStoryEventType() {
     return mStoryEventType;
   }
@@ -913,6 +919,7 @@ public class ReachFrequencyPrediction extends APINode {
       "reservation_status",
       "start_time",
       "status",
+      "status_message",
       "story_event_type",
       "target_cpm",
       "target_frequency",
@@ -1585,6 +1592,13 @@ public class ReachFrequencyPrediction extends APINode {
       this.requestField("status", value);
       return this;
     }
+    public APIRequestGet requestStatusMessageField () {
+      return this.requestStatusMessageField(true);
+    }
+    public APIRequestGet requestStatusMessageField (boolean value) {
+      this.requestField("status_message", value);
+      return this;
+    }
     public APIRequestGet requestStoryEventTypeField () {
       return this.requestStoryEventTypeField(true);
     }
@@ -1890,6 +1904,7 @@ public class ReachFrequencyPrediction extends APINode {
     this.mReservationStatus = instance.mReservationStatus;
     this.mStartTime = instance.mStartTime;
     this.mStatus = instance.mStatus;
+    this.mStatusMessage = instance.mStatusMessage;
     this.mStoryEventType = instance.mStoryEventType;
     this.mTargetCpm = instance.mTargetCpm;
     this.mTargetFrequency = instance.mTargetFrequency;
