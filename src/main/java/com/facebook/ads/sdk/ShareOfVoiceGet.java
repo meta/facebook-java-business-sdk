@@ -40,25 +40,23 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class ProductCatalogPost extends APINode {
-  @SerializedName("__firstOneOf")
-  private Object mFirstoneof = null;
-  @SerializedName("__secondOneOf")
-  private Object mSecondoneof = null;
+public class ShareOfVoiceGet extends APINode {
+  @SerializedName("data")
+  private Object mData = null;
   protected static Gson gson = null;
 
-  public ProductCatalogPost() {
+  public ShareOfVoiceGet() {
   }
 
   public String getId() {
     return null;
   }
-  public static ProductCatalogPost loadJSON(String json, APIContext context, String header) {
-    ProductCatalogPost productCatalogPost = getGson().fromJson(json, ProductCatalogPost.class);
+  public static ShareOfVoiceGet loadJSON(String json, APIContext context, String header) {
+    ShareOfVoiceGet shareOfVoiceGet = getGson().fromJson(json, ShareOfVoiceGet.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(productCatalogPost.toString());
+      JsonElement o2 = parser.parse(shareOfVoiceGet.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -68,14 +66,14 @@ public class ProductCatalogPost extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    productCatalogPost.context = context;
-    productCatalogPost.rawValue = json;
-    productCatalogPost.header = header;
-    return productCatalogPost;
+    shareOfVoiceGet.context = context;
+    shareOfVoiceGet.rawValue = json;
+    shareOfVoiceGet.header = header;
+    return shareOfVoiceGet;
   }
 
-  public static APINodeList<ProductCatalogPost> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<ProductCatalogPost> productCatalogPosts = new APINodeList<ProductCatalogPost>(request, json, header);
+  public static APINodeList<ShareOfVoiceGet> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<ShareOfVoiceGet> shareOfVoiceGets = new APINodeList<ShareOfVoiceGet>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -86,9 +84,9 @@ public class ProductCatalogPost extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          productCatalogPosts.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          shareOfVoiceGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return productCatalogPosts;
+        return shareOfVoiceGets;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -98,20 +96,20 @@ public class ProductCatalogPost extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                productCatalogPosts.setCursors(before, after);
+                shareOfVoiceGets.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            productCatalogPosts.setPaging(previous, next);
+            shareOfVoiceGets.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              productCatalogPosts.setAppSecret(context.getAppSecretProof());
+              shareOfVoiceGets.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              productCatalogPosts.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              shareOfVoiceGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -122,23 +120,23 @@ public class ProductCatalogPost extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  productCatalogPosts.add(loadJSON(entry.getValue().toString(), context, header));
+                  shareOfVoiceGets.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              productCatalogPosts.add(loadJSON(obj.toString(), context, header));
+              shareOfVoiceGets.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return productCatalogPosts;
+          return shareOfVoiceGets;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              productCatalogPosts.add(loadJSON(entry.getValue().toString(), context, header));
+              shareOfVoiceGets.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return productCatalogPosts;
+          return shareOfVoiceGets;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -155,20 +153,20 @@ public class ProductCatalogPost extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              productCatalogPosts.add(loadJSON(value.toString(), context, header));
+              shareOfVoiceGets.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return productCatalogPosts;
+            return shareOfVoiceGets;
           }
 
           // Sixth, check if it's pure JsonObject
-          productCatalogPosts.clear();
-          productCatalogPosts.add(loadJSON(json, context, header));
-          return productCatalogPosts;
+          shareOfVoiceGets.clear();
+          shareOfVoiceGets.add(loadJSON(json, context, header));
+          return shareOfVoiceGets;
         }
       }
     } catch (Exception e) {
@@ -196,21 +194,12 @@ public class ProductCatalogPost extends APINode {
   }
 
 
-  public Object getFieldFirstoneof() {
-    return mFirstoneof;
+  public Object getFieldData() {
+    return mData;
   }
 
-  public ProductCatalogPost setFieldFirstoneof(Object value) {
-    this.mFirstoneof = value;
-    return this;
-  }
-
-  public Object getFieldSecondoneof() {
-    return mSecondoneof;
-  }
-
-  public ProductCatalogPost setFieldSecondoneof(Object value) {
-    this.mSecondoneof = value;
+  public ShareOfVoiceGet setFieldData(Object value) {
+    this.mData = value;
     return this;
   }
 
@@ -230,18 +219,17 @@ public class ProductCatalogPost extends APINode {
     return gson;
   }
 
-  public ProductCatalogPost copyFrom(ProductCatalogPost instance) {
-    this.mFirstoneof = instance.mFirstoneof;
-    this.mSecondoneof = instance.mSecondoneof;
+  public ShareOfVoiceGet copyFrom(ShareOfVoiceGet instance) {
+    this.mData = instance.mData;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<ProductCatalogPost> getParser() {
-    return new APIRequest.ResponseParser<ProductCatalogPost>() {
-      public APINodeList<ProductCatalogPost> parseResponse(String response, APIContext context, APIRequest<ProductCatalogPost> request, String header) throws MalformedResponseException {
-        return ProductCatalogPost.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<ShareOfVoiceGet> getParser() {
+    return new APIRequest.ResponseParser<ShareOfVoiceGet>() {
+      public APINodeList<ShareOfVoiceGet> parseResponse(String response, APIContext context, APIRequest<ShareOfVoiceGet> request, String header) throws MalformedResponseException {
+        return ShareOfVoiceGet.parseResponse(response, context, request, header);
       }
     };
   }

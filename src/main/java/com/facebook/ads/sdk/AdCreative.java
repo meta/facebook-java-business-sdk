@@ -177,6 +177,8 @@ public class AdCreative extends APINode {
   private String mSourceFacebookPostId = null;
   @SerializedName("source_instagram_media_id")
   private String mSourceInstagramMediaId = null;
+  @SerializedName("source_threads_media_id")
+  private String mSourceThreadsMediaId = null;
   @SerializedName("status")
   private EnumStatus mStatus = null;
   @SerializedName("template_url")
@@ -1174,6 +1176,15 @@ public class AdCreative extends APINode {
     return this;
   }
 
+  public String getFieldSourceThreadsMediaId() {
+    return mSourceThreadsMediaId;
+  }
+
+  public AdCreative setFieldSourceThreadsMediaId(String value) {
+    this.mSourceThreadsMediaId = value;
+    return this;
+  }
+
   public EnumStatus getFieldStatus() {
     return mStatus;
   }
@@ -1967,6 +1978,7 @@ public class AdCreative extends APINode {
       "regional_regulation_disclaimer_spec",
       "source_facebook_post_id",
       "source_instagram_media_id",
+      "source_threads_media_id",
       "status",
       "template_url",
       "template_url_spec",
@@ -2561,6 +2573,13 @@ public class AdCreative extends APINode {
     }
     public APIRequestGet requestSourceInstagramMediaIdField (boolean value) {
       this.requestField("source_instagram_media_id", value);
+      return this;
+    }
+    public APIRequestGet requestSourceThreadsMediaIdField () {
+      return this.requestSourceThreadsMediaIdField(true);
+    }
+    public APIRequestGet requestSourceThreadsMediaIdField (boolean value) {
+      this.requestField("source_threads_media_id", value);
       return this;
     }
     public APIRequestGet requestStatusField () {
@@ -3287,6 +3306,7 @@ public class AdCreative extends APINode {
     this.mRegionalRegulationDisclaimerSpec = instance.mRegionalRegulationDisclaimerSpec;
     this.mSourceFacebookPostId = instance.mSourceFacebookPostId;
     this.mSourceInstagramMediaId = instance.mSourceInstagramMediaId;
+    this.mSourceThreadsMediaId = instance.mSourceThreadsMediaId;
     this.mStatus = instance.mStatus;
     this.mTemplateUrl = instance.mTemplateUrl;
     this.mTemplateUrlSpec = instance.mTemplateUrlSpec;

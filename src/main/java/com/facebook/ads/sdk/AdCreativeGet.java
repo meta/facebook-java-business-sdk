@@ -47,6 +47,8 @@ public class AdCreativeGet extends APINode {
   private Long mActorId = null;
   @SerializedName("actor_type")
   private EnumActorType mActorType = null;
+  @SerializedName("ad_disclaimer_spec")
+  private Object mAdDisclaimerSpec = null;
   @SerializedName("adlabels")
   private List<Object> mAdlabels = null;
   @SerializedName("applink_treatment")
@@ -123,6 +125,8 @@ public class AdCreativeGet extends APINode {
   private Long mLinkOgId = null;
   @SerializedName("link_url")
   private String mLinkUrl = null;
+  @SerializedName("marketing_message_structured_spec")
+  private Object mMarketingMessageStructuredSpec = null;
   @SerializedName("media_sourcing_spec")
   private Object mMediaSourcingSpec = null;
   @SerializedName("media_type")
@@ -159,6 +163,8 @@ public class AdCreativeGet extends APINode {
   private Object mPortraitCustomizations = null;
   @SerializedName("product_set_id")
   private Long mProductSetId = null;
+  @SerializedName("product_suggestion_settings")
+  private Object mProductSuggestionSettings = null;
   @SerializedName("recommender_settings")
   private Object mRecommenderSettings = null;
   @SerializedName("regional_regulation_disclaimer_spec")
@@ -167,6 +173,8 @@ public class AdCreativeGet extends APINode {
   private Long mSourceFacebookPostId = null;
   @SerializedName("source_instagram_media_id")
   private Long mSourceInstagramMediaId = null;
+  @SerializedName("source_threads_media_id")
+  private Long mSourceThreadsMediaId = null;
   @SerializedName("status")
   private String mStatus = null;
   @SerializedName("template_url")
@@ -193,6 +201,8 @@ public class AdCreativeGet extends APINode {
   private Long mVideoId = null;
   @SerializedName("visual_hash")
   private Long mVisualHash = null;
+  @SerializedName("wamo_whatsapp_identity_spec")
+  private Object mWamoWhatsappIdentitySpec = null;
   protected static Gson gson = null;
 
   public AdCreativeGet() {
@@ -368,6 +378,15 @@ public class AdCreativeGet extends APINode {
 
   public AdCreativeGet setFieldActorType(EnumActorType value) {
     this.mActorType = value;
+    return this;
+  }
+
+  public Object getFieldAdDisclaimerSpec() {
+    return mAdDisclaimerSpec;
+  }
+
+  public AdCreativeGet setFieldAdDisclaimerSpec(Object value) {
+    this.mAdDisclaimerSpec = value;
     return this;
   }
 
@@ -713,6 +732,15 @@ public class AdCreativeGet extends APINode {
     return this;
   }
 
+  public Object getFieldMarketingMessageStructuredSpec() {
+    return mMarketingMessageStructuredSpec;
+  }
+
+  public AdCreativeGet setFieldMarketingMessageStructuredSpec(Object value) {
+    this.mMarketingMessageStructuredSpec = value;
+    return this;
+  }
+
   public Object getFieldMediaSourcingSpec() {
     return mMediaSourcingSpec;
   }
@@ -875,6 +903,15 @@ public class AdCreativeGet extends APINode {
     return this;
   }
 
+  public Object getFieldProductSuggestionSettings() {
+    return mProductSuggestionSettings;
+  }
+
+  public AdCreativeGet setFieldProductSuggestionSettings(Object value) {
+    this.mProductSuggestionSettings = value;
+    return this;
+  }
+
   public Object getFieldRecommenderSettings() {
     return mRecommenderSettings;
   }
@@ -908,6 +945,15 @@ public class AdCreativeGet extends APINode {
 
   public AdCreativeGet setFieldSourceInstagramMediaId(Long value) {
     this.mSourceInstagramMediaId = value;
+    return this;
+  }
+
+  public Long getFieldSourceThreadsMediaId() {
+    return mSourceThreadsMediaId;
+  }
+
+  public AdCreativeGet setFieldSourceThreadsMediaId(Long value) {
+    this.mSourceThreadsMediaId = value;
     return this;
   }
 
@@ -1025,6 +1071,15 @@ public class AdCreativeGet extends APINode {
 
   public AdCreativeGet setFieldVisualHash(Long value) {
     this.mVisualHash = value;
+    return this;
+  }
+
+  public Object getFieldWamoWhatsappIdentitySpec() {
+    return mWamoWhatsappIdentitySpec;
+  }
+
+  public AdCreativeGet setFieldWamoWhatsappIdentitySpec(Object value) {
+    this.mWamoWhatsappIdentitySpec = value;
     return this;
   }
 
@@ -1622,6 +1677,7 @@ public class AdCreativeGet extends APINode {
     this.mAccountId = instance.mAccountId;
     this.mActorId = instance.mActorId;
     this.mActorType = instance.mActorType;
+    this.mAdDisclaimerSpec = instance.mAdDisclaimerSpec;
     this.mAdlabels = instance.mAdlabels;
     this.mApplinkTreatment = instance.mApplinkTreatment;
     this.mAssetFeedSpec = instance.mAssetFeedSpec;
@@ -1660,6 +1716,7 @@ public class AdCreativeGet extends APINode {
     this.mInteractiveComponentsSpec = instance.mInteractiveComponentsSpec;
     this.mLinkOgId = instance.mLinkOgId;
     this.mLinkUrl = instance.mLinkUrl;
+    this.mMarketingMessageStructuredSpec = instance.mMarketingMessageStructuredSpec;
     this.mMediaSourcingSpec = instance.mMediaSourcingSpec;
     this.mMediaType = instance.mMediaType;
     this.mName = instance.mName;
@@ -1678,10 +1735,12 @@ public class AdCreativeGet extends APINode {
     this.mPlayableAssetId = instance.mPlayableAssetId;
     this.mPortraitCustomizations = instance.mPortraitCustomizations;
     this.mProductSetId = instance.mProductSetId;
+    this.mProductSuggestionSettings = instance.mProductSuggestionSettings;
     this.mRecommenderSettings = instance.mRecommenderSettings;
     this.mRegionalRegulationDisclaimerSpec = instance.mRegionalRegulationDisclaimerSpec;
     this.mSourceFacebookPostId = instance.mSourceFacebookPostId;
     this.mSourceInstagramMediaId = instance.mSourceInstagramMediaId;
+    this.mSourceThreadsMediaId = instance.mSourceThreadsMediaId;
     this.mStatus = instance.mStatus;
     this.mTemplateUrl = instance.mTemplateUrl;
     this.mTemplateUrlSpec = instance.mTemplateUrlSpec;
@@ -1695,6 +1754,7 @@ public class AdCreativeGet extends APINode {
     this.mUsePageActorOverride = instance.mUsePageActorOverride;
     this.mVideoId = instance.mVideoId;
     this.mVisualHash = instance.mVisualHash;
+    this.mWamoWhatsappIdentitySpec = instance.mWamoWhatsappIdentitySpec;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;

@@ -3964,6 +3964,10 @@ public class ProductItem extends APINode {
       VALUE_EMPTY_CONDITION("EMPTY_CONDITION"),
       @SerializedName("EMPTY_DESCRIPTION")
       VALUE_EMPTY_DESCRIPTION("EMPTY_DESCRIPTION"),
+      @SerializedName("EMPTY_GPC_AND_FPC")
+      VALUE_EMPTY_GPC_AND_FPC("EMPTY_GPC_AND_FPC"),
+      @SerializedName("EMPTY_GTIN_AND_MPN")
+      VALUE_EMPTY_GTIN_AND_MPN("EMPTY_GTIN_AND_MPN"),
       @SerializedName("EMPTY_IMAGE_URL")
       VALUE_EMPTY_IMAGE_URL("EMPTY_IMAGE_URL"),
       @SerializedName("EMPTY_PRICE")

@@ -2850,6 +2850,7 @@ public class AdAccount extends APINode {
       "regional_regulation_disclaimer_spec",
       "source_facebook_post_id",
       "source_instagram_media_id",
+      "source_threads_media_id",
       "status",
       "template_url",
       "template_url_spec",
@@ -3428,6 +3429,13 @@ public class AdAccount extends APINode {
       this.requestField("source_instagram_media_id", value);
       return this;
     }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField () {
+      return this.requestSourceThreadsMediaIdField(true);
+    }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField (boolean value) {
+      this.requestField("source_threads_media_id", value);
+      return this;
+    }
     public APIRequestGetAdCreatives requestStatusField () {
       return this.requestStatusField(true);
     }
@@ -3565,6 +3573,7 @@ public class AdAccount extends APINode {
       "regional_regulation_disclaimer_spec",
       "source_facebook_post_id",
       "source_instagram_media_id",
+      "source_threads_media_id",
       "template_url",
       "template_url_spec",
       "thumbnail_url",
@@ -4056,6 +4065,11 @@ public class AdAccount extends APINode {
       return this;
     }
 
+    public APIRequestCreateAdCreative setSourceThreadsMediaId (String sourceThreadsMediaId) {
+      this.setParam("source_threads_media_id", sourceThreadsMediaId);
+      return this;
+    }
+
     public APIRequestCreateAdCreative setTemplateUrl (String templateUrl) {
       this.setParam("template_url", templateUrl);
       return this;
@@ -4218,6 +4232,7 @@ public class AdAccount extends APINode {
       "regional_regulation_disclaimer_spec",
       "source_facebook_post_id",
       "source_instagram_media_id",
+      "source_threads_media_id",
       "status",
       "template_url",
       "template_url_spec",
@@ -4812,6 +4827,13 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetAdCreativesByLabels requestSourceInstagramMediaIdField (boolean value) {
       this.requestField("source_instagram_media_id", value);
+      return this;
+    }
+    public APIRequestGetAdCreativesByLabels requestSourceThreadsMediaIdField () {
+      return this.requestSourceThreadsMediaIdField(true);
+    }
+    public APIRequestGetAdCreativesByLabels requestSourceThreadsMediaIdField (boolean value) {
+      this.requestField("source_threads_media_id", value);
       return this;
     }
     public APIRequestGetAdCreativesByLabels requestStatusField () {
@@ -8432,7 +8454,6 @@ public class AdAccount extends APINode {
       "live_video_ad_campaign_config",
       "low_creative_reach",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -8992,13 +9013,6 @@ public class AdAccount extends APINode {
       this.requestField("max_budget_spend_percentage", value);
       return this;
     }
-    public APIRequestGetAdSets requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGetAdSets requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
-      return this;
-    }
     public APIRequestGetAdSets requestMinBudgetSpendPercentageField () {
       return this.requestMinBudgetSpendPercentageField(true);
     }
@@ -9265,7 +9279,6 @@ public class AdAccount extends APINode {
       "line_number",
       "live_video_ad_campaign_config",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -9742,15 +9755,6 @@ public class AdAccount extends APINode {
       return this;
     }
 
-    public APIRequestCreateAdSet setMetaMomentMakerSpec (Map<String, String> metaMomentMakerSpec) {
-      this.setParam("meta_moment_maker_spec", metaMomentMakerSpec);
-      return this;
-    }
-    public APIRequestCreateAdSet setMetaMomentMakerSpec (String metaMomentMakerSpec) {
-      this.setParam("meta_moment_maker_spec", metaMomentMakerSpec);
-      return this;
-    }
-
     public APIRequestCreateAdSet setMinBudgetSpendPercentage (Long minBudgetSpendPercentage) {
       this.setParam("min_budget_spend_percentage", minBudgetSpendPercentage);
       return this;
@@ -10065,7 +10069,6 @@ public class AdAccount extends APINode {
       "live_video_ad_campaign_config",
       "low_creative_reach",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -10596,13 +10599,6 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetAdSetsByLabels requestMaxBudgetSpendPercentageField (boolean value) {
       this.requestField("max_budget_spend_percentage", value);
-      return this;
-    }
-    public APIRequestGetAdSetsByLabels requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGetAdSetsByLabels requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
       return this;
     }
     public APIRequestGetAdSetsByLabels requestMinBudgetSpendPercentageField () {
@@ -13743,7 +13739,6 @@ public class AdAccount extends APINode {
       "live_video_ad_campaign_config",
       "low_creative_reach",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -14256,13 +14251,6 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetAffectedAdSets requestMaxBudgetSpendPercentageField (boolean value) {
       this.requestField("max_budget_spend_percentage", value);
-      return this;
-    }
-    public APIRequestGetAffectedAdSets requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGetAffectedAdSets requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
       return this;
     }
     public APIRequestGetAffectedAdSets requestMinBudgetSpendPercentageField () {
@@ -21927,7 +21915,6 @@ public class AdAccount extends APINode {
       "live_video_ad_campaign_config",
       "low_creative_reach",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -22445,13 +22432,6 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetDeprecatedTargetingAdSets requestMaxBudgetSpendPercentageField (boolean value) {
       this.requestField("max_budget_spend_percentage", value);
-      return this;
-    }
-    public APIRequestGetDeprecatedTargetingAdSets requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGetDeprecatedTargetingAdSets requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
       return this;
     }
     public APIRequestGetDeprecatedTargetingAdSets requestMinBudgetSpendPercentageField () {
@@ -27935,7 +27915,6 @@ public class AdAccount extends APINode {
       "is_io",
       "is_reserved_buying",
       "is_trp",
-      "meta_moment_maker_spec",
       "name",
       "objective",
       "objective_name",
@@ -28480,13 +28459,6 @@ public class AdAccount extends APINode {
     }
     public APIRequestGetReachFrequencyPredictions requestIsTrpField (boolean value) {
       this.requestField("is_trp", value);
-      return this;
-    }
-    public APIRequestGetReachFrequencyPredictions requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGetReachFrequencyPredictions requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
       return this;
     }
     public APIRequestGetReachFrequencyPredictions requestNameField () {

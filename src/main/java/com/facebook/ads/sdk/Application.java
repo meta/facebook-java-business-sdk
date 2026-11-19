@@ -7605,7 +7605,6 @@ public class Application extends APINode {
       "attribution_referrer",
       "auditing_token",
       "click_attr_window",
-      "click_id",
       "custom_events",
       "decline_reason",
       "device_os",
@@ -7617,6 +7616,7 @@ public class Application extends APINode {
       "fb_adgroup_id",
       "fb_click_time",
       "fb_view_time",
+      "fbc",
       "google_install_referrer",
       "inactivity_window_hours",
       "install_id",
@@ -7723,11 +7723,6 @@ public class Application extends APINode {
       return this;
     }
 
-    public APIRequestCreateMmpAuditing setClickId (String clickId) {
-      this.setParam("click_id", clickId);
-      return this;
-    }
-
     public APIRequestCreateMmpAuditing setCustomEvents (List<Object> customEvents) {
       this.setParam("custom_events", customEvents);
       return this;
@@ -7804,6 +7799,11 @@ public class Application extends APINode {
     }
     public APIRequestCreateMmpAuditing setFbViewTime (String fbViewTime) {
       this.setParam("fb_view_time", fbViewTime);
+      return this;
+    }
+
+    public APIRequestCreateMmpAuditing setFbc (String fbc) {
+      this.setParam("fbc", fbc);
       return this;
     }
 

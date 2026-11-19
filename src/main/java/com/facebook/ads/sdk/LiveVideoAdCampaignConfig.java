@@ -41,8 +41,12 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  *
  */
 public class LiveVideoAdCampaignConfig extends APINode {
+  @SerializedName("declared_live_seconds")
+  private Long mDeclaredLiveSeconds = null;
   @SerializedName("id")
   private String mId = null;
+  @SerializedName("live_cadence")
+  private String mLiveCadence = null;
   @SerializedName("live_video_ad_type")
   private String mLiveVideoAdType = null;
   protected static Gson gson = null;
@@ -259,8 +263,16 @@ public class LiveVideoAdCampaignConfig extends APINode {
   }
 
 
+  public Long getFieldDeclaredLiveSeconds() {
+    return mDeclaredLiveSeconds;
+  }
+
   public String getFieldId() {
     return mId;
+  }
+
+  public String getFieldLiveCadence() {
+    return mLiveCadence;
   }
 
   public String getFieldLiveVideoAdType() {
@@ -280,7 +292,9 @@ public class LiveVideoAdCampaignConfig extends APINode {
     };
 
     public static final String[] FIELDS = {
+      "declared_live_seconds",
       "id",
+      "live_cadence",
       "live_video_ad_type",
     };
 
@@ -374,11 +388,25 @@ public class LiveVideoAdCampaignConfig extends APINode {
       return this;
     }
 
+    public APIRequestGet requestDeclaredLiveSecondsField () {
+      return this.requestDeclaredLiveSecondsField(true);
+    }
+    public APIRequestGet requestDeclaredLiveSecondsField (boolean value) {
+      this.requestField("declared_live_seconds", value);
+      return this;
+    }
     public APIRequestGet requestIdField () {
       return this.requestIdField(true);
     }
     public APIRequestGet requestIdField (boolean value) {
       this.requestField("id", value);
+      return this;
+    }
+    public APIRequestGet requestLiveCadenceField () {
+      return this.requestLiveCadenceField(true);
+    }
+    public APIRequestGet requestLiveCadenceField (boolean value) {
+      this.requestField("live_cadence", value);
       return this;
     }
     public APIRequestGet requestLiveVideoAdTypeField () {
@@ -405,7 +433,9 @@ public class LiveVideoAdCampaignConfig extends APINode {
   }
 
   public LiveVideoAdCampaignConfig copyFrom(LiveVideoAdCampaignConfig instance) {
+    this.mDeclaredLiveSeconds = instance.mDeclaredLiveSeconds;
     this.mId = instance.mId;
+    this.mLiveCadence = instance.mLiveCadence;
     this.mLiveVideoAdType = instance.mLiveVideoAdType;
     this.context = instance.context;
     this.rawValue = instance.rawValue;

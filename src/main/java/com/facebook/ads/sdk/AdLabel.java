@@ -393,6 +393,7 @@ public class AdLabel extends APINode {
       "regional_regulation_disclaimer_spec",
       "source_facebook_post_id",
       "source_instagram_media_id",
+      "source_threads_media_id",
       "status",
       "template_url",
       "template_url_spec",
@@ -969,6 +970,13 @@ public class AdLabel extends APINode {
     }
     public APIRequestGetAdCreatives requestSourceInstagramMediaIdField (boolean value) {
       this.requestField("source_instagram_media_id", value);
+      return this;
+    }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField () {
+      return this.requestSourceThreadsMediaIdField(true);
+    }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField (boolean value) {
+      this.requestField("source_threads_media_id", value);
       return this;
     }
     public APIRequestGetAdCreatives requestStatusField () {
@@ -1551,7 +1559,6 @@ public class AdLabel extends APINode {
       "live_video_ad_campaign_config",
       "low_creative_reach",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -2064,13 +2071,6 @@ public class AdLabel extends APINode {
     }
     public APIRequestGetAdSets requestMaxBudgetSpendPercentageField (boolean value) {
       this.requestField("max_budget_spend_percentage", value);
-      return this;
-    }
-    public APIRequestGetAdSets requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGetAdSets requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
       return this;
     }
     public APIRequestGetAdSets requestMinBudgetSpendPercentageField () {

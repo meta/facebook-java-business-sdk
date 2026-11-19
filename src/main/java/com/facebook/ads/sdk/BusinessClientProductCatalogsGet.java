@@ -40,25 +40,27 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class WhatsAppPaymentCapabilities extends APINode {
-  @SerializedName("is_enabled")
-  private Boolean mIsEnabled = null;
-  @SerializedName("payment_capability_details")
-  private List<Object> mPaymentCapabilityDetails = null;
+public class BusinessClientProductCatalogsGet extends APINode {
+  @SerializedName("data")
+  private List<Object> mData = null;
+  @SerializedName("paging")
+  private Object mPaging = null;
+  @SerializedName("summary")
+  private Object mSummary = null;
   protected static Gson gson = null;
 
-  public WhatsAppPaymentCapabilities() {
+  public BusinessClientProductCatalogsGet() {
   }
 
   public String getId() {
     return null;
   }
-  public static WhatsAppPaymentCapabilities loadJSON(String json, APIContext context, String header) {
-    WhatsAppPaymentCapabilities whatsAppPaymentCapabilities = getGson().fromJson(json, WhatsAppPaymentCapabilities.class);
+  public static BusinessClientProductCatalogsGet loadJSON(String json, APIContext context, String header) {
+    BusinessClientProductCatalogsGet businessClientProductCatalogsGet = getGson().fromJson(json, BusinessClientProductCatalogsGet.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(whatsAppPaymentCapabilities.toString());
+      JsonElement o2 = parser.parse(businessClientProductCatalogsGet.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -68,14 +70,14 @@ public class WhatsAppPaymentCapabilities extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    whatsAppPaymentCapabilities.context = context;
-    whatsAppPaymentCapabilities.rawValue = json;
-    whatsAppPaymentCapabilities.header = header;
-    return whatsAppPaymentCapabilities;
+    businessClientProductCatalogsGet.context = context;
+    businessClientProductCatalogsGet.rawValue = json;
+    businessClientProductCatalogsGet.header = header;
+    return businessClientProductCatalogsGet;
   }
 
-  public static APINodeList<WhatsAppPaymentCapabilities> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<WhatsAppPaymentCapabilities> whatsAppPaymentCapabilitiess = new APINodeList<WhatsAppPaymentCapabilities>(request, json, header);
+  public static APINodeList<BusinessClientProductCatalogsGet> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<BusinessClientProductCatalogsGet> businessClientProductCatalogsGets = new APINodeList<BusinessClientProductCatalogsGet>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -86,9 +88,9 @@ public class WhatsAppPaymentCapabilities extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          whatsAppPaymentCapabilitiess.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          businessClientProductCatalogsGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return whatsAppPaymentCapabilitiess;
+        return businessClientProductCatalogsGets;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -98,20 +100,20 @@ public class WhatsAppPaymentCapabilities extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                whatsAppPaymentCapabilitiess.setCursors(before, after);
+                businessClientProductCatalogsGets.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            whatsAppPaymentCapabilitiess.setPaging(previous, next);
+            businessClientProductCatalogsGets.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              whatsAppPaymentCapabilitiess.setAppSecret(context.getAppSecretProof());
+              businessClientProductCatalogsGets.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              whatsAppPaymentCapabilitiess.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              businessClientProductCatalogsGets.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -122,23 +124,23 @@ public class WhatsAppPaymentCapabilities extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  whatsAppPaymentCapabilitiess.add(loadJSON(entry.getValue().toString(), context, header));
+                  businessClientProductCatalogsGets.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              whatsAppPaymentCapabilitiess.add(loadJSON(obj.toString(), context, header));
+              businessClientProductCatalogsGets.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return whatsAppPaymentCapabilitiess;
+          return businessClientProductCatalogsGets;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              whatsAppPaymentCapabilitiess.add(loadJSON(entry.getValue().toString(), context, header));
+              businessClientProductCatalogsGets.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return whatsAppPaymentCapabilitiess;
+          return businessClientProductCatalogsGets;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -155,20 +157,20 @@ public class WhatsAppPaymentCapabilities extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              whatsAppPaymentCapabilitiess.add(loadJSON(value.toString(), context, header));
+              businessClientProductCatalogsGets.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return whatsAppPaymentCapabilitiess;
+            return businessClientProductCatalogsGets;
           }
 
           // Sixth, check if it's pure JsonObject
-          whatsAppPaymentCapabilitiess.clear();
-          whatsAppPaymentCapabilitiess.add(loadJSON(json, context, header));
-          return whatsAppPaymentCapabilitiess;
+          businessClientProductCatalogsGets.clear();
+          businessClientProductCatalogsGets.add(loadJSON(json, context, header));
+          return businessClientProductCatalogsGets;
         }
       }
     } catch (Exception e) {
@@ -196,21 +198,30 @@ public class WhatsAppPaymentCapabilities extends APINode {
   }
 
 
-  public Boolean getFieldIsEnabled() {
-    return mIsEnabled;
+  public List<Object> getFieldData() {
+    return mData;
   }
 
-  public WhatsAppPaymentCapabilities setFieldIsEnabled(Boolean value) {
-    this.mIsEnabled = value;
+  public BusinessClientProductCatalogsGet setFieldData(List<Object> value) {
+    this.mData = value;
     return this;
   }
 
-  public List<Object> getFieldPaymentCapabilityDetails() {
-    return mPaymentCapabilityDetails;
+  public Object getFieldPaging() {
+    return mPaging;
   }
 
-  public WhatsAppPaymentCapabilities setFieldPaymentCapabilityDetails(List<Object> value) {
-    this.mPaymentCapabilityDetails = value;
+  public BusinessClientProductCatalogsGet setFieldPaging(Object value) {
+    this.mPaging = value;
+    return this;
+  }
+
+  public Object getFieldSummary() {
+    return mSummary;
+  }
+
+  public BusinessClientProductCatalogsGet setFieldSummary(Object value) {
+    this.mSummary = value;
     return this;
   }
 
@@ -230,18 +241,19 @@ public class WhatsAppPaymentCapabilities extends APINode {
     return gson;
   }
 
-  public WhatsAppPaymentCapabilities copyFrom(WhatsAppPaymentCapabilities instance) {
-    this.mIsEnabled = instance.mIsEnabled;
-    this.mPaymentCapabilityDetails = instance.mPaymentCapabilityDetails;
+  public BusinessClientProductCatalogsGet copyFrom(BusinessClientProductCatalogsGet instance) {
+    this.mData = instance.mData;
+    this.mPaging = instance.mPaging;
+    this.mSummary = instance.mSummary;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<WhatsAppPaymentCapabilities> getParser() {
-    return new APIRequest.ResponseParser<WhatsAppPaymentCapabilities>() {
-      public APINodeList<WhatsAppPaymentCapabilities> parseResponse(String response, APIContext context, APIRequest<WhatsAppPaymentCapabilities> request, String header) throws MalformedResponseException {
-        return WhatsAppPaymentCapabilities.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<BusinessClientProductCatalogsGet> getParser() {
+    return new APIRequest.ResponseParser<BusinessClientProductCatalogsGet>() {
+      public APINodeList<BusinessClientProductCatalogsGet> parseResponse(String response, APIContext context, APIRequest<BusinessClientProductCatalogsGet> request, String header) throws MalformedResponseException {
+        return BusinessClientProductCatalogsGet.parseResponse(response, context, request, header);
       }
     };
   }

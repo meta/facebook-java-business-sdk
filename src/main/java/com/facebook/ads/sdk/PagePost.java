@@ -5204,6 +5204,7 @@ public class PagePost extends APINode {
       "direct_share_status",
       "explicitly_added_mentionee_ids",
       "feed_story_visibility",
+      "is_ai_generated",
       "is_explicit_location",
       "is_hidden",
       "is_pinned",
@@ -5339,6 +5340,15 @@ public class PagePost extends APINode {
     }
     public APIRequestUpdate setFeedStoryVisibility (String feedStoryVisibility) {
       this.setParam("feed_story_visibility", feedStoryVisibility);
+      return this;
+    }
+
+    public APIRequestUpdate setIsAiGenerated (Boolean isAiGenerated) {
+      this.setParam("is_ai_generated", isAiGenerated);
+      return this;
+    }
+    public APIRequestUpdate setIsAiGenerated (String isAiGenerated) {
+      this.setParam("is_ai_generated", isAiGenerated);
       return this;
     }
 

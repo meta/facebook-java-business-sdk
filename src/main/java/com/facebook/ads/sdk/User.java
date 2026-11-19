@@ -15163,11 +15163,11 @@ public class User extends APINode {
     }
   }
 
-  public static class APIRequestCreateLiveVideo extends APIRequest<LiveVideo> {
+  public static class APIRequestCreateLiveVideo extends APIRequest<APINode> {
 
-    LiveVideo lastResponse = null;
+    APINode lastResponse = null;
     @Override
-    public LiveVideo getLastResponse() {
+    public APINode getLastResponse() {
       return lastResponse;
     }
     public static final String[] PARAMS = {
@@ -15197,31 +15197,31 @@ public class User extends APINode {
     };
 
     @Override
-    public LiveVideo parseResponse(String response, String header) throws APIException {
-      return LiveVideo.parseResponse(response, getContext(), this, header).head();
+    public APINode parseResponse(String response, String header) throws APIException {
+      return APINode.parseResponse(response, getContext(), this, header).head();
     }
 
     @Override
-    public LiveVideo execute() throws APIException {
+    public APINode execute() throws APIException {
       return execute(new HashMap<String, Object>());
     }
 
     @Override
-    public LiveVideo execute(Map<String, Object> extraParams) throws APIException {
+    public APINode execute(Map<String, Object> extraParams) throws APIException {
       ResponseWrapper rw = executeInternal(extraParams);
       lastResponse = parseResponse(rw.getBody(), rw.getHeader());
       return lastResponse;
     }
 
-    public ListenableFuture<LiveVideo> executeAsync() throws APIException {
+    public ListenableFuture<APINode> executeAsync() throws APIException {
       return executeAsync(new HashMap<String, Object>());
     };
 
-    public ListenableFuture<LiveVideo> executeAsync(Map<String, Object> extraParams) throws APIException {
+    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
       return Futures.transform(
         executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, LiveVideo>() {
-           public LiveVideo apply(ResponseWrapper result) {
+        new Function<ResponseWrapper, APINode>() {
+           public APINode apply(ResponseWrapper result) {
              try {
                return APIRequestCreateLiveVideo.this.parseResponse(result.getBody(), result.getHeader());
              } catch (Exception e) {
@@ -15337,7 +15337,7 @@ public class User extends APINode {
       return this;
     }
 
-    public APIRequestCreateLiveVideo setProjection (LiveVideo.EnumProjection projection) {
+    public APIRequestCreateLiveVideo setProjection (EnumProjection projection) {
       this.setParam("projection", projection);
       return this;
     }
@@ -15364,7 +15364,7 @@ public class User extends APINode {
       return this;
     }
 
-    public APIRequestCreateLiveVideo setSpatialAudioFormat (LiveVideo.EnumSpatialAudioFormat spatialAudioFormat) {
+    public APIRequestCreateLiveVideo setSpatialAudioFormat (EnumSpatialAudioFormat spatialAudioFormat) {
       this.setParam("spatial_audio_format", spatialAudioFormat);
       return this;
     }
@@ -15373,7 +15373,7 @@ public class User extends APINode {
       return this;
     }
 
-    public APIRequestCreateLiveVideo setStatus (LiveVideo.EnumStatus status) {
+    public APIRequestCreateLiveVideo setStatus (EnumStatus status) {
       this.setParam("status", status);
       return this;
     }
@@ -15382,7 +15382,7 @@ public class User extends APINode {
       return this;
     }
 
-    public APIRequestCreateLiveVideo setStereoscopicMode (LiveVideo.EnumStereoscopicMode stereoscopicMode) {
+    public APIRequestCreateLiveVideo setStereoscopicMode (EnumStereoscopicMode stereoscopicMode) {
       this.setParam("stereoscopic_mode", stereoscopicMode);
       return this;
     }
@@ -15400,7 +15400,7 @@ public class User extends APINode {
       return this;
     }
 
-    public APIRequestCreateLiveVideo setStreamType (LiveVideo.EnumStreamType streamType) {
+    public APIRequestCreateLiveVideo setStreamType (EnumStreamType streamType) {
       this.setParam("stream_type", streamType);
       return this;
     }
@@ -17023,7 +17023,6 @@ public class User extends APINode {
       return lastResponse;
     }
     public static final String[] PARAMS = {
-      "ai_disclosure",
       "bot_message_payload_elements",
       "button_title",
       "filtering",
@@ -17099,15 +17098,6 @@ public class User extends APINode {
       return this;
     }
 
-
-    public APIRequestCreateNotification setAiDisclosure (User.EnumAiDisclosure aiDisclosure) {
-      this.setParam("ai_disclosure", aiDisclosure);
-      return this;
-    }
-    public APIRequestCreateNotification setAiDisclosure (String aiDisclosure) {
-      this.setParam("ai_disclosure", aiDisclosure);
-      return this;
-    }
 
     public APIRequestCreateNotification setBotMessagePayloadElements (String botMessagePayloadElements) {
       this.setParam("bot_message_payload_elements", botMessagePayloadElements);
@@ -22725,25 +22715,6 @@ public class User extends APINode {
       }
   }
 
-  public static enum EnumAiDisclosure {
-      @SerializedName("AI_GENERATED")
-      VALUE_AI_GENERATED("AI_GENERATED"),
-      @SerializedName("NOT_AI_GENERATED")
-      VALUE_NOT_AI_GENERATED("NOT_AI_GENERATED"),
-      ;
-
-      private String value;
-
-      private EnumAiDisclosure(String value) {
-        this.value = value;
-      }
-
-      @Override
-      public String toString() {
-        return value;
-      }
-  }
-
   public static enum EnumFiltering {
       @SerializedName("ema")
       VALUE_EMA("ema"),
@@ -22775,6 +22746,111 @@ public class User extends APINode {
       private String value;
 
       private EnumType(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumProjection {
+      @SerializedName("CUBEMAP")
+      VALUE_CUBEMAP("CUBEMAP"),
+      @SerializedName("EQUIRECTANGULAR")
+      VALUE_EQUIRECTANGULAR("EQUIRECTANGULAR"),
+      @SerializedName("HALF_EQUIRECTANGULAR")
+      VALUE_HALF_EQUIRECTANGULAR("HALF_EQUIRECTANGULAR"),
+      ;
+
+      private String value;
+
+      private EnumProjection(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumSpatialAudioFormat {
+      @SerializedName("ambiX_4")
+      VALUE_AMBIX_4("ambiX_4"),
+      ;
+
+      private String value;
+
+      private EnumSpatialAudioFormat(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumStatus {
+      @SerializedName("LIVE_NOW")
+      VALUE_LIVE_NOW("LIVE_NOW"),
+      @SerializedName("SCHEDULED_CANCELED")
+      VALUE_SCHEDULED_CANCELED("SCHEDULED_CANCELED"),
+      @SerializedName("SCHEDULED_LIVE")
+      VALUE_SCHEDULED_LIVE("SCHEDULED_LIVE"),
+      @SerializedName("SCHEDULED_UNPUBLISHED")
+      VALUE_SCHEDULED_UNPUBLISHED("SCHEDULED_UNPUBLISHED"),
+      @SerializedName("UNPUBLISHED")
+      VALUE_UNPUBLISHED("UNPUBLISHED"),
+      ;
+
+      private String value;
+
+      private EnumStatus(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumStereoscopicMode {
+      @SerializedName("LEFT_RIGHT")
+      VALUE_LEFT_RIGHT("LEFT_RIGHT"),
+      @SerializedName("MONO")
+      VALUE_MONO("MONO"),
+      @SerializedName("MULTI_VIEW")
+      VALUE_MULTI_VIEW("MULTI_VIEW"),
+      @SerializedName("TOP_BOTTOM")
+      VALUE_TOP_BOTTOM("TOP_BOTTOM"),
+      ;
+
+      private String value;
+
+      private EnumStereoscopicMode(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumStreamType {
+      @SerializedName("AMBIENT")
+      VALUE_AMBIENT("AMBIENT"),
+      @SerializedName("REGULAR")
+      VALUE_REGULAR("REGULAR"),
+      ;
+
+      private String value;
+
+      private EnumStreamType(String value) {
         this.value = value;
       }
 

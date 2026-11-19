@@ -161,8 +161,6 @@ public class ReachFrequencyPrediction extends APINode {
   private Long mIsReservedBuying = null;
   @SerializedName("is_trp")
   private Boolean mIsTrp = null;
-  @SerializedName("meta_moment_maker_spec")
-  private MetaMomentMakerConfig mMetaMomentMakerSpec = null;
   @SerializedName("name")
   private String mName = null;
   @SerializedName("objective")
@@ -685,10 +683,6 @@ public class ReachFrequencyPrediction extends APINode {
     return mIsTrp;
   }
 
-  public MetaMomentMakerConfig getFieldMetaMomentMakerSpec() {
-    return mMetaMomentMakerSpec;
-  }
-
   public String getFieldName() {
     return mName;
   }
@@ -898,7 +892,6 @@ public class ReachFrequencyPrediction extends APINode {
       "is_io",
       "is_reserved_buying",
       "is_trp",
-      "meta_moment_maker_spec",
       "name",
       "objective",
       "objective_name",
@@ -1445,13 +1438,6 @@ public class ReachFrequencyPrediction extends APINode {
       this.requestField("is_trp", value);
       return this;
     }
-    public APIRequestGet requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGet requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
-      return this;
-    }
     public APIRequestGet requestNameField () {
       return this.requestNameField(true);
     }
@@ -1883,7 +1869,6 @@ public class ReachFrequencyPrediction extends APINode {
     this.mIsIo = instance.mIsIo;
     this.mIsReservedBuying = instance.mIsReservedBuying;
     this.mIsTrp = instance.mIsTrp;
-    this.mMetaMomentMakerSpec = instance.mMetaMomentMakerSpec;
     this.mName = instance.mName;
     this.mObjective = instance.mObjective;
     this.mObjectiveName = instance.mObjectiveName;

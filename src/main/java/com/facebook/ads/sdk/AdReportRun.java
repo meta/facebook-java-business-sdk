@@ -456,7 +456,6 @@ public class AdReportRun extends APINode {
       "configurable_placement_ptc_converters",
       "configurable_placement_ptc_reach",
       "configurable_reachbyfrequency_action",
-      "configurable_reachbyfrequency_converters_count",
       "configurable_reachbyfrequency_impressions_cost",
       "configurable_reachbyfrequency_impressions_count",
       "configurable_reachbyfrequency_reach",
@@ -1114,13 +1113,6 @@ public class AdReportRun extends APINode {
     }
     public APIRequestGetInsights requestConfigurableReachbyfrequencyActionField (boolean value) {
       this.requestField("configurable_reachbyfrequency_action", value);
-      return this;
-    }
-    public APIRequestGetInsights requestConfigurableReachbyfrequencyConvertersCountField () {
-      return this.requestConfigurableReachbyfrequencyConvertersCountField(true);
-    }
-    public APIRequestGetInsights requestConfigurableReachbyfrequencyConvertersCountField (boolean value) {
-      this.requestField("configurable_reachbyfrequency_converters_count", value);
       return this;
     }
     public APIRequestGetInsights requestConfigurableReachbyfrequencyImpressionsCostField () {
@@ -2954,6 +2946,10 @@ public class AdReportRun extends APINode {
       VALUE_PRODUCT_ID("product_id"),
       @SerializedName("publisher_platform")
       VALUE_PUBLISHER_PLATFORM("publisher_platform"),
+      @SerializedName("purchased_brand")
+      VALUE_PURCHASED_BRAND("purchased_brand"),
+      @SerializedName("purchased_category")
+      VALUE_PURCHASED_CATEGORY("purchased_category"),
       @SerializedName("redownload")
       VALUE_REDOWNLOAD("redownload"),
       @SerializedName("reels_trending_topic")

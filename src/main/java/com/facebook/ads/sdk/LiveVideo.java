@@ -4523,6 +4523,39 @@ public class LiveVideo extends APINode {
 
   }
 
+  public static enum EnumBroadcastStatus {
+      @SerializedName("LIVE")
+      VALUE_LIVE("LIVE"),
+      @SerializedName("LIVE_STOPPED")
+      VALUE_LIVE_STOPPED("LIVE_STOPPED"),
+      @SerializedName("PROCESSING")
+      VALUE_PROCESSING("PROCESSING"),
+      @SerializedName("SCHEDULED_CANCELED")
+      VALUE_SCHEDULED_CANCELED("SCHEDULED_CANCELED"),
+      @SerializedName("SCHEDULED_EXPIRED")
+      VALUE_SCHEDULED_EXPIRED("SCHEDULED_EXPIRED"),
+      @SerializedName("SCHEDULED_LIVE")
+      VALUE_SCHEDULED_LIVE("SCHEDULED_LIVE"),
+      @SerializedName("SCHEDULED_UNPUBLISHED")
+      VALUE_SCHEDULED_UNPUBLISHED("SCHEDULED_UNPUBLISHED"),
+      @SerializedName("UNPUBLISHED")
+      VALUE_UNPUBLISHED("UNPUBLISHED"),
+      @SerializedName("VOD")
+      VALUE_VOD("VOD"),
+      ;
+
+      private String value;
+
+      private EnumBroadcastStatus(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
   public static enum EnumProjection {
       @SerializedName("CUBEMAP")
       VALUE_CUBEMAP("CUBEMAP"),
@@ -4535,6 +4568,25 @@ public class LiveVideo extends APINode {
       private String value;
 
       private EnumProjection(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
+  public static enum EnumSource {
+      @SerializedName("owner")
+      VALUE_OWNER("owner"),
+      @SerializedName("target")
+      VALUE_TARGET("target"),
+      ;
+
+      private String value;
+
+      private EnumSource(String value) {
         this.value = value;
       }
 
@@ -4619,58 +4671,6 @@ public class LiveVideo extends APINode {
       private String value;
 
       private EnumStreamType(String value) {
-        this.value = value;
-      }
-
-      @Override
-      public String toString() {
-        return value;
-      }
-  }
-
-  public static enum EnumBroadcastStatus {
-      @SerializedName("LIVE")
-      VALUE_LIVE("LIVE"),
-      @SerializedName("LIVE_STOPPED")
-      VALUE_LIVE_STOPPED("LIVE_STOPPED"),
-      @SerializedName("PROCESSING")
-      VALUE_PROCESSING("PROCESSING"),
-      @SerializedName("SCHEDULED_CANCELED")
-      VALUE_SCHEDULED_CANCELED("SCHEDULED_CANCELED"),
-      @SerializedName("SCHEDULED_EXPIRED")
-      VALUE_SCHEDULED_EXPIRED("SCHEDULED_EXPIRED"),
-      @SerializedName("SCHEDULED_LIVE")
-      VALUE_SCHEDULED_LIVE("SCHEDULED_LIVE"),
-      @SerializedName("SCHEDULED_UNPUBLISHED")
-      VALUE_SCHEDULED_UNPUBLISHED("SCHEDULED_UNPUBLISHED"),
-      @SerializedName("UNPUBLISHED")
-      VALUE_UNPUBLISHED("UNPUBLISHED"),
-      @SerializedName("VOD")
-      VALUE_VOD("VOD"),
-      ;
-
-      private String value;
-
-      private EnumBroadcastStatus(String value) {
-        this.value = value;
-      }
-
-      @Override
-      public String toString() {
-        return value;
-      }
-  }
-
-  public static enum EnumSource {
-      @SerializedName("owner")
-      VALUE_OWNER("owner"),
-      @SerializedName("target")
-      VALUE_TARGET("target"),
-      ;
-
-      private String value;
-
-      private EnumSource(String value) {
         this.value = value;
       }
 

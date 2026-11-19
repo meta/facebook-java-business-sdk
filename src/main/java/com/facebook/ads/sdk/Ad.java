@@ -648,6 +648,7 @@ public class Ad extends APINode {
       "regional_regulation_disclaimer_spec",
       "source_facebook_post_id",
       "source_instagram_media_id",
+      "source_threads_media_id",
       "status",
       "template_url",
       "template_url_spec",
@@ -1224,6 +1225,13 @@ public class Ad extends APINode {
     }
     public APIRequestGetAdCreatives requestSourceInstagramMediaIdField (boolean value) {
       this.requestField("source_instagram_media_id", value);
+      return this;
+    }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField () {
+      return this.requestSourceThreadsMediaIdField(true);
+    }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField (boolean value) {
+      this.requestField("source_threads_media_id", value);
       return this;
     }
     public APIRequestGetAdCreatives requestStatusField () {

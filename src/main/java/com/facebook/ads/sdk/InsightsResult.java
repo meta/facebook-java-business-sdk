@@ -354,8 +354,12 @@ public class InsightsResult extends APINode {
       VALUE_TOTAL_INTERACTIONS("total_interactions"),
       @SerializedName("total_likes")
       VALUE_TOTAL_LIKES("total_likes"),
+      @SerializedName("total_viewers")
+      VALUE_TOTAL_VIEWERS("total_viewers"),
       @SerializedName("total_views")
       VALUE_TOTAL_VIEWS("total_views"),
+      @SerializedName("viewers")
+      VALUE_VIEWERS("viewers"),
       @SerializedName("views")
       VALUE_VIEWS("views"),
       ;

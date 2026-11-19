@@ -40,25 +40,25 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class AdsPixelDeliveryRecommendations extends APINode {
-  @SerializedName("custom_event_type")
-  private String mCustomEventType = null;
-  @SerializedName("optimization_goal")
-  private String mOptimizationGoal = null;
+public class ProductCatalogAgenciesPost extends APINode {
+  @SerializedName("__firstOneOf")
+  private Object mFirstoneof = null;
+  @SerializedName("__secondOneOf")
+  private Object mSecondoneof = null;
   protected static Gson gson = null;
 
-  public AdsPixelDeliveryRecommendations() {
+  public ProductCatalogAgenciesPost() {
   }
 
   public String getId() {
     return null;
   }
-  public static AdsPixelDeliveryRecommendations loadJSON(String json, APIContext context, String header) {
-    AdsPixelDeliveryRecommendations adsPixelDeliveryRecommendations = getGson().fromJson(json, AdsPixelDeliveryRecommendations.class);
+  public static ProductCatalogAgenciesPost loadJSON(String json, APIContext context, String header) {
+    ProductCatalogAgenciesPost productCatalogAgenciesPost = getGson().fromJson(json, ProductCatalogAgenciesPost.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(adsPixelDeliveryRecommendations.toString());
+      JsonElement o2 = parser.parse(productCatalogAgenciesPost.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -68,14 +68,14 @@ public class AdsPixelDeliveryRecommendations extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    adsPixelDeliveryRecommendations.context = context;
-    adsPixelDeliveryRecommendations.rawValue = json;
-    adsPixelDeliveryRecommendations.header = header;
-    return adsPixelDeliveryRecommendations;
+    productCatalogAgenciesPost.context = context;
+    productCatalogAgenciesPost.rawValue = json;
+    productCatalogAgenciesPost.header = header;
+    return productCatalogAgenciesPost;
   }
 
-  public static APINodeList<AdsPixelDeliveryRecommendations> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<AdsPixelDeliveryRecommendations> adsPixelDeliveryRecommendationss = new APINodeList<AdsPixelDeliveryRecommendations>(request, json, header);
+  public static APINodeList<ProductCatalogAgenciesPost> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<ProductCatalogAgenciesPost> productCatalogAgenciesPosts = new APINodeList<ProductCatalogAgenciesPost>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -86,9 +86,9 @@ public class AdsPixelDeliveryRecommendations extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          adsPixelDeliveryRecommendationss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          productCatalogAgenciesPosts.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return adsPixelDeliveryRecommendationss;
+        return productCatalogAgenciesPosts;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -98,20 +98,20 @@ public class AdsPixelDeliveryRecommendations extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                adsPixelDeliveryRecommendationss.setCursors(before, after);
+                productCatalogAgenciesPosts.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            adsPixelDeliveryRecommendationss.setPaging(previous, next);
+            productCatalogAgenciesPosts.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              adsPixelDeliveryRecommendationss.setAppSecret(context.getAppSecretProof());
+              productCatalogAgenciesPosts.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              adsPixelDeliveryRecommendationss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              productCatalogAgenciesPosts.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -122,23 +122,23 @@ public class AdsPixelDeliveryRecommendations extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  adsPixelDeliveryRecommendationss.add(loadJSON(entry.getValue().toString(), context, header));
+                  productCatalogAgenciesPosts.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              adsPixelDeliveryRecommendationss.add(loadJSON(obj.toString(), context, header));
+              productCatalogAgenciesPosts.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return adsPixelDeliveryRecommendationss;
+          return productCatalogAgenciesPosts;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              adsPixelDeliveryRecommendationss.add(loadJSON(entry.getValue().toString(), context, header));
+              productCatalogAgenciesPosts.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return adsPixelDeliveryRecommendationss;
+          return productCatalogAgenciesPosts;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -155,20 +155,20 @@ public class AdsPixelDeliveryRecommendations extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              adsPixelDeliveryRecommendationss.add(loadJSON(value.toString(), context, header));
+              productCatalogAgenciesPosts.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return adsPixelDeliveryRecommendationss;
+            return productCatalogAgenciesPosts;
           }
 
           // Sixth, check if it's pure JsonObject
-          adsPixelDeliveryRecommendationss.clear();
-          adsPixelDeliveryRecommendationss.add(loadJSON(json, context, header));
-          return adsPixelDeliveryRecommendationss;
+          productCatalogAgenciesPosts.clear();
+          productCatalogAgenciesPosts.add(loadJSON(json, context, header));
+          return productCatalogAgenciesPosts;
         }
       }
     } catch (Exception e) {
@@ -196,21 +196,21 @@ public class AdsPixelDeliveryRecommendations extends APINode {
   }
 
 
-  public String getFieldCustomEventType() {
-    return mCustomEventType;
+  public Object getFieldFirstoneof() {
+    return mFirstoneof;
   }
 
-  public AdsPixelDeliveryRecommendations setFieldCustomEventType(String value) {
-    this.mCustomEventType = value;
+  public ProductCatalogAgenciesPost setFieldFirstoneof(Object value) {
+    this.mFirstoneof = value;
     return this;
   }
 
-  public String getFieldOptimizationGoal() {
-    return mOptimizationGoal;
+  public Object getFieldSecondoneof() {
+    return mSecondoneof;
   }
 
-  public AdsPixelDeliveryRecommendations setFieldOptimizationGoal(String value) {
-    this.mOptimizationGoal = value;
+  public ProductCatalogAgenciesPost setFieldSecondoneof(Object value) {
+    this.mSecondoneof = value;
     return this;
   }
 
@@ -230,18 +230,18 @@ public class AdsPixelDeliveryRecommendations extends APINode {
     return gson;
   }
 
-  public AdsPixelDeliveryRecommendations copyFrom(AdsPixelDeliveryRecommendations instance) {
-    this.mCustomEventType = instance.mCustomEventType;
-    this.mOptimizationGoal = instance.mOptimizationGoal;
+  public ProductCatalogAgenciesPost copyFrom(ProductCatalogAgenciesPost instance) {
+    this.mFirstoneof = instance.mFirstoneof;
+    this.mSecondoneof = instance.mSecondoneof;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<AdsPixelDeliveryRecommendations> getParser() {
-    return new APIRequest.ResponseParser<AdsPixelDeliveryRecommendations>() {
-      public APINodeList<AdsPixelDeliveryRecommendations> parseResponse(String response, APIContext context, APIRequest<AdsPixelDeliveryRecommendations> request, String header) throws MalformedResponseException {
-        return AdsPixelDeliveryRecommendations.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<ProductCatalogAgenciesPost> getParser() {
+    return new APIRequest.ResponseParser<ProductCatalogAgenciesPost>() {
+      public APINodeList<ProductCatalogAgenciesPost> parseResponse(String response, APIContext context, APIRequest<ProductCatalogAgenciesPost> request, String header) throws MalformedResponseException {
+        return ProductCatalogAgenciesPost.parseResponse(response, context, request, header);
       }
     };
   }

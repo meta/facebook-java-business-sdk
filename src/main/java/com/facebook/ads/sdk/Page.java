@@ -15279,6 +15279,7 @@ public class Page extends APINode {
       "organic_leads_count",
       "page",
       "page_id",
+      "phone_otp_verification_type",
       "privacy_policy_url",
       "question_page_custom_headline",
       "questions",
@@ -15496,6 +15497,13 @@ public class Page extends APINode {
       this.requestField("page_id", value);
       return this;
     }
+    public APIRequestGetLeadGenForms requestPhoneOtpVerificationTypeField () {
+      return this.requestPhoneOtpVerificationTypeField(true);
+    }
+    public APIRequestGetLeadGenForms requestPhoneOtpVerificationTypeField (boolean value) {
+      this.requestField("phone_otp_verification_type", value);
+      return this;
+    }
     public APIRequestGetLeadGenForms requestPrivacyPolicyUrlField () {
       return this.requestPrivacyPolicyUrlField(true);
     }
@@ -15548,6 +15556,7 @@ public class Page extends APINode {
       return lastResponse;
     }
     public static final String[] PARAMS = {
+      "ad_account_id",
       "allow_organic_lead_retrieval",
       "block_display_for_non_targeted_viewer",
       "context_card",
@@ -15560,6 +15569,7 @@ public class Page extends APINode {
       "is_phone_sms_verify_enabled",
       "locale",
       "name",
+      "phone_otp_verification_type",
       "privacy_policy",
       "question_page_custom_headline",
       "questions",
@@ -15625,6 +15635,15 @@ public class Page extends APINode {
       return this;
     }
 
+
+    public APIRequestCreateLeadGenForm setAdAccountId (Long adAccountId) {
+      this.setParam("ad_account_id", adAccountId);
+      return this;
+    }
+    public APIRequestCreateLeadGenForm setAdAccountId (String adAccountId) {
+      this.setParam("ad_account_id", adAccountId);
+      return this;
+    }
 
     public APIRequestCreateLeadGenForm setAllowOrganicLeadRetrieval (Boolean allowOrganicLeadRetrieval) {
       this.setParam("allow_organic_lead_retrieval", allowOrganicLeadRetrieval);
@@ -15723,6 +15742,15 @@ public class Page extends APINode {
 
     public APIRequestCreateLeadGenForm setName (String name) {
       this.setParam("name", name);
+      return this;
+    }
+
+    public APIRequestCreateLeadGenForm setPhoneOtpVerificationType (LeadgenForm.EnumPhoneOtpVerificationType phoneOtpVerificationType) {
+      this.setParam("phone_otp_verification_type", phoneOtpVerificationType);
+      return this;
+    }
+    public APIRequestCreateLeadGenForm setPhoneOtpVerificationType (String phoneOtpVerificationType) {
+      this.setParam("phone_otp_verification_type", phoneOtpVerificationType);
       return this;
     }
 

@@ -103,6 +103,10 @@ public class HomeListingGet extends APINode {
   private Long mCustomNumber4 = null;
   @SerializedName("days_on_market")
   private Long mDaysOnMarket = null;
+  @SerializedName("default_country")
+  private String mDefaultCountry = null;
+  @SerializedName("default_language_locale")
+  private String mDefaultLanguageLocale = null;
   @SerializedName("description")
   private String mDescription = null;
   @SerializedName("enabled_capability_to_review_status")
@@ -615,6 +619,24 @@ public class HomeListingGet extends APINode {
     return this;
   }
 
+  public String getFieldDefaultCountry() {
+    return mDefaultCountry;
+  }
+
+  public HomeListingGet setFieldDefaultCountry(String value) {
+    this.mDefaultCountry = value;
+    return this;
+  }
+
+  public String getFieldDefaultLanguageLocale() {
+    return mDefaultLanguageLocale;
+  }
+
+  public HomeListingGet setFieldDefaultLanguageLocale(String value) {
+    this.mDefaultLanguageLocale = value;
+    return this;
+  }
+
   public String getFieldDescription() {
     return mDescription;
   }
@@ -1060,70 +1082,32 @@ public class HomeListingGet extends APINode {
   public static enum EnumCapabilities {
       @SerializedName("B2C_MARKETPLACE")
       VALUE_B2C_MARKETPLACE("B2C_MARKETPLACE"),
-      @SerializedName("BIZ_MSG_AI_AGENT")
-      VALUE_BIZ_MSG_AI_AGENT("BIZ_MSG_AI_AGENT"),
-      @SerializedName("BUSINESS_INBOX_IN_MESSENGER")
-      VALUE_BUSINESS_INBOX_IN_MESSENGER("BUSINESS_INBOX_IN_MESSENGER"),
-      @SerializedName("BUY_ON_FACEBOOK")
-      VALUE_BUY_ON_FACEBOOK("BUY_ON_FACEBOOK"),
       @SerializedName("C2C_MARKETPLACE")
       VALUE_C2C_MARKETPLACE("C2C_MARKETPLACE"),
-      @SerializedName("CPAS_PARENT_CATALOG")
-      VALUE_CPAS_PARENT_CATALOG("CPAS_PARENT_CATALOG"),
       @SerializedName("DA")
       VALUE_DA("DA"),
       @SerializedName("DAILY_DEALS")
       VALUE_DAILY_DEALS("DAILY_DEALS"),
       @SerializedName("DAILY_DEALS_LEGACY")
       VALUE_DAILY_DEALS_LEGACY("DAILY_DEALS_LEGACY"),
-      @SerializedName("EVENT")
-      VALUE_EVENT("EVENT"),
-      @SerializedName("EVENT_DEPRECATED")
-      VALUE_EVENT_DEPRECATED("EVENT_DEPRECATED"),
-      @SerializedName("GROUPS")
-      VALUE_GROUPS("GROUPS"),
-      @SerializedName("IG_ONSITE_SHOPPING")
-      VALUE_IG_ONSITE_SHOPPING("IG_ONSITE_SHOPPING"),
       @SerializedName("IG_PRODUCT_TAGGING")
       VALUE_IG_PRODUCT_TAGGING("IG_PRODUCT_TAGGING"),
-      @SerializedName("LDP")
-      VALUE_LDP("LDP"),
       @SerializedName("MARKETPLACE")
       VALUE_MARKETPLACE("MARKETPLACE"),
       @SerializedName("MARKETPLACE_ADS_DEPRECATED")
       VALUE_MARKETPLACE_ADS_DEPRECATED("MARKETPLACE_ADS_DEPRECATED"),
-      @SerializedName("MARKETPLACE_HOME_RENTALS")
-      VALUE_MARKETPLACE_HOME_RENTALS("MARKETPLACE_HOME_RENTALS"),
-      @SerializedName("MARKETPLACE_HOME_SALES")
-      VALUE_MARKETPLACE_HOME_SALES("MARKETPLACE_HOME_SALES"),
-      @SerializedName("MARKETPLACE_MOTORS")
-      VALUE_MARKETPLACE_MOTORS("MARKETPLACE_MOTORS"),
       @SerializedName("MARKETPLACE_SHOPS")
       VALUE_MARKETPLACE_SHOPS("MARKETPLACE_SHOPS"),
       @SerializedName("MINI_SHOPS")
       VALUE_MINI_SHOPS("MINI_SHOPS"),
-      @SerializedName("NEIGHBORHOODS")
-      VALUE_NEIGHBORHOODS("NEIGHBORHOODS"),
       @SerializedName("OFFLINE_CONVERSIONS")
       VALUE_OFFLINE_CONVERSIONS("OFFLINE_CONVERSIONS"),
-      @SerializedName("ORGANIC_DISCOVERY")
-      VALUE_ORGANIC_DISCOVERY("ORGANIC_DISCOVERY"),
-      @SerializedName("PROFILE")
-      VALUE_PROFILE("PROFILE"),
-      @SerializedName("SERVICE")
-      VALUE_SERVICE("SERVICE"),
       @SerializedName("SHOPS")
       VALUE_SHOPS("SHOPS"),
-      @SerializedName("TEST_CAPABILITY")
-      VALUE_TEST_CAPABILITY("TEST_CAPABILITY"),
       @SerializedName("UNIVERSAL_CHECKOUT")
       VALUE_UNIVERSAL_CHECKOUT("UNIVERSAL_CHECKOUT"),
-      @SerializedName("US_MARKETPLACE")
-      VALUE_US_MARKETPLACE("US_MARKETPLACE"),
       @SerializedName("WHATSAPP")
       VALUE_WHATSAPP("WHATSAPP"),
-      @SerializedName("WHATSAPP_MARKETING_MESSAGE")
-      VALUE_WHATSAPP_MARKETING_MESSAGE("WHATSAPP_MARKETING_MESSAGE"),
       ;
 
       private String value;
@@ -1141,70 +1125,32 @@ public class HomeListingGet extends APINode {
   public static enum EnumCapabilitiesRenderingCatalogManager {
       @SerializedName("B2C_MARKETPLACE")
       VALUE_B2C_MARKETPLACE("B2C_MARKETPLACE"),
-      @SerializedName("BIZ_MSG_AI_AGENT")
-      VALUE_BIZ_MSG_AI_AGENT("BIZ_MSG_AI_AGENT"),
-      @SerializedName("BUSINESS_INBOX_IN_MESSENGER")
-      VALUE_BUSINESS_INBOX_IN_MESSENGER("BUSINESS_INBOX_IN_MESSENGER"),
-      @SerializedName("BUY_ON_FACEBOOK")
-      VALUE_BUY_ON_FACEBOOK("BUY_ON_FACEBOOK"),
       @SerializedName("C2C_MARKETPLACE")
       VALUE_C2C_MARKETPLACE("C2C_MARKETPLACE"),
-      @SerializedName("CPAS_PARENT_CATALOG")
-      VALUE_CPAS_PARENT_CATALOG("CPAS_PARENT_CATALOG"),
       @SerializedName("DA")
       VALUE_DA("DA"),
       @SerializedName("DAILY_DEALS")
       VALUE_DAILY_DEALS("DAILY_DEALS"),
       @SerializedName("DAILY_DEALS_LEGACY")
       VALUE_DAILY_DEALS_LEGACY("DAILY_DEALS_LEGACY"),
-      @SerializedName("EVENT")
-      VALUE_EVENT("EVENT"),
-      @SerializedName("EVENT_DEPRECATED")
-      VALUE_EVENT_DEPRECATED("EVENT_DEPRECATED"),
-      @SerializedName("GROUPS")
-      VALUE_GROUPS("GROUPS"),
-      @SerializedName("IG_ONSITE_SHOPPING")
-      VALUE_IG_ONSITE_SHOPPING("IG_ONSITE_SHOPPING"),
       @SerializedName("IG_PRODUCT_TAGGING")
       VALUE_IG_PRODUCT_TAGGING("IG_PRODUCT_TAGGING"),
-      @SerializedName("LDP")
-      VALUE_LDP("LDP"),
       @SerializedName("MARKETPLACE")
       VALUE_MARKETPLACE("MARKETPLACE"),
       @SerializedName("MARKETPLACE_ADS_DEPRECATED")
       VALUE_MARKETPLACE_ADS_DEPRECATED("MARKETPLACE_ADS_DEPRECATED"),
-      @SerializedName("MARKETPLACE_HOME_RENTALS")
-      VALUE_MARKETPLACE_HOME_RENTALS("MARKETPLACE_HOME_RENTALS"),
-      @SerializedName("MARKETPLACE_HOME_SALES")
-      VALUE_MARKETPLACE_HOME_SALES("MARKETPLACE_HOME_SALES"),
-      @SerializedName("MARKETPLACE_MOTORS")
-      VALUE_MARKETPLACE_MOTORS("MARKETPLACE_MOTORS"),
       @SerializedName("MARKETPLACE_SHOPS")
       VALUE_MARKETPLACE_SHOPS("MARKETPLACE_SHOPS"),
       @SerializedName("MINI_SHOPS")
       VALUE_MINI_SHOPS("MINI_SHOPS"),
-      @SerializedName("NEIGHBORHOODS")
-      VALUE_NEIGHBORHOODS("NEIGHBORHOODS"),
       @SerializedName("OFFLINE_CONVERSIONS")
       VALUE_OFFLINE_CONVERSIONS("OFFLINE_CONVERSIONS"),
-      @SerializedName("ORGANIC_DISCOVERY")
-      VALUE_ORGANIC_DISCOVERY("ORGANIC_DISCOVERY"),
-      @SerializedName("PROFILE")
-      VALUE_PROFILE("PROFILE"),
-      @SerializedName("SERVICE")
-      VALUE_SERVICE("SERVICE"),
       @SerializedName("SHOPS")
       VALUE_SHOPS("SHOPS"),
-      @SerializedName("TEST_CAPABILITY")
-      VALUE_TEST_CAPABILITY("TEST_CAPABILITY"),
       @SerializedName("UNIVERSAL_CHECKOUT")
       VALUE_UNIVERSAL_CHECKOUT("UNIVERSAL_CHECKOUT"),
-      @SerializedName("US_MARKETPLACE")
-      VALUE_US_MARKETPLACE("US_MARKETPLACE"),
       @SerializedName("WHATSAPP")
       VALUE_WHATSAPP("WHATSAPP"),
-      @SerializedName("WHATSAPP_MARKETING_MESSAGE")
-      VALUE_WHATSAPP_MARKETING_MESSAGE("WHATSAPP_MARKETING_MESSAGE"),
       ;
 
       private String value;
@@ -1538,6 +1484,8 @@ public class HomeListingGet extends APINode {
     this.mCustomNumber3 = instance.mCustomNumber3;
     this.mCustomNumber4 = instance.mCustomNumber4;
     this.mDaysOnMarket = instance.mDaysOnMarket;
+    this.mDefaultCountry = instance.mDefaultCountry;
+    this.mDefaultLanguageLocale = instance.mDefaultLanguageLocale;
     this.mDescription = instance.mDescription;
     this.mEnabledCapabilityToReviewStatus = instance.mEnabledCapabilityToReviewStatus;
     this.mEnergyRatingEu = instance.mEnergyRatingEu;

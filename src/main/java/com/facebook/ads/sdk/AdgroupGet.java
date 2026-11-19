@@ -45,10 +45,14 @@ public class AdgroupGet extends APINode {
   private String mAccountId = null;
   @SerializedName("ad_active_time")
   private String mAdActiveTime = null;
+  @SerializedName("ad_review_feedback")
+  private Object mAdReviewFeedback = null;
   @SerializedName("ad_schedule_end_time")
   private Object mAdScheduleEndTime = null;
   @SerializedName("ad_schedule_start_time")
   private Object mAdScheduleStartTime = null;
+  @SerializedName("ad_studies")
+  private Object mAdStudies = null;
   @SerializedName("adcreatives")
   private Object mAdcreatives = null;
   @SerializedName("adlabels")
@@ -79,6 +83,8 @@ public class AdgroupGet extends APINode {
   private String mConversionDomain = null;
   @SerializedName("conversion_specs")
   private List<Object> mConversionSpecs = null;
+  @SerializedName("copies")
+  private Object mCopies = null;
   @SerializedName("created_time")
   private Object mCreatedTime = null;
   @SerializedName("creative")
@@ -109,24 +115,76 @@ public class AdgroupGet extends APINode {
   private String mEffectiveStatus = null;
   @SerializedName("engagement_audience")
   private Boolean mEngagementAudience = null;
+  @SerializedName("failed_delivery_checks")
+  private List<Object> mFailedDeliveryChecks = null;
   @SerializedName("frequency")
   private Double mFrequency = null;
   @SerializedName("id")
   private Long mId = null;
   @SerializedName("impressions")
   private Long mImpressions = null;
+  @SerializedName("insights")
+  private Object mInsights = null;
   @SerializedName("is_autobid")
   private Boolean mIsAutobid = null;
+  @SerializedName("issues_info")
+  private List<Object> mIssuesInfo = null;
   @SerializedName("last_updated_by_app_id")
   private String mLastUpdatedByAppId = null;
+  @SerializedName("leadgens")
+  private String mLeadgens = null;
+  @SerializedName("leads")
+  private Object mLeads = null;
   @SerializedName("meta_reward_adgroup_status")
   private String mMetaRewardAdgroupStatus = null;
+  @SerializedName("metadata")
+  private Object mMetadata = null;
+  @SerializedName("mrl_settings")
+  private Object mMrlSettings = null;
+  @SerializedName("name")
+  private String mName = null;
+  @SerializedName("objective_for_cost")
+  private String mObjectiveForCost = null;
+  @SerializedName("objective_for_results")
+  private String mObjectiveForResults = null;
+  @SerializedName("preview_link")
+  private String mPreviewLink = null;
+  @SerializedName("preview_shareable_link")
+  private String mPreviewShareableLink = null;
+  @SerializedName("previews")
+  private Object mPreviews = null;
+  @SerializedName("priority")
+  private Long mPriority = null;
+  @SerializedName("recommendations")
+  private List<Object> mRecommendations = null;
+  @SerializedName("related_media_user_opted_out")
+  private Boolean mRelatedMediaUserOptedOut = null;
+  @SerializedName("related_page_post_id")
+  private String mRelatedPagePostId = null;
+  @SerializedName("result")
+  private String mResult = null;
+  @SerializedName("result_rate")
+  private String mResultRate = null;
+  @SerializedName("source_ad")
+  private Object mSourceAd = null;
+  @SerializedName("source_ad_id")
+  private String mSourceAdId = null;
+  @SerializedName("source_app_id")
+  private String mSourceAppId = null;
   @SerializedName("special_ad_categories")
   private List<String> mSpecialAdCategories = null;
   @SerializedName("spent")
   private String mSpent = null;
   @SerializedName("status")
   private String mStatus = null;
+  @SerializedName("targeting")
+  private Object mTargeting = null;
+  @SerializedName("targetingsentencelines")
+  private Object mTargetingsentencelines = null;
+  @SerializedName("tracking_and_conversion_with_defaults")
+  private Object mTrackingAndConversionWithDefaults = null;
+  @SerializedName("tracking_specs")
+  private List<Object> mTrackingSpecs = null;
   @SerializedName("updated_time")
   private Object mUpdatedTime = null;
   @SerializedName("view_tags")
@@ -302,6 +360,15 @@ public class AdgroupGet extends APINode {
     return this;
   }
 
+  public Object getFieldAdReviewFeedback() {
+    return mAdReviewFeedback;
+  }
+
+  public AdgroupGet setFieldAdReviewFeedback(Object value) {
+    this.mAdReviewFeedback = value;
+    return this;
+  }
+
   public Object getFieldAdScheduleEndTime() {
     return mAdScheduleEndTime;
   }
@@ -317,6 +384,15 @@ public class AdgroupGet extends APINode {
 
   public AdgroupGet setFieldAdScheduleStartTime(Object value) {
     this.mAdScheduleStartTime = value;
+    return this;
+  }
+
+  public Object getFieldAdStudies() {
+    return mAdStudies;
+  }
+
+  public AdgroupGet setFieldAdStudies(Object value) {
+    this.mAdStudies = value;
     return this;
   }
 
@@ -455,6 +531,15 @@ public class AdgroupGet extends APINode {
     return this;
   }
 
+  public Object getFieldCopies() {
+    return mCopies;
+  }
+
+  public AdgroupGet setFieldCopies(Object value) {
+    this.mCopies = value;
+    return this;
+  }
+
   public Object getFieldCreatedTime() {
     return mCreatedTime;
   }
@@ -590,6 +675,15 @@ public class AdgroupGet extends APINode {
     return this;
   }
 
+  public List<Object> getFieldFailedDeliveryChecks() {
+    return mFailedDeliveryChecks;
+  }
+
+  public AdgroupGet setFieldFailedDeliveryChecks(List<Object> value) {
+    this.mFailedDeliveryChecks = value;
+    return this;
+  }
+
   public Double getFieldFrequency() {
     return mFrequency;
   }
@@ -617,12 +711,30 @@ public class AdgroupGet extends APINode {
     return this;
   }
 
+  public Object getFieldInsights() {
+    return mInsights;
+  }
+
+  public AdgroupGet setFieldInsights(Object value) {
+    this.mInsights = value;
+    return this;
+  }
+
   public Boolean getFieldIsAutobid() {
     return mIsAutobid;
   }
 
   public AdgroupGet setFieldIsAutobid(Boolean value) {
     this.mIsAutobid = value;
+    return this;
+  }
+
+  public List<Object> getFieldIssuesInfo() {
+    return mIssuesInfo;
+  }
+
+  public AdgroupGet setFieldIssuesInfo(List<Object> value) {
+    this.mIssuesInfo = value;
     return this;
   }
 
@@ -635,12 +747,183 @@ public class AdgroupGet extends APINode {
     return this;
   }
 
+  public String getFieldLeadgens() {
+    return mLeadgens;
+  }
+
+  public AdgroupGet setFieldLeadgens(String value) {
+    this.mLeadgens = value;
+    return this;
+  }
+
+  public Object getFieldLeads() {
+    return mLeads;
+  }
+
+  public AdgroupGet setFieldLeads(Object value) {
+    this.mLeads = value;
+    return this;
+  }
+
   public String getFieldMetaRewardAdgroupStatus() {
     return mMetaRewardAdgroupStatus;
   }
 
   public AdgroupGet setFieldMetaRewardAdgroupStatus(String value) {
     this.mMetaRewardAdgroupStatus = value;
+    return this;
+  }
+
+  public Object getFieldMetadata() {
+    return mMetadata;
+  }
+
+  public AdgroupGet setFieldMetadata(Object value) {
+    this.mMetadata = value;
+    return this;
+  }
+
+  public Object getFieldMrlSettings() {
+    return mMrlSettings;
+  }
+
+  public AdgroupGet setFieldMrlSettings(Object value) {
+    this.mMrlSettings = value;
+    return this;
+  }
+
+  public String getFieldName() {
+    return mName;
+  }
+
+  public AdgroupGet setFieldName(String value) {
+    this.mName = value;
+    return this;
+  }
+
+  public String getFieldObjectiveForCost() {
+    return mObjectiveForCost;
+  }
+
+  public AdgroupGet setFieldObjectiveForCost(String value) {
+    this.mObjectiveForCost = value;
+    return this;
+  }
+
+  public String getFieldObjectiveForResults() {
+    return mObjectiveForResults;
+  }
+
+  public AdgroupGet setFieldObjectiveForResults(String value) {
+    this.mObjectiveForResults = value;
+    return this;
+  }
+
+  public String getFieldPreviewLink() {
+    return mPreviewLink;
+  }
+
+  public AdgroupGet setFieldPreviewLink(String value) {
+    this.mPreviewLink = value;
+    return this;
+  }
+
+  public String getFieldPreviewShareableLink() {
+    return mPreviewShareableLink;
+  }
+
+  public AdgroupGet setFieldPreviewShareableLink(String value) {
+    this.mPreviewShareableLink = value;
+    return this;
+  }
+
+  public Object getFieldPreviews() {
+    return mPreviews;
+  }
+
+  public AdgroupGet setFieldPreviews(Object value) {
+    this.mPreviews = value;
+    return this;
+  }
+
+  public Long getFieldPriority() {
+    return mPriority;
+  }
+
+  public AdgroupGet setFieldPriority(Long value) {
+    this.mPriority = value;
+    return this;
+  }
+
+  public List<Object> getFieldRecommendations() {
+    return mRecommendations;
+  }
+
+  public AdgroupGet setFieldRecommendations(List<Object> value) {
+    this.mRecommendations = value;
+    return this;
+  }
+
+  public Boolean getFieldRelatedMediaUserOptedOut() {
+    return mRelatedMediaUserOptedOut;
+  }
+
+  public AdgroupGet setFieldRelatedMediaUserOptedOut(Boolean value) {
+    this.mRelatedMediaUserOptedOut = value;
+    return this;
+  }
+
+  public String getFieldRelatedPagePostId() {
+    return mRelatedPagePostId;
+  }
+
+  public AdgroupGet setFieldRelatedPagePostId(String value) {
+    this.mRelatedPagePostId = value;
+    return this;
+  }
+
+  public String getFieldResult() {
+    return mResult;
+  }
+
+  public AdgroupGet setFieldResult(String value) {
+    this.mResult = value;
+    return this;
+  }
+
+  public String getFieldResultRate() {
+    return mResultRate;
+  }
+
+  public AdgroupGet setFieldResultRate(String value) {
+    this.mResultRate = value;
+    return this;
+  }
+
+  public Object getFieldSourceAd() {
+    return mSourceAd;
+  }
+
+  public AdgroupGet setFieldSourceAd(Object value) {
+    this.mSourceAd = value;
+    return this;
+  }
+
+  public String getFieldSourceAdId() {
+    return mSourceAdId;
+  }
+
+  public AdgroupGet setFieldSourceAdId(String value) {
+    this.mSourceAdId = value;
+    return this;
+  }
+
+  public String getFieldSourceAppId() {
+    return mSourceAppId;
+  }
+
+  public AdgroupGet setFieldSourceAppId(String value) {
+    this.mSourceAppId = value;
     return this;
   }
 
@@ -668,6 +951,42 @@ public class AdgroupGet extends APINode {
 
   public AdgroupGet setFieldStatus(String value) {
     this.mStatus = value;
+    return this;
+  }
+
+  public Object getFieldTargeting() {
+    return mTargeting;
+  }
+
+  public AdgroupGet setFieldTargeting(Object value) {
+    this.mTargeting = value;
+    return this;
+  }
+
+  public Object getFieldTargetingsentencelines() {
+    return mTargetingsentencelines;
+  }
+
+  public AdgroupGet setFieldTargetingsentencelines(Object value) {
+    this.mTargetingsentencelines = value;
+    return this;
+  }
+
+  public Object getFieldTrackingAndConversionWithDefaults() {
+    return mTrackingAndConversionWithDefaults;
+  }
+
+  public AdgroupGet setFieldTrackingAndConversionWithDefaults(Object value) {
+    this.mTrackingAndConversionWithDefaults = value;
+    return this;
+  }
+
+  public List<Object> getFieldTrackingSpecs() {
+    return mTrackingSpecs;
+  }
+
+  public AdgroupGet setFieldTrackingSpecs(List<Object> value) {
+    this.mTrackingSpecs = value;
     return this;
   }
 
@@ -850,8 +1169,10 @@ public class AdgroupGet extends APINode {
   public AdgroupGet copyFrom(AdgroupGet instance) {
     this.mAccountId = instance.mAccountId;
     this.mAdActiveTime = instance.mAdActiveTime;
+    this.mAdReviewFeedback = instance.mAdReviewFeedback;
     this.mAdScheduleEndTime = instance.mAdScheduleEndTime;
     this.mAdScheduleStartTime = instance.mAdScheduleStartTime;
+    this.mAdStudies = instance.mAdStudies;
     this.mAdcreatives = instance.mAdcreatives;
     this.mAdlabels = instance.mAdlabels;
     this.mAdrulesGoverned = instance.mAdrulesGoverned;
@@ -867,6 +1188,7 @@ public class AdgroupGet extends APINode {
     this.mConfiguredStatus = instance.mConfiguredStatus;
     this.mConversionDomain = instance.mConversionDomain;
     this.mConversionSpecs = instance.mConversionSpecs;
+    this.mCopies = instance.mCopies;
     this.mCreatedTime = instance.mCreatedTime;
     this.mCreative = instance.mCreative;
     this.mCreativeAssetGroupsSpec = instance.mCreativeAssetGroupsSpec;
@@ -882,15 +1204,41 @@ public class AdgroupGet extends APINode {
     this.mDisplaySequence = instance.mDisplaySequence;
     this.mEffectiveStatus = instance.mEffectiveStatus;
     this.mEngagementAudience = instance.mEngagementAudience;
+    this.mFailedDeliveryChecks = instance.mFailedDeliveryChecks;
     this.mFrequency = instance.mFrequency;
     this.mId = instance.mId;
     this.mImpressions = instance.mImpressions;
+    this.mInsights = instance.mInsights;
     this.mIsAutobid = instance.mIsAutobid;
+    this.mIssuesInfo = instance.mIssuesInfo;
     this.mLastUpdatedByAppId = instance.mLastUpdatedByAppId;
+    this.mLeadgens = instance.mLeadgens;
+    this.mLeads = instance.mLeads;
     this.mMetaRewardAdgroupStatus = instance.mMetaRewardAdgroupStatus;
+    this.mMetadata = instance.mMetadata;
+    this.mMrlSettings = instance.mMrlSettings;
+    this.mName = instance.mName;
+    this.mObjectiveForCost = instance.mObjectiveForCost;
+    this.mObjectiveForResults = instance.mObjectiveForResults;
+    this.mPreviewLink = instance.mPreviewLink;
+    this.mPreviewShareableLink = instance.mPreviewShareableLink;
+    this.mPreviews = instance.mPreviews;
+    this.mPriority = instance.mPriority;
+    this.mRecommendations = instance.mRecommendations;
+    this.mRelatedMediaUserOptedOut = instance.mRelatedMediaUserOptedOut;
+    this.mRelatedPagePostId = instance.mRelatedPagePostId;
+    this.mResult = instance.mResult;
+    this.mResultRate = instance.mResultRate;
+    this.mSourceAd = instance.mSourceAd;
+    this.mSourceAdId = instance.mSourceAdId;
+    this.mSourceAppId = instance.mSourceAppId;
     this.mSpecialAdCategories = instance.mSpecialAdCategories;
     this.mSpent = instance.mSpent;
     this.mStatus = instance.mStatus;
+    this.mTargeting = instance.mTargeting;
+    this.mTargetingsentencelines = instance.mTargetingsentencelines;
+    this.mTrackingAndConversionWithDefaults = instance.mTrackingAndConversionWithDefaults;
+    this.mTrackingSpecs = instance.mTrackingSpecs;
     this.mUpdatedTime = instance.mUpdatedTime;
     this.mViewTags = instance.mViewTags;
     this.mYesterdaySpent = instance.mYesterdaySpent;

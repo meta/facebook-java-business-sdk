@@ -75,6 +75,8 @@ public class LeadgenForm extends APINode {
   private Page mPage = null;
   @SerializedName("page_id")
   private String mPageId = null;
+  @SerializedName("phone_otp_verification_type")
+  private String mPhoneOtpVerificationType = null;
   @SerializedName("privacy_policy_url")
   private String mPrivacyPolicyUrl = null;
   @SerializedName("question_page_custom_headline")
@@ -389,6 +391,10 @@ public class LeadgenForm extends APINode {
 
   public String getFieldPageId() {
     return mPageId;
+  }
+
+  public String getFieldPhoneOtpVerificationType() {
+    return mPhoneOtpVerificationType;
   }
 
   public String getFieldPrivacyPolicyUrl() {
@@ -1084,6 +1090,7 @@ public class LeadgenForm extends APINode {
       "organic_leads_count",
       "page",
       "page_id",
+      "phone_otp_verification_type",
       "privacy_policy_url",
       "question_page_custom_headline",
       "questions",
@@ -1299,6 +1306,13 @@ public class LeadgenForm extends APINode {
     }
     public APIRequestGet requestPageIdField (boolean value) {
       this.requestField("page_id", value);
+      return this;
+    }
+    public APIRequestGet requestPhoneOtpVerificationTypeField () {
+      return this.requestPhoneOtpVerificationTypeField(true);
+    }
+    public APIRequestGet requestPhoneOtpVerificationTypeField (boolean value) {
+      this.requestField("phone_otp_verification_type", value);
       return this;
     }
     public APIRequestGet requestPrivacyPolicyUrlField () {
@@ -1562,6 +1576,27 @@ public class LeadgenForm extends APINode {
       }
   }
 
+  public static enum EnumPhoneOtpVerificationType {
+      @SerializedName("NOT_ENABLED")
+      VALUE_NOT_ENABLED("NOT_ENABLED"),
+      @SerializedName("OTP_OPTIONAL")
+      VALUE_OTP_OPTIONAL("OTP_OPTIONAL"),
+      @SerializedName("OTP_REQUIRED")
+      VALUE_OTP_REQUIRED("OTP_REQUIRED"),
+      ;
+
+      private String value;
+
+      private EnumPhoneOtpVerificationType(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
 
   synchronized /*package*/ static Gson getGson() {
     if (gson != null) {
@@ -1594,6 +1629,7 @@ public class LeadgenForm extends APINode {
     this.mOrganicLeadsCount = instance.mOrganicLeadsCount;
     this.mPage = instance.mPage;
     this.mPageId = instance.mPageId;
+    this.mPhoneOtpVerificationType = instance.mPhoneOtpVerificationType;
     this.mPrivacyPolicyUrl = instance.mPrivacyPolicyUrl;
     this.mQuestionPageCustomHeadline = instance.mQuestionPageCustomHeadline;
     this.mQuestions = instance.mQuestions;

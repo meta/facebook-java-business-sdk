@@ -151,8 +151,6 @@ public class AdsInsights extends APINode {
   private String mConfigurablePlacementPtcReach = null;
   @SerializedName("configurable_reachbyfrequency_action")
   private List<AdsActionStats> mConfigurableReachbyfrequencyAction = null;
-  @SerializedName("configurable_reachbyfrequency_converters_count")
-  private String mConfigurableReachbyfrequencyConvertersCount = null;
   @SerializedName("configurable_reachbyfrequency_impressions_cost")
   private String mConfigurableReachbyfrequencyImpressionsCost = null;
   @SerializedName("configurable_reachbyfrequency_impressions_count")
@@ -670,6 +668,10 @@ public class AdsInsights extends APINode {
   private String mProductId = null;
   @SerializedName("publisher_platform")
   private String mPublisherPlatform = null;
+  @SerializedName("purchased_brand")
+  private String mPurchasedBrand = null;
+  @SerializedName("purchased_category")
+  private String mPurchasedCategory = null;
   @SerializedName("redownload")
   private String mRedownload = null;
   @SerializedName("reels_trending_topic")
@@ -1440,15 +1442,6 @@ public class AdsInsights extends APINode {
     this.mConfigurableReachbyfrequencyAction = AdsActionStats.getGson().fromJson(value, type);
     return this;
   }
-  public String getFieldConfigurableReachbyfrequencyConvertersCount() {
-    return mConfigurableReachbyfrequencyConvertersCount;
-  }
-
-  public AdsInsights setFieldConfigurableReachbyfrequencyConvertersCount(String value) {
-    this.mConfigurableReachbyfrequencyConvertersCount = value;
-    return this;
-  }
-
   public String getFieldConfigurableReachbyfrequencyImpressionsCost() {
     return mConfigurableReachbyfrequencyImpressionsCost;
   }
@@ -3761,6 +3754,14 @@ public class AdsInsights extends APINode {
     return mPublisherPlatform;
   }
 
+  public String getFieldPurchasedBrand() {
+    return mPurchasedBrand;
+  }
+
+  public String getFieldPurchasedCategory() {
+    return mPurchasedCategory;
+  }
+
   public String getFieldRedownload() {
     return mRedownload;
   }
@@ -4141,6 +4142,10 @@ public class AdsInsights extends APINode {
       VALUE_PRODUCT_ID("product_id"),
       @SerializedName("publisher_platform")
       VALUE_PUBLISHER_PLATFORM("publisher_platform"),
+      @SerializedName("purchased_brand")
+      VALUE_PURCHASED_BRAND("purchased_brand"),
+      @SerializedName("purchased_category")
+      VALUE_PURCHASED_CATEGORY("purchased_category"),
       @SerializedName("redownload")
       VALUE_REDOWNLOAD("redownload"),
       @SerializedName("reels_trending_topic")
@@ -4394,7 +4399,6 @@ public class AdsInsights extends APINode {
     this.mConfigurablePlacementPtcConverters = instance.mConfigurablePlacementPtcConverters;
     this.mConfigurablePlacementPtcReach = instance.mConfigurablePlacementPtcReach;
     this.mConfigurableReachbyfrequencyAction = instance.mConfigurableReachbyfrequencyAction;
-    this.mConfigurableReachbyfrequencyConvertersCount = instance.mConfigurableReachbyfrequencyConvertersCount;
     this.mConfigurableReachbyfrequencyImpressionsCost = instance.mConfigurableReachbyfrequencyImpressionsCost;
     this.mConfigurableReachbyfrequencyImpressionsCount = instance.mConfigurableReachbyfrequencyImpressionsCount;
     this.mConfigurableReachbyfrequencyReach = instance.mConfigurableReachbyfrequencyReach;
@@ -4653,6 +4657,8 @@ public class AdsInsights extends APINode {
     this.mProductGroupContentIdBreakdown = instance.mProductGroupContentIdBreakdown;
     this.mProductId = instance.mProductId;
     this.mPublisherPlatform = instance.mPublisherPlatform;
+    this.mPurchasedBrand = instance.mPurchasedBrand;
+    this.mPurchasedCategory = instance.mPurchasedCategory;
     this.mRedownload = instance.mRedownload;
     this.mReelsTrendingTopic = instance.mReelsTrendingTopic;
     this.mRegion = instance.mRegion;

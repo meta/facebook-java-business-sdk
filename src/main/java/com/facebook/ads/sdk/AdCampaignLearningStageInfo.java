@@ -43,8 +43,6 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
 public class AdCampaignLearningStageInfo extends APINode {
   @SerializedName("attribution_windows")
   private List<String> mAttributionWindows = null;
-  @SerializedName("cas_segment")
-  private String mCasSegment = null;
   @SerializedName("conversions")
   private Long mConversions = null;
   @SerializedName("current_budget_prediction")
@@ -225,15 +223,6 @@ public class AdCampaignLearningStageInfo extends APINode {
     return this;
   }
 
-  public String getFieldCasSegment() {
-    return mCasSegment;
-  }
-
-  public AdCampaignLearningStageInfo setFieldCasSegment(String value) {
-    this.mCasSegment = value;
-    return this;
-  }
-
   public Long getFieldConversions() {
     return mConversions;
   }
@@ -342,7 +331,6 @@ public class AdCampaignLearningStageInfo extends APINode {
 
   public AdCampaignLearningStageInfo copyFrom(AdCampaignLearningStageInfo instance) {
     this.mAttributionWindows = instance.mAttributionWindows;
-    this.mCasSegment = instance.mCasSegment;
     this.mConversions = instance.mConversions;
     this.mCurrentBudgetPrediction = instance.mCurrentBudgetPrediction;
     this.mDynamicLpConversionsThreshold = instance.mDynamicLpConversionsThreshold;

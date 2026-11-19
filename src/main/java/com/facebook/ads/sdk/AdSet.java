@@ -153,8 +153,6 @@ public class AdSet extends APINode {
   private List<String> mLowCreativeReach = null;
   @SerializedName("max_budget_spend_percentage")
   private String mMaxBudgetSpendPercentage = null;
-  @SerializedName("meta_moment_maker_spec")
-  private MetaMomentMakerConfig mMetaMomentMakerSpec = null;
   @SerializedName("min_budget_spend_percentage")
   private String mMinBudgetSpendPercentage = null;
   @SerializedName("multi_event_conversion_attribution_window_seconds")
@@ -1075,20 +1073,6 @@ public class AdSet extends APINode {
     return this;
   }
 
-  public MetaMomentMakerConfig getFieldMetaMomentMakerSpec() {
-    return mMetaMomentMakerSpec;
-  }
-
-  public AdSet setFieldMetaMomentMakerSpec(MetaMomentMakerConfig value) {
-    this.mMetaMomentMakerSpec = value;
-    return this;
-  }
-
-  public AdSet setFieldMetaMomentMakerSpec(String value) {
-    Type type = new TypeToken<MetaMomentMakerConfig>(){}.getType();
-    this.mMetaMomentMakerSpec = MetaMomentMakerConfig.getGson().fromJson(value, type);
-    return this;
-  }
   public String getFieldMinBudgetSpendPercentage() {
     return mMinBudgetSpendPercentage;
   }
@@ -1990,6 +1974,7 @@ public class AdSet extends APINode {
       "regional_regulation_disclaimer_spec",
       "source_facebook_post_id",
       "source_instagram_media_id",
+      "source_threads_media_id",
       "status",
       "template_url",
       "template_url_spec",
@@ -2566,6 +2551,13 @@ public class AdSet extends APINode {
     }
     public APIRequestGetAdCreatives requestSourceInstagramMediaIdField (boolean value) {
       this.requestField("source_instagram_media_id", value);
+      return this;
+    }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField () {
+      return this.requestSourceThreadsMediaIdField(true);
+    }
+    public APIRequestGetAdCreatives requestSourceThreadsMediaIdField (boolean value) {
+      this.requestField("source_threads_media_id", value);
       return this;
     }
     public APIRequestGetAdCreatives requestStatusField () {
@@ -4158,7 +4150,6 @@ public class AdSet extends APINode {
       "live_video_ad_campaign_config",
       "low_creative_reach",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -4707,13 +4698,6 @@ public class AdSet extends APINode {
     }
     public APIRequestGetCopies requestMaxBudgetSpendPercentageField (boolean value) {
       this.requestField("max_budget_spend_percentage", value);
-      return this;
-    }
-    public APIRequestGetCopies requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGetCopies requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
       return this;
     }
     public APIRequestGetCopies requestMinBudgetSpendPercentageField () {
@@ -6488,7 +6472,6 @@ public class AdSet extends APINode {
       "live_video_ad_campaign_config",
       "low_creative_reach",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -7039,13 +7022,6 @@ public class AdSet extends APINode {
       this.requestField("max_budget_spend_percentage", value);
       return this;
     }
-    public APIRequestGet requestMetaMomentMakerSpecField () {
-      return this.requestMetaMomentMakerSpecField(true);
-    }
-    public APIRequestGet requestMetaMomentMakerSpecField (boolean value) {
-      this.requestField("meta_moment_maker_spec", value);
-      return this;
-    }
     public APIRequestGet requestMinBudgetSpendPercentageField () {
       return this.requestMinBudgetSpendPercentageField(true);
     }
@@ -7307,7 +7283,6 @@ public class AdSet extends APINode {
       "lifetime_spend_cap",
       "live_video_ad_campaign_config",
       "max_budget_spend_percentage",
-      "meta_moment_maker_spec",
       "min_budget_spend_percentage",
       "multi_event_conversion_attribution_window_seconds",
       "multi_optimization_goal_weight",
@@ -7738,15 +7713,6 @@ public class AdSet extends APINode {
     }
     public APIRequestUpdate setMaxBudgetSpendPercentage (String maxBudgetSpendPercentage) {
       this.setParam("max_budget_spend_percentage", maxBudgetSpendPercentage);
-      return this;
-    }
-
-    public APIRequestUpdate setMetaMomentMakerSpec (Map<String, String> metaMomentMakerSpec) {
-      this.setParam("meta_moment_maker_spec", metaMomentMakerSpec);
-      return this;
-    }
-    public APIRequestUpdate setMetaMomentMakerSpec (String metaMomentMakerSpec) {
-      this.setParam("meta_moment_maker_spec", metaMomentMakerSpec);
       return this;
     }
 
@@ -8666,7 +8632,6 @@ public class AdSet extends APINode {
     this.mLiveVideoAdCampaignConfig = instance.mLiveVideoAdCampaignConfig;
     this.mLowCreativeReach = instance.mLowCreativeReach;
     this.mMaxBudgetSpendPercentage = instance.mMaxBudgetSpendPercentage;
-    this.mMetaMomentMakerSpec = instance.mMetaMomentMakerSpec;
     this.mMinBudgetSpendPercentage = instance.mMinBudgetSpendPercentage;
     this.mMultiEventConversionAttributionWindowSeconds = instance.mMultiEventConversionAttributionWindowSeconds;
     this.mMultiOptimizationGoalWeight = instance.mMultiOptimizationGoalWeight;
